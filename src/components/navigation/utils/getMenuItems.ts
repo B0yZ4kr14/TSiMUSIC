@@ -27,16 +27,29 @@ export interface MenuItem {
 }
 
 export const getMenuItems = function () {
+  // Read from user preferences first, fallback to localStorage for migration
+  const userMenuItems = store.currentUser?.preferences?.menu_items;
+  const storedMenuConf = localStorage.getItem("frontend.settings.menu_items");
+
+  let enabledItems: string[];
+  if (userMenuItems) {
+    // If user preferences has menu_items, use it (it could be array or comma-separated string)
+    enabledItems = Array.isArray(userMenuItems)
+      ? userMenuItems
+      : userMenuItems.split(",");
+  } else if (storedMenuConf) {
+    // Fallback to localStorage during migration
+    enabledItems = storedMenuConf.split(",");
+  } else {
+    // Final fallback to defaults
+    enabledItems = DEFAULT_MENU_ITEMS;
+  }
   const items: MenuItem[] = [];
   // we loop through DEFAULT_MENU_ITEMS to respect default order;
   // new items added to DEFAULT_MENU_ITEMS automatically appear unless explicitly disabled
   for (const enabledMenuItemStr of DEFAULT_MENU_ITEMS) {
-    if (
-      localStorage.getItem(
-        `frontend.settings.menu_item_${enabledMenuItemStr}_enabled`,
-      ) === "false"
-    )
-      continue;
+    // Check if item is enabled (user preferences or localStorage migration fallback)
+    if (!enabledItems.includes(enabledMenuItemStr)) continue;
     if (enabledMenuItemStr === "discover") {
       items.push({
         label: "discover",

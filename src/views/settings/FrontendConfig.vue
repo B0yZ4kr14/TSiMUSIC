@@ -62,6 +62,7 @@ import { store } from "@/plugins/store";
 import { $t, i18n } from "@/plugins/i18n";
 import { webPlayer } from "@/plugins/web_player";
 import EditConfig from "./EditConfig.vue";
+import { useUserPreferences } from "@/composables/userPreferences";
 
 // global refs
 const router = useRouter();
@@ -91,8 +92,8 @@ onMounted(() => {
         { title: "light", value: "light" },
       ],
       multi_value: false,
-      category: "generic",
-      value: storedTheme,
+      category: "per_user",
+      value: store.currentUser?.preferences?.theme || storedTheme,
     },
     {
       key: "language",
@@ -107,8 +108,8 @@ onMounted(() => {
         }),
       ],
       multi_value: false,
-      category: "generic",
-      value: localStorage.getItem("frontend.settings.language"),
+      category: "per_user",
+      value: store.currentUser?.preferences?.language || localStorage.getItem("frontend.settings.language"),
     },
     {
       key: "startup_view",
@@ -129,8 +130,8 @@ onMounted(() => {
         { title: $t("browse"), value: "browse" },
       ],
       multi_value: false,
-      category: "generic",
-      value: localStorage.getItem("frontend.settings.startup_view") || "home",
+      category: "per_user",
+      value: store.currentUser?.preferences?.startup_view || localStorage.getItem("frontend.settings.startup_view") || "home",
     },
     {
       key: "menu_items",
@@ -156,8 +157,8 @@ onMounted(() => {
         { title: $t("settings.settings"), value: "settings" },
       ],
       multi_value: true,
-      category: "generic",
-      value: enabledMenuItems,
+      category: "per_user",
+      value: store.currentUser?.preferences?.menu_items || enabledMenuItems,
     },
     {
       key: "enable_browser_controls",
@@ -179,7 +180,7 @@ onMounted(() => {
       default_value: false,
       required: false,
       multi_value: false,
-      category: "generic",
+      category: "per_browser",
       value:
         localStorage.getItem("frontend.settings.force_mobile_layout") ===
         "true",
@@ -257,44 +258,48 @@ onMounted(() => {
 });
 
 // methods
-const saveValues = function (values: Record<string, ConfigValueType>) {
-  for (const key in values) {
-    const storageKey = `frontend.settings.${key}`;
-    const value = values[key];
-    if (value != null) {
-      if (key === "menu_items") {
-        const selectedItems = Array.isArray(value)
-          ? (value as string[])
-          : String(value).split(",");
-        for (const item of DEFAULT_MENU_ITEMS) {
-          if (selectedItems.includes(item)) {
-            localStorage.removeItem(
-              `frontend.settings.menu_item_${item}_enabled`,
-            );
-          } else {
-            localStorage.setItem(
-              `frontend.settings.menu_item_${item}_enabled`,
-              "false",
-            );
-          }
-        }
-        // clean up old single-key format
-        localStorage.removeItem(storageKey);
-      } else {
-        localStorage.setItem(storageKey, value.toString());
-      }
+const saveValues = async function (values: Record<string, ConfigValueType>) {
+  const { setPreference } = useUserPreferences();
+  loading.value = true;
 
-      if (key === "theme") {
-        mode.value = value.toString() as "light" | "dark" | "auto";
+  let hasPerUserChanges = false;
+
+  try {
+    for (const key in values) {
+      const entry = config.value.find((e) => e.key === key);
+      if (!entry) continue;
+
+      if (entry.category === "per_user") {
+        // Save to backend via user preferences
+        await setPreference(key, values[key]);
+        hasPerUserChanges = true;
+      } else {
+        // Save to localStorage (per_browser and web_player settings)
+        const storageKey = `frontend.settings.${key}`;
+        const value = values[key];
+        if (value != null) {
+          localStorage.setItem(storageKey, value.toString());
+          if (key === "theme") {
+            mode.value = value.toString() as "light" | "dark" | "auto";
+          }
+        } else {
+          localStorage.removeItem(storageKey);
+        }
       }
-    } else {
-      localStorage.removeItem(storageKey);
     }
+
+    // Reload if any per-user settings changed
+    if (hasPerUserChanges) {
+      router.push({ name: "discover" }).then(() => {
+        window.location.reload();
+      });
+    } else {
+      router.push({ name: "discover" });
+    }
+  } catch (error) {
+    console.error("Failed to save settings:", error);
+    loading.value = false;
   }
-  router.push({ name: "discover" }).then(() => {
-    // enforce refresh
-    window.location.reload();
-  });
 };
 
 const onSubmit = function (values: Record<string, ConfigValueType>) {
