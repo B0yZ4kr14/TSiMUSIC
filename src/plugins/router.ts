@@ -79,11 +79,8 @@ const routes: RouteRecordRaw[] = [
       {
         path: "",
         redirect: () => {
-          // Read from user preferences first, fallback to localStorage for migration
           const startupView =
-            store.currentUser?.preferences?.startup_view ||
-            localStorage.getItem("frontend.settings.startup_view") ||
-            "discover";
+            store.currentUser?.preferences?.startup_view || "discover";
           return `/${startupView}`;
         },
       },

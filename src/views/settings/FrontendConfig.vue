@@ -71,11 +71,13 @@ const loading = ref(false);
 const mode = useColorMode();
 
 onMounted(() => {
-  const enabledMenuItems = DEFAULT_MENU_ITEMS.filter(
-    (item) =>
-      localStorage.getItem(`frontend.settings.menu_item_${item}_enabled`) !==
-      "false",
-  );
+  // TODO: Remove localStorage fallbacks below once migration period is over
+  // (theme, language, menu_items moved from localStorage to user preferences)
+  const storedMenuConf = localStorage.getItem("frontend.settings.menu_items");
+  const enabledMenuItems: string[] = storedMenuConf
+    ? storedMenuConf.split(",")
+    : DEFAULT_MENU_ITEMS;
+
   const storedTheme = localStorage.getItem("frontend.settings.theme") || "auto";
   mode.value = storedTheme as "light" | "dark" | "auto";
 
@@ -133,10 +135,7 @@ onMounted(() => {
       ],
       multi_value: false,
       category: "preferences",
-      value:
-        store.currentUser?.preferences?.startup_view ||
-        localStorage.getItem("frontend.settings.startup_view") ||
-        "home",
+      value: store.currentUser?.preferences?.startup_view || "home",
     },
     {
       key: "menu_items",
