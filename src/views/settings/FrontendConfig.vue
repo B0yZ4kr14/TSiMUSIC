@@ -92,7 +92,7 @@ onMounted(() => {
         { title: "light", value: "light" },
       ],
       multi_value: false,
-      category: "per_user",
+      category: "preferences",
       value: store.currentUser?.preferences?.theme || storedTheme,
     },
     {
@@ -108,7 +108,7 @@ onMounted(() => {
         }),
       ],
       multi_value: false,
-      category: "per_user",
+      category: "preferences",
       value:
         store.currentUser?.preferences?.language ||
         localStorage.getItem("frontend.settings.language"),
@@ -132,7 +132,7 @@ onMounted(() => {
         { title: $t("browse"), value: "browse" },
       ],
       multi_value: false,
-      category: "per_user",
+      category: "preferences",
       value:
         store.currentUser?.preferences?.startup_view ||
         localStorage.getItem("frontend.settings.startup_view") ||
@@ -162,7 +162,7 @@ onMounted(() => {
         { title: $t("settings.settings"), value: "settings" },
       ],
       multi_value: true,
-      category: "per_user",
+      category: "preferences",
       value: store.currentUser?.preferences?.menu_items || enabledMenuItems,
     },
     {
@@ -185,7 +185,7 @@ onMounted(() => {
       default_value: false,
       required: false,
       multi_value: false,
-      category: "per_browser",
+      category: "display_settings",
       value:
         localStorage.getItem("frontend.settings.force_mobile_layout") ===
         "true",
@@ -274,12 +274,12 @@ const saveValues = async function (values: Record<string, ConfigValueType>) {
       const entry = config.value.find((e) => e.key === key);
       if (!entry) continue;
 
-      if (entry.category === "per_user") {
+      if (entry.category === "preferences") {
         // Save to backend via user preferences
         await setPreference(key, values[key]);
         hasPerUserChanges = true;
       } else {
-        // Save to localStorage (per_browser and web_player settings)
+        // Save to localStorage (display_settings and web_player settings)
         const storageKey = `frontend.settings.${key}`;
         const value = values[key];
         if (value != null) {
