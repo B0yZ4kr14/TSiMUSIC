@@ -135,7 +135,7 @@ onMounted(() => {
       ],
       multi_value: false,
       category: "preferences",
-      value: store.currentUser?.preferences?.startup_view || "home",
+      value: store.currentUser?.preferences?.startup_view || "discover",
     },
     {
       key: "menu_items",
