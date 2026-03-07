@@ -136,9 +136,9 @@ onMounted(() => {
       multi_value: false,
       category: "preferences",
       value:
-          (store.currentUser?.preferences?.startup_view as string) ||
-          localStorage.getItem("frontend.settings.startup_view") ||
-          "home",
+        (store.currentUser?.preferences?.startup_view as string) ||
+        localStorage.getItem("frontend.settings.startup_view") ||
+        "home",
     },
     {
       key: "menu_items",
@@ -165,7 +165,9 @@ onMounted(() => {
       ],
       multi_value: true,
       category: "preferences",
-      value: (store.currentUser?.preferences?.menu_items as string[] | string) || enabledMenuItems,
+      value:
+        (store.currentUser?.preferences?.menu_items as string[] | string) ||
+        enabledMenuItems,
     },
     {
       key: "enable_browser_controls",
