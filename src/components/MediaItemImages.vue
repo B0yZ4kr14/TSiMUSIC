@@ -37,7 +37,14 @@
               "
             >
               <v-img
-                :src="getMediaItemImageUrl(image, 256, undefined, compProps.mediaType)"
+                :src="
+                  getMediaItemImageUrl(
+                    image,
+                    256,
+                    undefined,
+                    compProps.mediaType,
+                  )
+                "
                 class="bg-grey-lighten-2"
                 width="100%"
               >
@@ -144,7 +151,9 @@ const getProviderName = function (provider: string) {
 };
 
 const onClick = function (evt: PointerEvent, image: MediaItemImage) {
-  openLinkInNewTab(getMediaItemImageUrl(image, undefined, undefined, compProps.mediaType));
+  openLinkInNewTab(
+    getMediaItemImageUrl(image, undefined, undefined, compProps.mediaType),
+  );
 };
 
 const toggleExpand = function () {

@@ -418,7 +418,11 @@ export const getImageThumbForItem = function (
   if (!img || !img.path) {
     // No image found - request fallback from backend using media_type
     // Exclude FOLDER and GENRE as they use local icons instead
-    if (mediaType && mediaType !== MediaType.FOLDER && mediaType !== MediaType.GENRE) {
+    if (
+      mediaType &&
+      mediaType !== MediaType.FOLDER &&
+      mediaType !== MediaType.GENRE
+    ) {
       let fallbackUrl = `${api.baseUrl}/imageproxy?media_type=${mediaType}`;
       if (size) fallbackUrl += `&size=${size}`;
       return fallbackUrl;

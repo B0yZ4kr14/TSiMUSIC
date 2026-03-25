@@ -123,7 +123,9 @@ const onItemClick = () => {
 
 const imageUrl = computed(() => {
   const img = props.item.metadata?.images?.[0];
-  return img ? getMediaItemImageUrl(img, undefined, undefined, props.item.media_type) : "";
+  return img
+    ? getMediaItemImageUrl(img, undefined, undefined, props.item.media_type)
+    : "";
 });
 
 const artistName = computed(() => {

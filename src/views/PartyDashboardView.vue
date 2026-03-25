@@ -417,7 +417,12 @@ watch(
   () => store.curQueueItem?.image,
   (image) => {
     if (image) {
-      const imageUrl = getMediaItemImageUrl(image, undefined, undefined, store.curQueueItem?.media_item?.media_type);
+      const imageUrl = getMediaItemImageUrl(
+        image,
+        undefined,
+        undefined,
+        store.curQueueItem?.media_item?.media_type,
+      );
       if (imageUrl) {
         img.src = imageUrl;
       }
@@ -440,7 +445,14 @@ watch(
 // Album art URL for the blurred background element
 const albumArtUrl = computed(() => {
   if (!store.curQueueItem?.image) return "";
-  return getMediaItemImageUrl(store.curQueueItem.image, undefined, undefined, store.curQueueItem.media_item?.media_type) || "";
+  return (
+    getMediaItemImageUrl(
+      store.curQueueItem.image,
+      undefined,
+      undefined,
+      store.curQueueItem.media_item?.media_type,
+    ) || ""
+  );
 });
 
 // Gradient background style (used when album art is disabled, or as fallback)
