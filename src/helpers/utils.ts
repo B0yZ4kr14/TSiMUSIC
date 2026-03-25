@@ -373,11 +373,13 @@ export const getMediaItemImage = function (
 /**
  * Get the URL for a MediaItemImage, handling protocol mismatches and resizing.
  * This is used for MediaItem images (albums, tracks, artists, etc.)
+ * @param mediaType - Optional media type for fallback image selection when primary image fails
  */
 export const getMediaItemImageUrl = function (
   img: MediaItemImage,
   size?: number,
   checksum?: string,
+  mediaType?: MediaType,
 ): string {
   if (!checksum) checksum = "";
   if (!img || !img.path) return "";
@@ -390,8 +392,9 @@ export const getMediaItemImageUrl = function (
     // force imageproxy if image is not remotely accessible or we need a resized thumb
     // Note that we play it safe here and always enforce the proxy if the schema is different
     const encUrl = encodeURIComponent(encodeURIComponent(img.path));
-    const imageUrl = `${api.baseUrl}/imageproxy?path=${encUrl}&provider=${img.provider}&checksum=${checksum}`;
-    if (size) return imageUrl + `&size=${size}`;
+    let imageUrl = `${api.baseUrl}/imageproxy?path=${encUrl}&provider=${img.provider}&checksum=${checksum}`;
+    if (size) imageUrl += `&size=${size}`;
+    if (mediaType) imageUrl += `&media_type=${mediaType}`;
     return imageUrl;
   }
   // else: return image as-is (use getMediaImageUrl for protocol handling)
@@ -400,6 +403,7 @@ export const getMediaItemImageUrl = function (
 
 /**
  * Get the image thumbnail URL for a MediaItem, ItemMapping, or QueueItem.
+ * If no image is found, returns a fallback proxy URL with media_type for backend fallback resolution.
  */
 export const getImageThumbForItem = function (
   mediaItem?: MediaItemType | ItemMapping | QueueItem,
@@ -407,12 +411,23 @@ export const getImageThumbForItem = function (
   size?: number,
 ): string | undefined {
   if (!mediaItem) return;
+  const mediaType =
+    "media_type" in mediaItem ? mediaItem.media_type : undefined;
   // find image in mediaitem
   const img = getMediaItemImage(mediaItem, type);
-  if (!img || !img.path) return undefined;
+  if (!img || !img.path) {
+    // No image found - request fallback from backend using media_type
+    // Exclude FOLDER and GENRE as they use local icons instead
+    if (mediaType && mediaType !== MediaType.FOLDER && mediaType !== MediaType.GENRE) {
+      let fallbackUrl = `${api.baseUrl}/imageproxy?media_type=${mediaType}`;
+      if (size) fallbackUrl += `&size=${size}`;
+      return fallbackUrl;
+    }
+    return undefined;
+  }
   const checksum =
     "metadata" in mediaItem ? mediaItem.metadata?.cache_checksum : "";
-  return getMediaItemImageUrl(img, size, checksum);
+  return getMediaItemImageUrl(img, size, checksum, mediaType);
 };
 
 export const numberRange = function (start: number, end: number): number[] {

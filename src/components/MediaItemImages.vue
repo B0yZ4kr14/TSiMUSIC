@@ -37,7 +37,7 @@
               "
             >
               <v-img
-                :src="getMediaItemImageUrl(image, 256)"
+                :src="getMediaItemImageUrl(image, 256, undefined, compProps.mediaType)"
                 class="bg-grey-lighten-2"
                 width="100%"
               >
@@ -93,12 +93,17 @@ import { getMediaItemImageUrl } from "@/helpers/utils";
 import Toolbar from "@/components/Toolbar.vue";
 import { panelViewItemResponsive } from "@/helpers/utils";
 import { api } from "@/plugins/api";
-import { ImageType, type MediaItemImage } from "@/plugins/api/interfaces";
+import {
+  ImageType,
+  type MediaItemImage,
+  type MediaType,
+} from "@/plugins/api/interfaces";
 import { eventbus } from "@/plugins/eventbus";
 import { computed, ref } from "vue";
 
 export interface Props {
   modelValue: MediaItemImage[];
+  mediaType?: MediaType;
 }
 const compProps = defineProps<Props>();
 
@@ -139,7 +144,7 @@ const getProviderName = function (provider: string) {
 };
 
 const onClick = function (evt: PointerEvent, image: MediaItemImage) {
-  openLinkInNewTab(getMediaItemImageUrl(image));
+  openLinkInNewTab(getMediaItemImageUrl(image, undefined, undefined, compProps.mediaType));
 };
 
 const toggleExpand = function () {

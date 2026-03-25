@@ -4,15 +4,16 @@
     :height="size || '100%'"
     :width="size || '100%'"
     aspect-ratio="1"
-    :src="imgData"
+    :src="currentSrc"
     :class="{ rounded: rounded }"
     contain
     :lazy-src="theme.current.value.dark ? imgCoverDark : imgCoverLight"
+    @error="onImageError"
   />
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import type {
   ItemMapping,
   MediaItemType,
@@ -53,7 +54,7 @@ function getThumbSize() {
 }
 const thumbSize = getThumbSize();
 
-function getFallbackImage() {
+const fallbackImage = computed(() => {
   if (props.fallback) return props.fallback;
   if (
     props.item &&
@@ -68,15 +69,42 @@ function getFallbackImage() {
     theme.current.value.dark,
     thumbSize || 256,
   );
-}
-const fallbackImage = getFallbackImage();
+});
 
 const imgData = computed(() =>
   props.item
     ? getImageThumbForItem(props.item, ImageType.THUMB, thumbSize) ||
-      fallbackImage
-    : fallbackImage,
+      fallbackImage.value
+    : fallbackImage.value,
 );
+
+// Track current image source, allowing fallback on error
+const currentSrc = ref(imgData.value);
+const hasError = ref(false);
+
+// Reset when item changes
+watch(
+  () => props.item,
+  () => {
+    hasError.value = false;
+    currentSrc.value = imgData.value;
+  },
+);
+
+// Also update when imgData changes (e.g., image loaded later)
+watch(imgData, (newVal) => {
+  if (!hasError.value) {
+    currentSrc.value = newVal;
+  }
+});
+
+function onImageError() {
+  // On error (e.g., 204 No Content from backend), fall back to avatar image
+  if (!hasError.value && currentSrc.value !== fallbackImage.value) {
+    hasError.value = true;
+    currentSrc.value = fallbackImage.value;
+  }
+}
 </script>
 
 <script lang="ts">

@@ -60,6 +60,7 @@
         authManager.isAdmin()
       "
       v-model="itemDetails.metadata.images"
+      :media-type="itemDetails.media_type"
       @update:model-value="UpdateItemInDb"
     />
     <br />

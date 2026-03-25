@@ -112,7 +112,7 @@ const absoluteIndex = computed(() => props.queueFetchOffset + props.index);
 
 const imageUrl = computed(() => {
   if (!props.item.image) return "";
-  return getMediaItemImageUrl(props.item.image);
+  return getMediaItemImageUrl(props.item.image, undefined, undefined, props.item.media_item?.media_type);
 });
 
 const title = computed(() => {
