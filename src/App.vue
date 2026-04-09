@@ -206,7 +206,7 @@ async function migrateLocalStorageToUserPreferences() {
   }
 
   const { setPreference } = useUserPreferences();
-  const settingsToMigrate = ["theme", "language", "startup_view", "menu_items"];
+  const settingsToMigrate = ["theme", "language", "menu_items"];
 
   try {
     for (const key of settingsToMigrate) {

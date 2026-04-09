@@ -78,11 +78,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: "",
-        redirect: () => {
-          const startupView =
-            store.currentUser?.preferences?.startup_view || "discover";
-          return `/${startupView}`;
-        },
+        redirect: "/discover",
       },
       {
         // "/home" has now been renamed to "/discover". This
