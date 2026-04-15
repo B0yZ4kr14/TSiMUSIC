@@ -1,0 +1,67 @@
+<template>
+  <ActivePlayerPopover
+    v-if="!store.mobileLayout && player && player.isVisible"
+    auto-show
+    align="end"
+    child-element-id="extended-controls-speaker-button"
+  />
+  <PlayerTrackMenu v-if="contextMenu && contextMenu.isVisible" />
+
+  <SpeakerBtn id="extended-controls-speaker-button" :color="player.color" />
+
+  <QueueBtn
+    v-if="queue && queue.isVisible"
+    :color="queue.color"
+    style="padding-left: 15px; padding-right: 20px"
+  />
+  <PlayerVolume
+    v-if="volume && volume.isVisible && store.activePlayer"
+    :player="store.activePlayer"
+    :width="volume.volumeSize || '150px'"
+    :allow-wheel="true"
+    :prefer-group-volume="true"
+  />
+</template>
+
+<script setup lang="ts">
+import ActivePlayerPopover from "@/components/ActivePlayerPopover.vue";
+import { store } from "@/plugins/store";
+import PlayerTrackMenu from "./PlayerControlBtn/PlayerTrackMenu.vue";
+import QueueBtn from "./PlayerControlBtn/QueueBtn.vue";
+import SpeakerBtn from "./PlayerControlBtn/SpeakerBtn.vue";
+import PlayerVolume from "./PlayerVolume.vue";
+
+// properties
+export interface Props {
+  // eslint-disable-next-line vue/require-default-prop
+  queue?: {
+    isVisible?: boolean;
+    showQueueDialog?: boolean;
+    color?: string;
+  };
+  player?: {
+    isVisible?: boolean;
+    color?: string;
+  };
+  volume?: {
+    isVisible?: boolean;
+    volumeSize?: string;
+    responsiveVolumeSize?: boolean;
+    color?: string;
+  };
+  contextMenu?: {
+    isVisible?: boolean;
+  };
+}
+
+withDefaults(defineProps<Props>(), {
+  queue: () => ({ isVisible: true, showQueueDialog: false }),
+  player: () => ({ isVisible: true }),
+  volume: () => ({
+    isVisible: true,
+    volumeSize: "150px",
+    responsiveVolumeSize: false,
+  }),
+  contextMenu: () => ({ isVisible: true }),
+});
+</script>

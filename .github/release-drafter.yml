@@ -1,0 +1,40 @@
+change-template: "- $TITLE (by @$AUTHOR in #$NUMBER)"
+
+# Exclude bots from contributors list
+exclude-contributors:
+  - dependabot
+  - dependabot[bot]
+  - github-actions
+  - github-actions[bot]
+
+categories:
+  - title: "⚠ Breaking Changes"
+    labels:
+      - "breaking-change"
+
+  - title: "🚀 Features and enhancements"
+    labels:
+      - "feature"
+      - "enhancement"
+      - "new-feature"
+
+  - title: "🐛 Bugfixes"
+    labels:
+      - "bugfix"
+
+  - title: "🧰 Maintenance and dependency bumps"
+    collapse-after: 3
+    labels:
+      - "ci"
+      - "documentation"
+      - "maintenance"
+      - "dependencies"
+
+template: |
+
+  $CHANGES
+
+
+  ## :bow: Contributors
+
+  $CONTRIBUTORS
