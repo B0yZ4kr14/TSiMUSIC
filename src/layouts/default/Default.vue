@@ -20,9 +20,11 @@ import { watch } from "vue";
 import api from "@/plugins/api";
 import { useRoute } from "vue-router";
 import { useKeyboardShortcuts } from "@/composables/useKeyboardShortcuts";
+import { useDynamicTitle } from "@/composables/useDynamicTitle";
 
 const route = useRoute();
 useKeyboardShortcuts();
+useDynamicTitle();
 
 watch(
   // make sure it's retriggered when players array is populated
