@@ -90,3 +90,9 @@
 - Aparece automaticamente na primeira visita (após 3s)
 - Pode ser aberto/fechado com a tecla "?"
 - Design glassmorphism com acento roxo
+
+## Novo: Barras de Equalizador Animadas
+
+- 4 barras animadas aparecem quando a música está tocando
+- Gradiente roxo TSi MUSIC
+- Feedback visual sutil do estado de playback
