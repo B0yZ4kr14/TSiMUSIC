@@ -122,3 +122,11 @@ venv/*
 !.vscode/extensions.json
 !.vscode/launch.json
 !.vscode/tasks.json
+
+# Exclusões do Squad Beta — Project Copy
+*.tar.gz
+# TSi MUSIC — specific exclusions
+/assets/
+/backup/
+/report-*.json
+/*.tar.gz
