@@ -402,6 +402,8 @@
         </div>
       </div>
 
+      <AudioVisualizer />
+
       <!-- player controls (always at bottom)-->
       <div class="player-bottom">
         <!-- timeline / progressbar-->
@@ -522,6 +524,7 @@
 </template>
 
 <script setup lang="ts">
+import AudioVisualizer from "@/components/AudioVisualizer.vue";
 import Button from "@/components/Button.vue";
 import Icon from "@/components/Icon.vue";
 import ListItem from "@/components/ListItem.vue";
@@ -1520,6 +1523,7 @@ watchEffect(() => {
 
 <style scoped>
 .fullscreen-player-card {
+  position: relative;
   overflow: hidden;
   height: 100%;
   display: flex;
