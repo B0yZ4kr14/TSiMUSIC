@@ -6,6 +6,7 @@
       <Footer />
       <PwaInstallPrompt />
       <OfflineIndicator />
+      <KeyboardShortcutsHelp />
     </template>
   </v-app>
   <reload-prompt />
@@ -17,6 +18,7 @@ import Footer from "./Footer.vue";
 import ReloadPrompt from "./ReloadPrompt.vue";
 import PwaInstallPrompt from "@/components/PwaInstallPrompt.vue";
 import OfflineIndicator from "@/components/OfflineIndicator.vue";
+import KeyboardShortcutsHelp from "@/components/KeyboardShortcutsHelp.vue";
 import { store } from "@/plugins/store";
 import { watch } from "vue";
 import api from "@/plugins/api";
