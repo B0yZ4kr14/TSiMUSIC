@@ -63,3 +63,10 @@
 - Bordas com acento roxo TSi MUSIC
 - Variantes de cor: success, error, warning, info
 - Border-radius de 12px
+
+## Novo: Botão Scroll-to-Top
+
+- Aparece ao scrollar mais de 400px
+- Scroll suave ao topo ao clicar
+- Gradiente roxo TSi MUSIC
+- Animação de entrada com scale
