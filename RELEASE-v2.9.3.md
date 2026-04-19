@@ -110,3 +110,10 @@
 - Atualização a cada segundo
 - Estilo sutil com text shadow
 - Visível apenas no modo fullscreen
+
+## Novo: Indicador de Volume
+
+- Overlay central quando o volume muda
+- Ícone animado baseado no nível de volume
+- Barra de progresso com gradiente roxo
+- Auto-oculta após 1.5 segundos
