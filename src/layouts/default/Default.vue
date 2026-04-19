@@ -17,8 +17,11 @@ import { store } from "@/plugins/store";
 import { watch } from "vue";
 import api from "@/plugins/api";
 import { useRoute } from "vue-router";
+import { useKeyboardShortcuts } from "@/composables/useKeyboardShortcuts";
 
 const route = useRoute();
+useKeyboardShortcuts();
+
 watch(
   // make sure it's retriggered when players array is populated
   [() => route.query.player, () => Object.keys(api.players).length],
