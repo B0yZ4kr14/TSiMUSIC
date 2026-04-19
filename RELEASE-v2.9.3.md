@@ -31,3 +31,13 @@
 - ✅ Build: 19.74s, 165 precache entries
 - ✅ Deploy: HTTP 200 OK
 - ✅ Testes: 127/127 passando
+
+## Novo: Atalhos de Teclado Globais
+
+- **Espaço**: Play/Pause
+- **→ / ←**: Próxima / Anterior faixa
+- **↑ / ↓**: Aumentar / Diminuir volume
+- **F**: Toggle fullscreen player
+- **M**: Toggle mini player mode
+- **Esc**: Fechar fullscreen / dialogs
+- **/** ou **Ctrl+K**: Focar busca / ir para página de busca
