@@ -309,7 +309,7 @@ const getAuthorsMarkdown = function (authors: string[]) {
     if (author.includes("@")) {
       let authorName = author.replace("@", "");
       if (authorName == "music-assistant") {
-        authorName = "the Music Assistant team";
+        authorName = "o time TSi MUSIC";
       }
       allAuthors.push(
         `[${authorName}](https://github.com/${author.replace("@", "")})`,

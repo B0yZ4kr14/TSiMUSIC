@@ -614,8 +614,8 @@ const activeQueuePanel = ref(0);
 const tempHide = ref(false);
 
 // Badge colors for guest request badges (loaded from party/config)
-const requestBadgeColor = ref("#2196f3");
-const boostBadgeColor = ref("#ff5722");
+const requestBadgeColor = ref("#7c3aed");
+const boostBadgeColor = ref("#f43f5e");
 
 const { elapsedTime: lyricsElapsedTime } = useLyricsElapsedTime();
 

@@ -2,7 +2,7 @@
   <div class="guest-view">
     <!-- Logo -->
     <div class="guest-logo">
-      <img :src="logoSrc" alt="Music Assistant" class="logo-img" />
+      <img :src="logoSrc" alt="TSi MUSIC" class="logo-img" />
     </div>
 
     <!-- Search Section -->

@@ -57,10 +57,10 @@
       </CardContent>
     </Card>
 
-    <!-- Open Home Foundation -->
+    <!-- TSi MUSIC -->
     <Card
       as="a"
-      href="https://www.openhomefoundation.org/"
+      href="https://www.tsimusic.com.br/"
       target="_blank"
       class="group cursor-pointer transition-all hover:border-primary/40 hover:shadow-lg"
     >
@@ -72,8 +72,8 @@
         </div>
         <div class="w-full max-w-xs">
           <img
-            :src="openHomeFoundationLogo"
-            alt="Open Home Foundation"
+            :src="tsimusicLogo"
+            alt="TSi MUSIC"
             class="w-full h-auto opacity-90 transition-opacity group-hover:opacity-100"
           />
         </div>
@@ -344,7 +344,7 @@
 </template>
 
 <script setup lang="ts">
-import openHomeFoundationLogo from "@/assets/open-home-foundation-logo.svg";
+import tsimusicLogo from "@/assets/logo/logo.svg";
 import Container from "@/components/Container.vue";
 import { Badge } from "@/components/ui/badge";
 import {

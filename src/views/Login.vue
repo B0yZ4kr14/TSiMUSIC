@@ -9,10 +9,10 @@
               <div class="text-center login-header">
                 <img
                   src="@/assets/icon.svg"
-                  alt="Music Assistant"
+                  alt="TSi MUSIC"
                   class="login-logo"
                 />
-                <h1 class="login-title font-weight-bold">Music Assistant</h1>
+                <h1 class="login-title font-weight-bold">TSi MUSIC</h1>
                 <p class="login-subtitle text-medium-emphasis">
                   Your Music, Your Way
                 </p>
@@ -44,7 +44,7 @@
                     {{
                       $t(
                         "login.remote_only_info",
-                        "Connect to your Music Assistant server remotely",
+                        "Conecte-se ao seu servidor TSi MUSIC remotamente",
                       )
                     }}
                   </p>
@@ -74,7 +74,7 @@
                     {{
                       $t(
                         "login.server_address_hint",
-                        "Enter the full URL of your Music Assistant server",
+                        "Digite a URL completa do seu servidor TSi MUSIC",
                       )
                     }}
                   </p>
@@ -344,7 +344,7 @@
                     {{
                       $t(
                         "login.scan_qr_hint",
-                        "Point your camera at the QR code shown in your Music Assistant server settings.",
+                        "Aponte a câmera para o QR code exibido nas configurações do seu servidor TSi MUSIC.",
                       )
                     }}
                   </p>
@@ -370,26 +370,11 @@
 
             <!-- Footer -->
             <div class="text-center login-footer">
-              <a
-                href="https://www.openhomefoundation.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="ohf-footer-link"
+              <p
+                class="text-caption text-medium-emphasis d-flex align-center justify-center"
               >
-                <p
-                  class="text-caption text-medium-emphasis d-flex align-center justify-center"
-                >
-                  <img
-                    src="@/assets/open-home-foundation-icon.svg"
-                    alt="Open Home Foundation"
-                    class="ohf-icon"
-                  />
-                  <span class="ohf-text"
-                    >Music Assistant is a product from the Open Home
-                    Foundation</span
-                  >
-                </p>
-              </a>
+                <span>TSi MUSIC</span>
+              </p>
             </div>
           </v-col>
         </v-row>
@@ -1769,7 +1754,7 @@ const onQrCodeDetected = (detectedCodes: { rawValue: string }[]) => {
   } else {
     qrScannerError.value = t(
       "login.qr_invalid",
-      "Invalid QR code. Please scan a Music Assistant QR code.",
+      "Código QR inválido. Escaneie um QR code do TSi MUSIC.",
     );
   }
 };
@@ -1850,12 +1835,12 @@ onMounted(() => {
   --fg: #000000;
   --background: #f5f5f5;
   --panel: #ffffff;
-  --primary: #03a9f4;
+  --primary: #7c3aed;
   --text-secondary: rgba(0, 0, 0, 0.6);
   --text-tertiary: rgba(0, 0, 0, 0.4);
   --border: rgba(0, 0, 0, 0.1);
   --input-bg: rgba(0, 0, 0, 0.03);
-  --input-focus-bg: rgba(3, 169, 244, 0.05);
+  --input-focus-bg: rgba(124, 58, 237, 0.05);
   --error-text: #d32f2f;
   --success: #4caf50;
 
@@ -1898,7 +1883,7 @@ onMounted(() => {
     --text-tertiary: rgba(255, 255, 255, 0.4);
     --border: rgba(255, 255, 255, 0.08);
     --input-bg: rgba(255, 255, 255, 0.05);
-    --input-focus-bg: rgba(3, 169, 244, 0.08);
+    --input-focus-bg: rgba(124, 58, 237, 0.08);
     --error-text: #ff6b6b;
     --success: #66bb6a;
   }
@@ -2093,38 +2078,6 @@ onMounted(() => {
   .login-footer .text-caption {
     font-size: 0.6875rem;
     flex-wrap: wrap;
-  }
-}
-
-.ohf-footer-link {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s;
-}
-
-.ohf-footer-link:hover {
-  opacity: 0.7;
-}
-
-.ohf-icon {
-  height: 16px;
-  width: auto;
-  flex-shrink: 0;
-}
-
-@media (max-width: 500px) {
-  .ohf-icon {
-    height: 14px;
-  }
-}
-
-.ohf-text {
-  margin-left: 4px;
-}
-
-@media (max-width: 500px) {
-  .ohf-text {
-    margin-left: 3px;
   }
 }
 

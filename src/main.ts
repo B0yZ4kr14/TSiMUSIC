@@ -37,6 +37,7 @@ import { registerPlugins } from "@/plugins";
 
 // Install Sendspin WebSocket interceptor for authenticated connections
 import { installSendspinInterceptor } from "@/plugins/sendspin-connection";
+import "./styles/tsimusic-premium.css";
 installSendspinInterceptor();
 
 const app = createApp(App);

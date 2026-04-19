@@ -108,7 +108,7 @@
             }
         },
         "no_music_providers": "Nie sú nakonfigurovaní žiadni poskytovatelia hudby",
-        "no_music_providers_detail": "Spustite prácu s Music Assistant pridaním poskytovateľov hudby.",
+        "no_music_providers_detail": "Spustite prácu s TSi MUSIC pridaním poskytovateľov hudby.",
         "no_player_providers": "Nie sú nakonfigurovaní žiadni poskytovatelia prehrávačov",
         "volume_normalization_tracks": {
             "options": {

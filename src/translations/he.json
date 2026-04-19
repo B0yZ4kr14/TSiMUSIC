@@ -281,8 +281,8 @@
     },
     "in_progress_items": "המשך להאזין...",
     "play_replace_next": "נגן כעת (נקה רשימה)",
-    "music_assistant_source": "תור Music Assistant",
-    "music_assistant_library": "ספריית Music Assistant",
+    "music_assistant_source": "תור TSi MUSIC",
+    "music_assistant_library": "ספריית TSi MUSIC",
     "select_all_confirmation": "לבחור את כל הפריטים? טעינת כל הנתונים עשויה להימשך זמן מה.",
     "this_device": "מכשיר זה",
     "recommendations": {
@@ -325,8 +325,8 @@
     "login": {
         "scan_qr": "סרוק QR",
         "scan_qr_code": "סרוק קוד QR",
-        "scan_qr_hint": "כוון את המצלמה אל קוד ה-QR המופיע בהגדרות שרת ה-Music Assistant שלך.",
-        "qr_invalid": "קוד QR לא תקין. יש לסרוק את קוד ה-Remote ID של שרת ה-Music Assistant.",
+        "scan_qr_hint": "כוון את המצלמה אל קוד ה-QR המופיע בהגדרות שרת ה-TSi MUSIC שלך.",
+        "qr_invalid": "קוד QR לא תקין. יש לסרוק את קוד ה-Remote ID של שרת ה-TSi MUSIC.",
         "qr_camera_error": "לא ניתן לגשת למצלמה. אנא בדוק את ההרשאות."
     },
     "player_tip": {

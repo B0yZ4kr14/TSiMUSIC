@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "name": "TSi MUSIC Premium Patch",
+    "version": "1.0.0",
+    "target_repo": "music-assistant/frontend",
+    "target_branch": "main"
+  },
+  "assets": {
+    "copy": [
+      {
+        "src": "assets/logo.svg",
+        "dst": "src/assets/logo/logo.svg"
+      },
+      {
+        "src": "assets/logo-dark.svg",
+        "dst": "src/assets/logo/logo-dark.svg"
+      },
+      {
+        "src": "assets/icon.svg",
+        "dst": "src/assets/icon.svg"
+      },
+      {
+        "src": "assets/favicon.ico",
+        "dst": "public/favicon.ico"
+      },
+      {
+        "src": "assets/apple-touch-icon.png",
+        "dst": "public/apple-touch-icon.png"
+      },
+      {
+        "src": "assets/pwa-192x192.png",
+        "dst": "public/pwa-192x192.png"
+      },
+      {
+        "src": "assets/pwa-512x512.png",
+        "dst": "public/pwa-512x512.png"
+      },
+      {
+        "src": "assets/og-image.png",
+        "dst": "public/og-image.png"
+      },
+      {
+        "src": "assets/fallback.png",
+        "dst": "src/assets/fallback.png"
+      },
+      {
+        "src": "assets/cover_dark.png",
+        "dst": "src/assets/cover_dark.png"
+      },
+      {
+        "src": "assets/cover_light.png",
+        "dst": "src/assets/cover_light.png"
+      }
+    ]
+  },
+  "color_tokens": {
+    "src/plugins/vuetify.ts": [
+      {
+        "old": "primary: \"#03a9f4\"",
+        "new": "primary: \"#7c3aed\"",
+        "limit": 0
+      },
+      {
+        "old": "background: \"#181818\"",
+        "new": "background: \"#0f0f11\"",
+        "limit": 0
+      },
+      {
+        "old": "overlay: \"#181818\"",
+        "new": "overlay: \"#0f0f11\"",
+        "limit": 0
+      },
+      {
+        "old": "panel: \"#232323\"",
+        "new": "panel: \"#1a1a1e\"",
+        "limit": 0
+      }
+    ],
+    "src/styles/style.css": [
+      {
+        "old": "--primary: #03a9f4",
+        "new": "--primary: #7c3aed",
+        "limit": 0
+      },
+      {
+        "old": "--ring: #03a9f4",
+        "new": "--ring: #7c3aed",
+        "limit": 0
+      },
+      {
+        "old": "--chart-1: #03a9f4",
+        "new": "--chart-1: #7c3aed",
+        "limit": 0
+      },
+      {
+        "old": "--background: #181818",
+        "new": "--background: #0f0f11",
+        "limit": 1
+      },
+      {
+        "old": "--card: #232323",
+        "new": "--card: #1a1a1e",
+        "limit": 1
+      },
+      {
+        "old": "--popover: #232323",
+        "new": "--popover: #1a1a1e",
+        "limit": 1
+      },
+      {
+        "old": "--secondary: #2d2d2d",
+        "new": "--secondary: #1e1b2e",
+        "limit": 1
+      },
+      {
+        "old": "--accent: #2d2d2d",
+        "new": "--accent: #2e1065",
+        "limit": 1
+      },
+      {
+        "old": "--muted: #2d2d2d",
+        "new": "--muted: #27272e",
+        "limit": 1
+      },
+      {
+        "old": "--muted-foreground: #a0a0a0",
+        "new": "--muted-foreground: #9ca3af",
+        "limit": 1
+      },
+      {
+        "old": "--border: #3d3d3d",
+        "new": "--border: #2e2e35",
+        "limit": 1
+      },
+      {
+        "old": "--input: #3d3d3d",
+        "new": "--input: #2e2e35",
+        "limit": 1
+      },
+      {
+        "old": "--destructive: #ef4444",
+        "new": "--destructive: #f43f5e",
+        "limit": 1
+      },
+      {
+        "old": "--chart-2: #4caf50",
+        "new": "--chart-2: #10b981",
+        "limit": 0
+      },
+      {
+        "old": "--chart-3: #ff9800",
+        "new": "--chart-3: #f59e0b",
+        "limit": 0
+      },
+      {
+        "old": "--chart-4: #9c27b0",
+        "new": "--chart-4: #ec4899",
+        "limit": 0
+      },
+      {
+        "old": "--chart-5: #f44336",
+        "new": "--chart-5: #f43f5e",
+        "limit": 0
+      }
+    ]
+  },
+  "text_replacements": {
+    "index.html": [
+      {
+        "old": "<title>Music Assistant</title>",
+        "new": "<title>TSi MUSIC</title>"
+      },
+      {
+        "old": "content=\"Music Assistant - Music library manager for Home Assistant\"",
+        "new": "content=\"TSi MUSIC — Seu assistente musical pessoal\""
+      },
+      {
+        "old": "musicassistant-frontend",
+        "new": "tsi-music-frontend",
+        "skip_if_contains": [
+          "musicassistant-frontend doesn't work"
+        ]
+      }
+    ],
+    "vite.config.ts": [
+      {
+        "old": "name: \"Music Assistant\"",
+        "new": "name: \"TSi MUSIC\""
+      },
+      {
+        "old": "short_name: \"Music Assistant\"",
+        "new": "short_name: \"TSi MUSIC\""
+      },
+      {
+        "old": "description:\n          \"Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers.\"",
+        "new": "description: \"TSi MUSIC — Seu assistente musical pessoal\""
+      },
+      {
+        "old": "theme_color: \"#424242\"",
+        "new": "theme_color: \"#121212\""
+      }
+    ],
+    "src/components/navigation/AppSidebar.vue": [
+      {
+        "old": "alt=\"Music Assistant\"",
+        "new": "alt=\"TSi MUSIC\""
+      },
+      {
+        "old": "Music Assistant",
+        "new": "TSi MUSIC"
+      }
+    ],
+    "src/views/Login.vue": [
+      {
+        "old": "alt=\"Music Assistant\"",
+        "new": "alt=\"TSi MUSIC\""
+      },
+      {
+        "old": ">Music Assistant</h1>",
+        "new": ">TSi MUSIC</h1>"
+      },
+      {
+        "old": "\"Connect to your Music Assistant server remotely\"",
+        "new": "\"Conecte-se ao seu servidor TSi MUSIC remotamente\""
+      },
+      {
+        "old": "\"Enter the full URL of your Music Assistant server\"",
+        "new": "\"Digite a URL completa do seu servidor TSi MUSIC\""
+      },
+      {
+        "old": "\"Point your camera at the QR code shown in your Music Assistant server settings.\"",
+        "new": "\"Aponte a câmera para o QR code exibido nas configurações do seu servidor TSi MUSIC.\""
+      },
+      {
+        "old": ">Music Assistant is a product from the Open Home",
+        "new": ">TSi MUSIC é um produto da Open Home"
+      },
+      {
+        "old": "\"Invalid QR code. Please scan a Music Assistant QR code.\"",
+        "new": "\"Código QR inválido. Escaneie um QR code do TSi MUSIC.\""
+      }
+    ],
+    "src/views/PartyDashboardView.vue": [
+      {
+        "old": "alt=\"Music Assistant\"",
+        "new": "alt=\"TSi MUSIC\""
+      }
+    ],
+    "src/views/PartyGuestView.vue": [
+      {
+        "old": "alt=\"Music Assistant\"",
+        "new": "alt=\"TSi MUSIC\""
+      }
+    ],
+    "src/views/settings/EditProvider.vue": [
+      {
+        "old": "\"the Music Assistant team\"",
+        "new": "\"o time TSi MUSIC\""
+      }
+    ],
+    "src/views/settings/AddProviderDetails.vue": [
+      {
+        "old": "\"the Music Assistant team\"",
+        "new": "\"o time TSi MUSIC\""
+      }
+    ]
+  },
+  "i18n_replacements": {
+    "pattern": "Music Assistant",
+    "replacement": "TSi MUSIC",
+    "files": [
+      "src/translations/en.json",
+      "src/translations/en_GB.json",
+      "src/translations/en_AU.json",
+      "src/translations/pt_BR.json",
+      "src/translations/pt_PT.json",
+      "src/translations/ca.json",
+      "src/translations/cs.json",
+      "src/translations/da.json",
+      "src/translations/de.json",
+      "src/translations/el_GR.json",
+      "src/translations/es.json",
+      "src/translations/fr.json",
+      "src/translations/he.json",
+      "src/translations/hu_HU.json",
+      "src/translations/it.json",
+      "src/translations/ko_KR.json",
+      "src/translations/lt_LT.json",
+      "src/translations/lv_LV.json",
+      "src/translations/nb.json",
+      "src/translations/nl.json",
+      "src/translations/pl.json",
+      "src/translations/ru_RU.json",
+      "src/translations/sk_SK.json",
+      "src/translations/sl_SI.json",
+      "src/translations/sr.json",
+      "src/translations/sr_Latn.json",
+      "src/translations/sv_SE.json",
+      "src/translations/uk_UA.json",
+      "src/translations/zh_CN.json"
+    ],
+    "skip_keys": []
+  },
+  "hardcoded_colors": {
+    "src/components/ui/sidebar/SidebarTrigger.vue": [
+      {
+        "old": "rgb(var(--v-theme-primary, 3, 169, 244))",
+        "new": "rgb(var(--v-theme-primary))"
+      }
+    ],
+    "src/layouts/default/PlayerOSD/PlayerFullscreen.vue": [
+      {
+        "old": "#2196f3",
+        "new": "#7c3aed",
+        "context": "requestBadgeColor",
+        "limit": 1
+      },
+      {
+        "old": "#ff5722",
+        "new": "#f43f5e",
+        "context": "boostBadgeColor",
+        "limit": 1
+      }
+    ]
+  },
+  "css_inject": {
+    "file": "css-premium/tsimusic-premium.css",
+    "target": "src/styles/tsimusic-premium.css",
+    "import_statement": "import \"./styles/tsimusic-premium.css\";",
+    "import_target": "src/main.ts"
+  },
+  "meta_tags": {
+    "target": "index.html",
+    "insert_after": "</title>",
+    "tags": [
+      "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
+      "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">",
+      "<meta name=\"apple-mobile-web-app-title\" content=\"TSi MUSIC\">",
+      "<meta name=\"mobile-web-app-capable\" content=\"yes\">",
+      "<meta name=\"application-name\" content=\"TSi MUSIC\">",
+      "<meta name=\"msapplication-TileColor\" content=\"#121212\">",
+      "<meta name=\"msapplication-TileImage\" content=\"/pwa-192x192.png\">",
+      "<meta property=\"og:title\" content=\"TSi MUSIC\">",
+      "<meta property=\"og:description\" content=\"Seu assistente musical pessoal\">",
+      "<meta property=\"og:type\" content=\"website\">",
+      "<meta property=\"og:image\" content=\"/og-image.png\">",
+      "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+      "<meta name=\"twitter:title\" content=\"TSi MUSIC\">",
+      "<meta name=\"twitter:description\" content=\"Seu assistente musical pessoal\">",
+      "<meta name=\"twitter:image\" content=\"/og-image.png\">"
+    ]
+  },
+  "manifest_enhancements": {
+    "target": "vite.config.ts",
+    "additions": [
+      {
+        "after": "icons: [",
+        "line": "        background_color: \"#121212\","
+      },
+      {
+        "after": "icons: [",
+        "line": "        display: \"standalone\","
+      },
+      {
+        "after": "icons: [",
+        "line": "        start_url: \"/\","
+      },
+      {
+        "after": "icons: [",
+        "line": "        scope: \"/\","
+      }
+    ]
+  },
+  "protected_patterns": [
+    "musicassistant://",
+    "src/helpers/utils.ts",
+    "src/plugins/remote/",
+    "src/plugins/companion.ts",
+    "src/plugins/api/interfaces.ts",
+    "src/plugins/auth.ts",
+    "src/plugins/homeassistant.ts",
+    "src/layouts/default/PlayerOSD/PlayerTimeline.vue",
+    "src/layouts/default/PlayerOSD/PlayerFullscreen.vue:806",
+    "src/views/Login.vue:500",
+    "src/views/Login.vue:1848"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-04-18T21:40:31.145188",
+  "target": "/tmp/ma-frontend-valid",
+  "dry_run": false,
+  "applied": [
+    "asset: src/assets/logo/logo.svg",
+    "asset: src/assets/logo/logo-dark.svg",
+    "asset: src/assets/icon.svg",
+    "asset: public/favicon.ico",
+    "asset: public/apple-touch-icon.png",
+    "asset: public/pwa-192x192.png",
+    "asset: public/pwa-512x512.png",
+    "asset: public/og-image.png",
+    "asset: src/assets/fallback.png",
+    "asset: src/assets/cover_dark.png",
+    "asset: src/assets/cover_light.png",
+    "text: vite.config.ts -> name: \"Music Assistant\"...",
+    "text: vite.config.ts -> description:\n          \"Music Assistant ...",
+    "text: vite.config.ts -> theme_color: \"#424242\"...",
+    "css: src/styles/tsimusic-premium.css",
+    "manifest: background_color: \"#121212\",",
+    "manifest: display: \"standalone\",",
+    "manifest: start_url: \"/\",",
+    "manifest: scope: \"/\","
+  ],
+  "skipped": [],
+  "errors": []
+}

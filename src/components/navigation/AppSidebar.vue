@@ -56,11 +56,11 @@ onUnmounted(() => {
           <div class="sidebar-header" @click="router.push('/')">
             <img
               src="@/assets/icon.svg"
-              alt="Music Assistant"
+              alt="TSi MUSIC"
               class="sidebar-header-logo"
             />
             <div v-if="!collapsed" class="sidebar-header-title">
-              Music Assistant
+              TSi MUSIC
             </div>
           </div>
         </div>

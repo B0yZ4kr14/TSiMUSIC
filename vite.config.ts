@@ -40,11 +40,14 @@ export default defineConfig({
         "apple-touch-icon.png",
       ],
       manifest: {
-        name: "Music Assistant",
-        short_name: "Music Assistant",
-        description:
-          "Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers.",
-        theme_color: "#424242",
+        name: "TSi MUSIC",
+        short_name: "TSi MUSIC",
+        description: "TSi MUSIC — Seu assistente musical pessoal",
+        theme_color: "#121212",
+        scope: "/",
+        start_url: "/",
+        display: "standalone",
+        background_color: "#121212",
         icons: [
           {
             src: "pwa-192x192.png",

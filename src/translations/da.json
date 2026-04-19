@@ -38,7 +38,7 @@
     "items_total": "{0} emne(r) i alt",
     "library": "Bibliotek",
     "loading": "Data hentes fra serveren.",
-    "mass": "Music Assistant",
+    "mass": "TSi MUSIC",
     "new_playlist_name": "Indtast et navn til den nye afspilningsliste",
     "no_content": "Ingen emner fundet.",
     "no_content_filter": "Der blev ikke fundet nogen emner med det aktuelle filter\/søgekriterie",
@@ -101,7 +101,7 @@
         "musicproviders": "Musik-udbydere",
         "need_help_setup_provider": "Har du brug for hjælp til at opsætte denne udbyder?",
         "no_providers": "Ingen musikudbydere konfigureret",
-        "no_providers_detail": "Start din Music Assistant-oplevelse ved at tilføje dine musikudbydere nedenfor.",
+        "no_providers_detail": "Start din TSi MUSIC-oplevelse ved at tilføje dine musikudbydere nedenfor.",
         "not_loaded": "Udbyderen er (endnu) ikke indlæst",
         "password": "Adgangskode",
         "player_address": "Adresse",
@@ -359,12 +359,12 @@
             }
         },
         "no_music_providers": "Ingen musikudbydere konfigureret",
-        "no_music_providers_detail": "Start din Music Assistant-oplevelse ved at tilføje dine musikudbydere.",
+        "no_music_providers_detail": "Start din TSi MUSIC-oplevelse ved at tilføje dine musikudbydere.",
         "no_player_providers": "Ingen afspillerudbydere konfigureret",
-        "no_player_providers_detail": "Konfigurer afspillerudbydere for at vælge enheder, hvor Music Assistant kan afspille din musik.",
+        "no_player_providers_detail": "Konfigurer afspillerudbydere for at vælge enheder, hvor TSi MUSIC kan afspille din musik.",
         "volume_normalization_radio": {
             "label": "Volumen-normaliseringsmetode til brug for radiostreams",
-            "description": "Indstil den foretrukne strategi for normalisering af lydstyrken for radiostreams. \nSom standard indsamler Music Assistant en måling af radiostationens (gennemsnitlige opfattede) loudness i henhold til EBU-R128-specifikationen og justerer derefter den samlede forstærkning\/lydstyrke af streamen i henhold til denne måling, så lydens dynamiske område ikke påvirkes. Når der (endnu) ikke findes nogen måling for en radiostation, vil Music Assistant falde tilbage på et dynamisk (men mindre præcist) loudness-udjævningsfilter.\n\nTIP: Radiostreams har ofte varierende lydstyrke, især under meddelelser og reklamer.\nDu kan vælge at gennemtvinge dynamisk lydstyrkenormalisering for radiostreams, selv om der findes en (gennemsnitlig) lydstyrkemåling for radiostationen. \n \n**Indstillinger:**\n\n - Deaktiveret: Anvend slet ikke lydstyrkenormalisering for radiostrømme. \n  - Gennemtving dynamisk: Gennemtving altid dynamisk lydstyrkejustering. \n  - Kun måling (ingen justering): Anvend (overordnet) volumen-\/forstærkningskorrektion baseret på gemte målinger. Hvis vi ikke har nogen måling, anvendes ikke normalisering.\n  - Fald tilbage forstærkningskorrektion: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på den gemte måling. Hvis vi ikke har nogen måling, benyttes på en foruddefineret forstærkningskorrektion.\n  - Fast forstærkningskorrektion: Anvend altid den faste volumen-\/forstærkningskorrektion.\n  - Fald tilbage til dynamisk - Vælg automatisk den bedste løsning: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på gemte målinger, hvis vi har nogen, og tillad tilbagefald til dynamisk tilstand, hvis der ikke er nogen måling tilgængelig.\n",
+            "description": "Indstil den foretrukne strategi for normalisering af lydstyrken for radiostreams. \nSom standard indsamler TSi MUSIC en måling af radiostationens (gennemsnitlige opfattede) loudness i henhold til EBU-R128-specifikationen og justerer derefter den samlede forstærkning\/lydstyrke af streamen i henhold til denne måling, så lydens dynamiske område ikke påvirkes. Når der (endnu) ikke findes nogen måling for en radiostation, vil TSi MUSIC falde tilbage på et dynamisk (men mindre præcist) loudness-udjævningsfilter.\n\nTIP: Radiostreams har ofte varierende lydstyrke, især under meddelelser og reklamer.\nDu kan vælge at gennemtvinge dynamisk lydstyrkenormalisering for radiostreams, selv om der findes en (gennemsnitlig) lydstyrkemåling for radiostationen. \n \n**Indstillinger:**\n\n - Deaktiveret: Anvend slet ikke lydstyrkenormalisering for radiostrømme. \n  - Gennemtving dynamisk: Gennemtving altid dynamisk lydstyrkejustering. \n  - Kun måling (ingen justering): Anvend (overordnet) volumen-\/forstærkningskorrektion baseret på gemte målinger. Hvis vi ikke har nogen måling, anvendes ikke normalisering.\n  - Fald tilbage forstærkningskorrektion: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på den gemte måling. Hvis vi ikke har nogen måling, benyttes på en foruddefineret forstærkningskorrektion.\n  - Fast forstærkningskorrektion: Anvend altid den faste volumen-\/forstærkningskorrektion.\n  - Fald tilbage til dynamisk - Vælg automatisk den bedste løsning: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på gemte målinger, hvis vi har nogen, og tillad tilbagefald til dynamisk tilstand, hvis der ikke er nogen måling tilgængelig.\n",
             "options": {
                 "disabled": "Deaktiveret",
                 "dynamic": "Gennemtving dynamisk",
@@ -376,7 +376,7 @@
         },
         "volume_normalization_tracks": {
             "label": "Volumen-normaliseringsmetode til brug for spor",
-            "description": "Indstil den foretrukne strategi for normalisering af lydstyrken for spor\/sange.\nMusic Assistant bruger en måling af sporets (gennemsnitlige opfattede) lydstyrke i henhold til EBU-R128-specifikationen til at justere den samlede forstærkning\/lydstyrke i strømmen uden at påvirke lydens dynamiske område.\nDisse målinger leveres enten af streamingudbyderen, eller i tilfælde af lokale filer kan de være indeholdt i ID3-tags (ReplayGain 2.0 \/ Opus R128).\nHvis målingen ikke er angivet, vil Music Assistant automatisk udføre en måling, når\/efter sporet afspilles (første gang). Når der (endnu) ikke findes nogen måling for et nummer, vil Music Assistant som standard falde tilbage på et dynamisk (men mindre præcist) loudness-udjævningsfilter. Det sikrer, at der ikke er store stigninger\/fald i lydstyrken mellem numrene, selvom der endnu ikke er nogen nøjagtig måling, men det dynamiske udjævningsfilter kan nogle gange komprimere det dynamiske område en smule, selvom det ikke burde være hørbart i de fleste tilfælde.\n\n\n**Valgmuligheder:**\n\n - Deaktiveret: Anvend slet ikke lydstyrkenormalisering for radiostrømme.\n - Gennemtving dynamisk: Gennemtving altid dynamisk volumenudjævning. \n - Kun måling (ingen tilbagefald): Anvend (overordnet) volumen-\/forstærkningskorrektion baseret på gemte målinger. Hvis vi ikke har nogen måling, anvendes der ikke normalisering. \n - Fallback til forstærkningskorrektion: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på den gemte måling. Hvis vi ikke har nogen måling, faldes tilbage til en foruddefineret forstærkningskorrektion. \n - Fast forstærkningskorrektion: Anvend altid den faste volumen-\/forstærkningskorrektion. \n - Fallback til dynamisk: Vælg automatisk den bedste løsning: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på gemte målinger, hvis vi har nogen, og tillad tilbagefald til dynamisk tilstand, hvis der ikke er nogen måling tilgængelig.\n",
+            "description": "Indstil den foretrukne strategi for normalisering af lydstyrken for spor\/sange.\nTSi MUSIC bruger en måling af sporets (gennemsnitlige opfattede) lydstyrke i henhold til EBU-R128-specifikationen til at justere den samlede forstærkning\/lydstyrke i strømmen uden at påvirke lydens dynamiske område.\nDisse målinger leveres enten af streamingudbyderen, eller i tilfælde af lokale filer kan de være indeholdt i ID3-tags (ReplayGain 2.0 \/ Opus R128).\nHvis målingen ikke er angivet, vil TSi MUSIC automatisk udføre en måling, når\/efter sporet afspilles (første gang). Når der (endnu) ikke findes nogen måling for et nummer, vil TSi MUSIC som standard falde tilbage på et dynamisk (men mindre præcist) loudness-udjævningsfilter. Det sikrer, at der ikke er store stigninger\/fald i lydstyrken mellem numrene, selvom der endnu ikke er nogen nøjagtig måling, men det dynamiske udjævningsfilter kan nogle gange komprimere det dynamiske område en smule, selvom det ikke burde være hørbart i de fleste tilfælde.\n\n\n**Valgmuligheder:**\n\n - Deaktiveret: Anvend slet ikke lydstyrkenormalisering for radiostrømme.\n - Gennemtving dynamisk: Gennemtving altid dynamisk volumenudjævning. \n - Kun måling (ingen tilbagefald): Anvend (overordnet) volumen-\/forstærkningskorrektion baseret på gemte målinger. Hvis vi ikke har nogen måling, anvendes der ikke normalisering. \n - Fallback til forstærkningskorrektion: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på den gemte måling. Hvis vi ikke har nogen måling, faldes tilbage til en foruddefineret forstærkningskorrektion. \n - Fast forstærkningskorrektion: Anvend altid den faste volumen-\/forstærkningskorrektion. \n - Fallback til dynamisk: Vælg automatisk den bedste løsning: Anvend (samlet) volumen-\/forstærkningskorrektion baseret på gemte målinger, hvis vi har nogen, og tillad tilbagefald til dynamisk tilstand, hvis der ikke er nogen måling tilgængelig.\n",
             "options": {
                 "disabled": "Deaktiveret",
                 "dynamic": "Gennemtving dynamisk",
@@ -739,7 +739,7 @@
     "in_progress_items": "Fortsæt med at lytte...",
     "play_replace_next": "Afspil næste (ryd køen)",
     "all_enqueue_options": "Alle muligheder for at sætte i kø",
-    "music_assistant_source": "Music Assistant kø ",
+    "music_assistant_source": "TSi MUSIC kø ",
     "music_assistant_library": "Music Assistent bibliotek",
     "select_all_confirmation": "Vælg alle elementer? Denne handling kan bruge et øjeblik på at indlæse alle data.",
     "this_device": "Denne enhed",

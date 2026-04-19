@@ -130,6 +130,6 @@ const handleLogout = () => {
 
 <style scoped>
 .ha-menu-arrow {
-  color: rgb(var(--v-theme-primary, 3, 169, 244)) !important;
+  color: rgb(var(--v-theme-primary, 124, 58, 237)) !important;
 }
 </style>
