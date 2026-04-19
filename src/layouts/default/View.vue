@@ -14,7 +14,9 @@
           ]"
         >
           <router-view v-slot="{ Component }">
-            <component :is="Component" />
+            <transition name="page-transition" mode="out-in">
+              <component :is="Component" />
+            </transition>
           </router-view>
           <add-to-playlist-dialog />
           <create-playlist-dialog />
@@ -97,5 +99,27 @@ onMounted(() => {
 
 .content-section--frameless {
   padding-bottom: 0;
+}
+
+/* Page Transition Animations */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.page-transition-enter-to,
+.page-transition-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
