@@ -89,3 +89,33 @@ Bundle: 165 precache entries (~6.5MB)
 Tests:  127/127 ✅
 Vulns:  0 ✅
 ```
+
+---
+
+## Squad Gamma — Validação (Status)
+
+- **Login:** ✅ Admin/saude@clinica — sucesso
+- **Screenshots:** 6 capturadas via Playwright
+  - `01-login.png` — Tela de login TSi MUSIC
+  - `02-dashboard.png` — Dashboard com modal de atalhos visível
+  - `03-sidebar.png` — Sidebar expandida
+  - `04-player.png` — Player footer
+  - `05-fullscreen.png` — Player fullscreen
+  - `06-visualizer.png` — Fullscreen com visualizer
+- **Modal de atalhos:** ✅ Aparece automaticamente na primeira visita
+- **Deploy:** ✅ HTTP 200 OK, container healthy
+
+---
+
+## Estatísticas Finais
+
+| Métrica | Valor |
+|---------|-------|
+| Versão | v2.9.4 |
+| Features UX (v2.9.3) | 13 |
+| Security fixes (v2.9.4) | 10 HIGH → 0 |
+| Feature surpresa (v2.9.4) | Audio Visualizer |
+| Commits desde v2.9.2 | 16 |
+| Testes | 127/127 ✅ |
+| Vulnerabilidades | 0 ✅ |
+| Deploy | ✅ Ativo |
