@@ -76,3 +76,10 @@
 - Mostra nome da faixa + artista quando tocando
 - Símbolo de pausa quando pausado
 - Retorna para "TSi MUSIC" quando parado
+
+## Novo: Indicador de Offline
+
+- Detecta status de conexão via navigator.onLine
+- Banner amarelo elegante no topo quando offline
+- Auto-oculta quando a conexão é restaurada
+- Posição fixa com z-index alto
