@@ -70,3 +70,9 @@
 - Scroll suave ao topo ao clicar
 - Gradiente roxo TSi MUSIC
 - Animação de entrada com scale
+
+## Novo: Título Dinâmico da Aba
+
+- Mostra nome da faixa + artista quando tocando
+- Símbolo de pausa quando pausado
+- Retorna para "TSi MUSIC" quando parado
