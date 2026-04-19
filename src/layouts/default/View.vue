@@ -30,6 +30,7 @@
             :type="editItemType"
             :edit-item="editItem"
           />
+          <ScrollToTop />
         </div>
       </SidebarInset>
       <PlayerSelect />
@@ -50,6 +51,7 @@ import CreatePlaylistDialog from "./CreatePlaylistDialog.vue";
 import ImportPlaylistDialog from "./ImportPlaylistDialog.vue";
 import ItemContextMenu from "./ItemContextMenu.vue";
 import AddManualLink from "@/components/AddManualLink.vue";
+import ScrollToTop from "@/components/ScrollToTop.vue";
 import {
   MediaType,
   type Playlist,
