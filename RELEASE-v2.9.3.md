@@ -49,3 +49,10 @@
 - Botões "Instalar" e "Agora não"
 - Cooldown de 7 dias se o usuário dispensar
 - Auto-oculta se já instalado ou em modo standalone
+
+## Novo: Animações de Transição entre Telas
+
+- Transição suave fade + slide no router-view
+- 250ms com easing cubic-bezier
+- Enter: fade in + slide up de 12px
+- Leave: fade out + slide up para -8px
