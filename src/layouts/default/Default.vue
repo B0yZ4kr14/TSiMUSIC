@@ -8,6 +8,7 @@
       <OfflineIndicator />
       <KeyboardShortcutsHelp />
       <GlobalProgressBar />
+      <VolumeIndicator />
     </template>
   </v-app>
   <reload-prompt />
@@ -21,6 +22,7 @@ import PwaInstallPrompt from "@/components/PwaInstallPrompt.vue";
 import OfflineIndicator from "@/components/OfflineIndicator.vue";
 import KeyboardShortcutsHelp from "@/components/KeyboardShortcutsHelp.vue";
 import GlobalProgressBar from "@/components/GlobalProgressBar.vue";
+import VolumeIndicator from "@/components/VolumeIndicator.vue";
 import { store } from "@/plugins/store";
 import { watch } from "vue";
 import api from "@/plugins/api";
