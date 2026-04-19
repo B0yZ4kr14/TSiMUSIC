@@ -77,6 +77,7 @@
           :show-icon="true"
           icon-style="margin-left: 12px; margin-bottom: 4px;"
         />
+        <EqualizerBars />
       </div>
     </template>
     <!-- append chip(s): quality -->
@@ -173,6 +174,7 @@
 <script setup lang="ts">
 import MarqueeText from "@/components/MarqueeText.vue";
 import NowPlayingBadge from "@/components/NowPlayingBadge.vue";
+import EqualizerBars from "@/components/EqualizerBars.vue";
 import QualityDetailsBtn from "@/components/QualityDetailsBtn.vue";
 import { MarqueeTextSync } from "@/helpers/marquee_text_sync";
 import {
