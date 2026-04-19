@@ -103,3 +103,10 @@
 - Gradiente roxo com glow
 - Progresso simulado com avanço automático
 - Animação suave ao completar
+
+## Novo: Relógio no Player Fullscreen
+
+- Hora atual no canto superior direito
+- Atualização a cada segundo
+- Estilo sutil com text shadow
+- Visível apenas no modo fullscreen
