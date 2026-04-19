@@ -96,3 +96,10 @@
 - 4 barras animadas aparecem quando a música está tocando
 - Gradiente roxo TSi MUSIC
 - Feedback visual sutil do estado de playback
+
+## Novo: Barra de Progresso Global
+
+- Barra fina no topo durante navegação entre telas
+- Gradiente roxo com glow
+- Progresso simulado com avanço automático
+- Animação suave ao completar
