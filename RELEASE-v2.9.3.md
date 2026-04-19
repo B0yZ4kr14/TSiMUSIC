@@ -41,3 +41,11 @@
 - **M**: Toggle mini player mode
 - **Esc**: Fechar fullscreen / dialogs
 - **/** ou **Ctrl+K**: Focar busca / ir para página de busca
+
+## Novo: PWA Install Prompt
+
+- Detecta automaticamente quando o app pode ser instalado
+- Card elegante com glassmorphism e tema TSi MUSIC
+- Botões "Instalar" e "Agora não"
+- Cooldown de 7 dias se o usuário dispensar
+- Auto-oculta se já instalado ou em modo standalone
