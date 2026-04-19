@@ -29,6 +29,7 @@ interface Store {
   isInPWAMode: boolean;
   showPlayersMenu: boolean;
   showFullscreenPlayer: boolean;
+  miniPlayerMode: boolean;
   frameless: boolean;
   showQueueItems: boolean;
   apiInitialized: boolean;
@@ -68,6 +69,7 @@ export const store: Store = reactive({
   isInPWAMode: false,
   showPlayersMenu: false,
   showFullscreenPlayer: false,
+  miniPlayerMode: localStorage.getItem("miniPlayerMode") === "true",
   frameless: false,
   showQueueItems: false,
   apiInitialized: false,

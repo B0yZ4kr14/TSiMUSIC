@@ -1,8 +1,8 @@
 <template>
   <!-- Non-mobile: background gradient and player bar -->
   <template v-if="!useFloatingPlayer">
-    <div class="mediacontrols-bg" :data-floating="useFloatingPlayer"></div>
-    <div class="mediacontrols">
+    <div class="mediacontrols-bg" :data-floating="useFloatingPlayer" :data-mini="store.miniPlayerMode"></div>
+    <div class="mediacontrols" :data-mini="store.miniPlayerMode">
       <div class="mediacontrols-left">
         <PlayerTrackDetails
           :show-quality-details-btn="getBreakpointValue('bp9') ? true : false"
@@ -11,7 +11,7 @@
           :primary-color="$vuetify.theme.current.dark ? '#fff' : '#000'"
         />
       </div>
-      <div class="mediacontrols-bottom-center">
+      <div v-if="!store.miniPlayerMode" class="mediacontrols-bottom-center">
         <!-- player control buttons -->
         <PlayerControls
           :style="playIconStyle"
@@ -40,7 +40,7 @@
           "
         />
       </div>
-      <div class="mediacontrols-bottom-right">
+      <div v-if="!store.miniPlayerMode" class="mediacontrols-bottom-right">
         <div>
           <!-- player extended control buttons -->
           <PlayerExtendedControls
@@ -56,6 +56,34 @@
             }"
           />
         </div>
+      </div>
+      <!-- Mini mode: compact controls -->
+      <div v-if="store.miniPlayerMode" class="mediacontrols-mini-controls">
+        <Button icon @click="toggleMiniPlayer">
+          <v-icon icon="mdi-chevron-up" />
+        </Button>
+        <PlayerControls
+          :style="playIconStyle"
+          :visible-components="{
+            repeat: { isVisible: false },
+            shuffle: { isVisible: false },
+            play: {
+              isVisible: true,
+              icon: {
+                staticWidth: '40px',
+                staticHeight: '40px',
+              },
+            },
+            previous: { isVisible: true },
+            next: { isVisible: true },
+          }"
+        />
+      </div>
+      <!-- Mini mode toggle button (shown in full mode) -->
+      <div v-if="!store.miniPlayerMode" class="mediacontrols-mini-toggle">
+        <Button icon @click="toggleMiniPlayer">
+          <v-icon icon="mdi-chevron-down" />
+        </Button>
       </div>
     </div>
   </template>
@@ -135,6 +163,11 @@ interface Props {
   useFloatingPlayer: boolean;
 }
 const props = defineProps<Props>();
+
+const toggleMiniPlayer = () => {
+  store.miniPlayerMode = !store.miniPlayerMode;
+  localStorage.setItem("miniPlayerMode", store.miniPlayerMode.toString());
+};
 
 // local refs
 const coverImageColorPalette = ref<ImageColorPalette>({
@@ -301,5 +334,60 @@ watch(
 
 .volume-slider--no-safe-area {
   padding-bottom: 0 !important;
+}
+
+/* Mini Player Mode Styles */
+.mediacontrols[data-mini="true"] {
+  padding: 6px 12px;
+  min-height: 56px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(15, 15, 17, 0.95) 100%
+  );
+  backdrop-filter: blur(12px);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.mediacontrols-bg[data-mini="true"] {
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.15) 0%,
+    transparent 80%
+  ) !important;
+}
+
+.mediacontrols-mini-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+}
+
+.mediacontrols-mini-toggle {
+  position: absolute;
+  top: -20px;
+  right: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.mediacontrols:hover .mediacontrols-mini-toggle {
+  opacity: 1;
+}
+
+.mediacontrols-mini-toggle button,
+.mediacontrols-mini-controls button {
+  background: rgba(124, 58, 237, 0.2) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease;
+}
+
+.mediacontrols-mini-toggle button:hover,
+.mediacontrols-mini-controls button:hover {
+  background: rgba(124, 58, 237, 0.4) !important;
+  transform: translateY(-1px);
 }
 </style>
