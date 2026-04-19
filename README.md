@@ -1,126 +1,161 @@
-# Music Assistant frontend (Vue PWA)
+# 🎵 TSi MUSIC
 
-The Music Assistant frontend/panel is developed in Vue, development instructions below.
+> Fork premium do [Music Assistant](https://github.com/music-assistant/frontend) — rebranding, tema glassmorphism, traduções pt_BR e 15+ funcionalidades de UX para o ecossistema **SaúdeClínica**.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-nvm use node
-yarn install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-This will launch an auto-reload development environment (usually at http://localhost:3000)
-Open the url in the browser and a popup will ask the location of the MA server.
-You can either connect to a locally launched dev server or an existing running server on port 8095.
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
-```
-
-## UI Framework
-
-This project is migrating from **Vuetify** to **[shadcn-vue](https://www.shadcn-vue.com/)** as its primary UI component library.
-
-## Development Guidelines
-
-### Components
-
-- **Size limit**: Keep components under 300–400 lines. If a component grows beyond this, split it into smaller, focused sub-components.
-- **Single responsibility**: Each component should do one thing well. Extract repeated logic or UI patterns into reusable components.
-- **Composition over complexity**: Prefer composing small components rather than building monolithic ones with many responsibilities.
-
-### UI Components
-
-- **Use shadcn-vue**: All new UI should use [shadcn-vue](https://www.shadcn-vue.com/) components located in `src/components/ui/`. Do not introduce new Vuetify components.
-- **Extend, don't override**: If a shadcn-vue component needs customization, extend it via props or slots rather than overriding styles globally.
-- **Avoid inline styles**: Use Tailwind utility classes for styling. Avoid `style=""` attributes except for dynamic values that cannot be expressed as classes.
-
-### TypeScript
-
-- **Always type props and emits**: Define explicit types for all component props and emits — avoid `any`.
-- **Prefer `interface` for object shapes**: Use `interface` for defining data shapes and `type` for unions/intersections.
-- **No implicit `any`**: Every function parameter and return value should be typed or clearly inferrable.
-
-### State & Composables
-
-- **Extract reusable logic into composables**: Any stateful logic shared between two or more components belongs in a `composable` under `src/composables/`.
-- **Keep `<script setup>` lean**: Heavy logic (data fetching, transformations) should live in composables, not inline in the component.
-
-### Helpers & Utilities
-
-- **Pure functions go in `src/helpers/`**: Any standalone utility function (e.g. string manipulation, date formatting, data transformation) must be placed in `src/helpers/` rather than inlined in a component or composable.
-- **One file per concern**: Group related helpers in a named file (e.g. `src/helpers/string.ts`, `src/helpers/date.ts`). Avoid a single catch-all `utils.ts`.
-- **Test every helper**: Each helper file must be covered by unit tests. For new helpers, add a corresponding test file colocated with the helper (e.g. `src/helpers/string.test.ts`). Existing tests under `tests/helpers/` may remain, but new tests should follow the colocated pattern. Helpers with no test coverage should not be merged.
-
-### API Calls & User Feedback
-
-- **Always show feedback on API calls**: Every API call must be wrapped with user feedback:
-  - On success: call `toast.success(...)` with a clear confirmation message.
-  - On failure: call `toast.error(...)` with a meaningful error message — never silently swallow errors.
-- **Example pattern**:
-  ```ts
-  try {
-    await api.doSomething()
-    toast.success("Action completed successfully")
-  } catch (e) {
-    toast.error("Failed to complete action")
-  }
-  ```
-- **Do not use `console.error` as a substitute** for user-facing feedback on API errors (or for meaningful calls).
-
-### General Best Practices
-
-- **No magic numbers/strings**: Extract constants with descriptive names.
-- **Meaningful naming**: Variables, functions, and components should clearly describe their purpose. Avoid abbreviations unless universally understood.
-- **Keep templates readable**: If a template expression is complex, move it to a computed property.
-- **Clean up side effects**: Always clean up event listeners and intervals in `onUnmounted`; manually created watchers outside component `setup` or manual effect scopes must also be cleaned up.
-- **Accessibility**: Use semantic HTML elements and provide `aria-*` attributes where appropriate.
+[![Deploy Status](https://img.shields.io/badge/deploy-active-success)](https://100.86.64.1:8443/)
+[![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-0-success)](./RELEASE-v2.9.4.md)
+[![Tests](https://img.shields.io/badge/tests-127%2F127-success)]()
+[![pt_BR](https://img.shields.io/badge/tradu%C3%A7%C3%A3o-pt__BR%2096%25-blue)]()
 
 ---
 
-# Translation Management
+## 🚨 AVISO DE SEGURANÇA — LEIA ANTES DE QUALQUER ATUALIZAÇÃO
 
-We use Lokalise to manage the translation files for the Music Assistant frontend
+### ⚠️ NUNCA faça `git merge` ou `git pull` diretamente do repositório upstream `music-assistant/frontend`
 
-[<img src="https://github.com/lokalise/i18n-ally/raw/screenshots/lokalise-logo.png?raw=true" alt="Lokalise logo" width="275px">](https://lokalise.com)
+Este projeto é um **fork fortemente modificado**. Um merge direto do upstream irá **destruir**:
 
-### Contributing
+- Rebranding completo (logo, cores, identidade TSi MUSIC)
+- Tema premium CSS (glassmorphism, gradiente roxo `#7c3aed`)
+- Traduções pt_BR (1471 chaves, 96% de cobertura)
+- 15+ features customizadas (mini player, atalhos, visualizer, PWA, etc.)
+- Componentes novos (`AudioVisualizer.vue`, `KeyboardShortcutsHelp.vue`, etc.)
+- Service Worker e manifest customizados
+- Overrides de segurança no `package.json`
 
-If you wish to assist in translating Music Assistant into a language that it currently does not support, please see here https://music-assistant.io/help/lokalise/.
+### ✅ Processo seguro de atualização
+
+1. Criar branch de backup
+2. `git fetch upstream --no-tags` (nunca merge)
+3. `git cherry-pick` seletivo de commits relevantes
+4. Resolver conflitos priorizando modificações TSi MUSIC
+5. Executar lint, testes e build
+6. Validar em staging antes de produção
+
+Para detalhes completos, consulte a documentação de segurança no Obsidian Vault.
 
 ---
 
-[![A project from the Open Home Foundation](https://www.openhomefoundation.org/badges/ohf-project.png)](https://www.openhomefoundation.org/)
+## ✨ Features
+
+### Tema & Identidade
+- 🎨 **Tema premium TSi MUSIC** — glassmorphism, gradiente roxo `#7c3aed`, tipografia Roboto
+- 🌙 **Dark mode** nativo com ajustes de contraste premium
+- 🖼️ **Rebranding completo** — logos, favicon, OG image, manifest PWA
+
+### Player & Playback
+- 🎛️ **Mini Player Mode** — toggle entre modo compacto e completo (tecla `M`)
+- 🖥️ **Fullscreen player** com relógio, visualizador e controles estendidos (tecla `F`)
+- 🎚️ **Indicador de volume** — overlay animado ao ajustar volume
+- 📊 **Barras de equalizador animadas** — feedback visual do playback
+
+### Navegação & UX
+- ⌨️ **Atalhos de teclado globais** — espaço, setas, `F`, `M`, `Esc`, `/`, `?`
+- ❓ **Ajuda de atalhos** — modal glassmorphism (tecla `?`)
+- 🔝 **Scroll-to-top** — botão flutuante com gradiente roxo
+- 📶 **Indicador offline** — banner automático ao perder conexão
+- 📈 **Barra de progresso global** — durante navegação entre telas
+
+### PWA & Notificações
+- 📲 **PWA Install Prompt** — card elegante com cooldown de 7 dias
+- 🔔 **Toast notifications** — glassmorphism com acento roxo
+- 🏷️ **Título dinâmico da aba** — mostra faixa/artista em playback
+- 🎭 **Animações de transição** — fade + slide entre telas
+
+### Áudio & Visual
+- 🌊 **Audio Visualizer Canvas** — 64 barras animadas no fullscreen (v2.9.4)
+- 🔒 **Security audit** — 10 HIGH → **0 vulnerabilidades** (v2.9.4)
+
+### Internacionalização
+- 🇧🇷 **Traduções pt_BR** — 1471/1532 chaves (96%)
+
+---
+
+## 🛠️ Stack Tecnológica
+
+| Tecnologia | Versão |
+|------------|--------|
+| Vue.js | 3.x (Composition API) |
+| TypeScript | Strict mode |
+| Vite | Build tool |
+| Vuetify + shadcn-vue | UI frameworks |
+| Tailwind CSS v4 | Estilização |
+| Vue I18n | Internacionalização |
+| Vitest | Testes |
+
+---
+
+## 🚀 Comandos de Build
+
+```bash
+# Instalar dependências
+npm install
+
+# Desenvolvimento
+npm run dev          # http://localhost:3000
+
+# Lint
+npm run lint
+
+# Testes
+npm run test:run     # Todos os testes
+npm run test:coverage # Com cobertura
+
+# Build de produção
+npm run build        # Saída: music_assistant_frontend/
+```
+
+---
+
+## 🐳 Deploy
+
+### Ambiente de Produção
+
+| Configuração | Valor |
+|--------------|-------|
+| Servidor | `saudeclinica` (Tailscale) |
+| URL | `https://100.86.64.1:8443/` |
+| Container | `ma-wiki` (nginx:alpine) |
+| Portas | `8080:80`, `8443:443` |
+| Login | `Admin` / `saude@clinica` |
+
+### Comandos Docker
+
+```bash
+# Verificar container
+ssh saudeclinica "docker ps --filter name=ma-wiki"
+
+# Build local + deploy
+cd /tmp/ma-frontend-valid
+npm run build
+rsync -avz --delete music_assistant_frontend/ saudeclinica:/caminho/no/servidor/
+ssh saudeclinica "docker exec ma-wiki nginx -s reload"
+
+# Verificar status
+ssh saudeclinica "docker logs ma-wiki --tail 20"
+```
+
+---
+
+## 📝 Release Notes
+
+- [v2.9.4 — Security Fixes + Audio Visualizer](./RELEASE-v2.9.4.md)
+- [v2.9.3 — Mini Player + 13 Features UX](./RELEASE-v2.9.3.md)
+- [v2.9.2 — Premium Theme + pt_BR](./RELEASE-v2.9.2.md)
+
+---
+
+## 🙏 Créditos
+
+- **Music Assistant** — Projeto original e backend server ([github.com/music-assistant](https://github.com/music-assistant))
+- **TSi MUSIC** — Rebranding, tema premium, traduções e features customizadas para SaúdeClínica
+
+---
+
+## 📄 Licença
+
+Este projeto mantém a licença do Music Assistant original. As modificações TSi MUSIC são propriedade do ecossistema SaúdeClínica.
+
+---
+
+> 🏷️ `#TSiMUSIC` `#MidiaServer-SaudeClinica`
