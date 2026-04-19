@@ -83,3 +83,10 @@
 - Banner amarelo elegante no topo quando offline
 - Auto-oculta quando a conexão é restaurada
 - Posição fixa com z-index alto
+
+## Novo: Ajuda de Atalhos de Teclado
+
+- Modal elegante com lista de todos os atalhos
+- Aparece automaticamente na primeira visita (após 3s)
+- Pode ser aberto/fechado com a tecla "?"
+- Design glassmorphism com acento roxo
