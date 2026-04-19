@@ -56,3 +56,10 @@
 - 250ms com easing cubic-bezier
 - Enter: fade in + slide up de 12px
 - Leave: fade out + slide up para -8px
+
+## Novo: Tema Premium nos Toasts
+
+- Background glassmorphism para todos os tipos de toast
+- Bordas com acento roxo TSi MUSIC
+- Variantes de cor: success, error, warning, info
+- Border-radius de 12px
