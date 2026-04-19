@@ -119,6 +119,20 @@ npm run build        # Saída: music_assistant_frontend/
 | Portas | `8080:80`, `8443:443` |
 | Login | `Admin` / `saude@clinica` |
 
+### Infraestrutura de Proxy (Nginx)
+
+O nginx atua como **reverse proxy** para o Music Assistant Server, resolvendo o problema de **mixed content** entre o frontend HTTPS e o WebSocket não seguro do MA.
+
+**Endpoints proxyados:**
+- `/ws` → MA Server WebSocket API (`:8095/ws`)
+- `/sendspin` → MA Server Sendspin streaming (`:8095/sendspin`)
+- `/imageproxy` → Stream Server (`:8097`)
+- `/preview` → Stream Server (`:8097`)
+- `/info` → MA Server info (`:8095/info`)
+
+Configuração completa: [`deploy/nginx.conf`](./deploy/nginx.conf)  
+Documentação técnica: [`docs/INFRASTRUCTURE.md`](./docs/INFRASTRUCTURE.md)
+
 ### Comandos Docker
 
 ```bash
@@ -126,19 +140,42 @@ npm run build        # Saída: music_assistant_frontend/
 ssh saudeclinica "docker ps --filter name=ma-wiki"
 
 # Build local + deploy
-cd /tmp/ma-frontend-valid
+cd ~/Projects/TSi-MUSIC
 npm run build
-rsync -avz --delete music_assistant_frontend/ saudeclinica:/caminho/no/servidor/
+rsync -avz --delete music_assistant_frontend/ saudeclinica:/home/tsi/docker/ma-wiki/
 ssh saudeclinica "docker exec ma-wiki nginx -s reload"
 
 # Verificar status
 ssh saudeclinica "docker logs ma-wiki --tail 20"
 ```
 
+### Validação Pós-Deploy
+
+```bash
+# Testar endpoints proxyados
+curl -Ik https://100.86.64.1:8443/info
+curl -Ik https://100.86.64.1:8443/imageproxy?path=test_sound.mp3\&provider=filesystem_local\&size=128
+
+# Testar WebSocket via proxy
+python3 -c "
+import asyncio, websockets, ssl, json
+async def test():
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    async with websockets.connect('wss://100.86.64.1:8443/ws', ssl=ctx) as ws:
+        msg = await asyncio.wait_for(ws.recv(), timeout=5)
+        data = json.loads(msg)
+        print(f\"Server: {data.get('server_version')}, Status: {data.get('status')}\")
+asyncio.run(test())
+"
+```
+
 ---
 
 ## 📝 Release Notes
 
+- [v2.9.5 — Infraestrutura: Nginx Proxy + Firewall + Diagnóstico de Áudio](./RELEASE-v2.9.5.md)
 - [v2.9.4 — Security Fixes + Audio Visualizer](./RELEASE-v2.9.4.md)
 - [v2.9.3 — Mini Player + 13 Features UX](./RELEASE-v2.9.3.md)
 - [v2.9.2 — Premium Theme + pt_BR](./RELEASE-v2.9.2.md)
