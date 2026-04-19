@@ -4,6 +4,7 @@
     <template v-else>
       <MainView />
       <Footer />
+      <PwaInstallPrompt />
     </template>
   </v-app>
   <reload-prompt />
@@ -13,6 +14,7 @@
 import MainView from "./View.vue";
 import Footer from "./Footer.vue";
 import ReloadPrompt from "./ReloadPrompt.vue";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt.vue";
 import { store } from "@/plugins/store";
 import { watch } from "vue";
 import api from "@/plugins/api";
