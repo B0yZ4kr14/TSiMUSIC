@@ -56,6 +56,8 @@
         </template>
       </v-toolbar>
 
+      <PlayerClock />
+
       <!-- content -->
       <div class="main">
         <!-- left column: media thumb + details-->
@@ -527,6 +529,7 @@ import LyricsViewer from "@/components/LyricsViewer.vue";
 import MarqueeText from "@/components/MarqueeText.vue";
 import MediaItemThumb from "@/components/MediaItemThumb.vue";
 import NowPlayingBadge from "@/components/NowPlayingBadge.vue";
+import PlayerClock from "@/components/PlayerClock.vue";
 import PartyPlayerBadge from "@/components/party/PartyPlayerBadge.vue";
 import QualityDetailsBtn from "@/components/QualityDetailsBtn.vue";
 import { useLyricsElapsedTime } from "@/composables/useLyricsElapsedTime";
