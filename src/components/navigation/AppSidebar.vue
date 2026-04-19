@@ -59,9 +59,7 @@ onUnmounted(() => {
               alt="TSi MUSIC"
               class="sidebar-header-logo"
             />
-            <div v-if="!collapsed" class="sidebar-header-title">
-              TSi MUSIC
-            </div>
+            <div v-if="!collapsed" class="sidebar-header-title">TSi MUSIC</div>
           </div>
         </div>
       </SidebarMenu>
