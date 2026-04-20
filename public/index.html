@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSi MUSIC — Ecossistema SaúdeClinica</title>
+  <meta name="description" content="TSi MUSIC — Fork premium do Music Assistant para o ecossistema SaúdeClinica. Streaming multiroom, Spotify, Snapcast e automação.">
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #13131a;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --accent: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: linear-gradient(135deg, #6366f1, #8b5cf6); top: -150px; right: -150px; }
+    .orb-2 { width: 400px; height: 400px; background: linear-gradient(135deg, #22d3ee, #3b82f6); bottom: -100px; left: -100px; animation-delay: -7s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px,-30px) scale(1.05); }
+      66% { transform: translate(-20px,20px) scale(0.95); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(99,102,241,0.4); transform: scale(1); }
+      50% { box-shadow: 0 0 60px rgba(99,102,241,0.7); transform: scale(1.05); }
+    }
+    .logo-wrap {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease both;
+    }
+    .logo-wrap img {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 0 40px rgba(99,102,241,0.4);
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      animation: fadeInUp 0.8s ease 0.1s both;
+      background: linear-gradient(90deg, var(--text) 40%, var(--primary-light) 50%, var(--text) 60%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 0.8s ease 0.1s both, shimmer 4s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    .actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s ease 0.3s both;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99,102,241,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(148,163,184,0.2);
+    }
+    .btn-outline:hover {
+      background: rgba(99,102,241,0.1);
+      border-color: var(--primary);
+    }
+    .links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+    .links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: var(--primary-light); }
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 60px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      animation: fadeInUp 0.8s ease 0.5s both;
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="logo-wrap">
+    <img src="/branding/tsimusic_logo_128.png" alt="TSi MUSIC" width="120" height="120">
+  </div>
+
+  <h1>TSi MUSIC</h1>
+  <p class="subtitle">
+    Fork premium do Music Assistant para o ecossistema <strong>SaúdeClinica</strong>.<br>
+    Streaming multiroom, Spotify, Snapcast e automação inteligente.
+  </p>
+
+  <div class="actions">
+    <a href="/wiki/" class="btn btn-primary">
+      <i class="fas fa-book-open"></i> Acessar Wiki
+    </a>
+    <a href="https://midiaserver-saudeclinica.tailbda57.ts.net/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-play"></i> Abrir App
+    </a>
+  </div>
+
+  <div class="links">
+    <a href="/cert-info"><i class="fas fa-shield-alt"></i> Certificado</a>
+    <a href="https://github.com/B0yZ4kr14/TSiMUSIC" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://midiaserver-saudeclinica.tailbda57.ts.net:1780" target="_blank" rel="noopener noreferrer"><i class="fas fa-broadcast-tower"></i> Snapcast</a>
+  </div>
+
+  <footer>
+    TSi MUSIC v2.9.7 · MidiaServer-SaudeClinica · Atualizado em 2026-04-20
+  </footer>
+</body>
+</html>
