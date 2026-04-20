@@ -1,0 +1,208 @@
+# .github/workflows/deploy.yml
+# TSi MUSIC — CI/CD Pipeline de Deploy para MidiaServer-SaudeClinica
+# Versão: v2.9.5
+#
+# Trigger: push na branch main
+# Pipeline: checkout → validação → build → deploy rsync → health check
+#
+# Secrets necessários (configure em Settings > Secrets and variables > Actions):
+#   DEPLOY_HOST       — IP ou hostname do servidor (ex: 100.86.64.1)
+#   DEPLOY_USER       — Usuário SSH no servidor (ex: tsi)
+#   DEPLOY_SSH_KEY    — Chave privada SSH para acesso ao servidor (conteúdo de id_ed25519_midiaserver)
+#   DEPLOY_PATH       — (opcional) Path remoto de deploy. Padrão: /home/tsi/docker/ma-wiki
+#   DEPLOY_DOCKER_COMPOSE — (opcional) Path do docker-compose.yml remoto. Padrão: /home/tsi/docker/ma-wiki/docker-compose.yml
+
+name: Deploy to MidiaServer-SaudeClinica
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      skip_tests:
+        description: "Pular testes e lint (deploy direto)"
+        required: false
+        default: "false"
+        type: boolean
+
+env:
+  NODE_VERSION: "22.x"
+  BUILD_DIR: "music_assistant_frontend"
+  DEPLOY_PATH_DEFAULT: "/home/tsi/docker/ma-wiki"
+  HEALTH_CHECK_URL: "https://100.86.64.1:8443/info"
+  HEALTH_CHECK_TIMEOUT: 60
+
+jobs:
+  # =============================================================================
+  # JOB 1: Validação — testes, lint e build
+  # =============================================================================
+  validate:
+    name: Validate Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "yarn"
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.yarn-cache
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --silent
+        env:
+          CI: true
+
+      - name: Run tests
+        if: ${{ !inputs.skip_tests }}
+        run: yarn test:run
+        env:
+          CI: true
+
+      - name: Lint
+        if: ${{ !inputs.skip_tests }}
+        run: yarn lint
+        env:
+          CI: true
+
+      - name: Build production bundle
+        run: yarn build
+        env:
+          CI: true
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: ${{ env.BUILD_DIR }}
+          retention-days: 1
+
+  # =============================================================================
+  # JOB 2: Deploy — sincronização rsync + reinicialização do container
+  # =============================================================================
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: validate
+    environment:
+      name: production
+      url: https://${{ secrets.DEPLOY_HOST || '100.86.64.1' }}:8443
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: ${{ env.BUILD_DIR }}
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+          log-public-key: false
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H -p 22 ${{ secrets.DEPLOY_HOST || '100.86.64.1' }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Deploy via rsync
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'tsi' }}
+          REMOTE_PATH: ${{ secrets.DEPLOY_PATH || env.DEPLOY_PATH_DEFAULT }}
+        run: |
+          echo "::group::Rsync deploy"
+          echo "🚀 Iniciando deploy para ${DEPLOY_USER}@${DEPLOY_HOST}:${REMOTE_PATH}"
+
+          # Rsync com flags idempotentes:
+          #   -a  = archive (preserva permissões, timestamps, recursivo)
+          #   -v  = verbose
+          #   -z  = compressão durante transferência
+          #   --delete = remove arquivos no destino que não existem na origem
+          #   --exclude = preserva arquivos de configuração e certificados no servidor
+          rsync -avz --delete \
+            --exclude="nginx.conf" \
+            --exclude="certs/" \
+            --exclude="docker-compose.yml" \
+            --exclude=".env" \
+            --exclude="*.md" \
+            -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            "${{ env.BUILD_DIR }}/" \
+            "${DEPLOY_USER}@${DEPLOY_HOST}:${REMOTE_PATH}/"
+
+          echo "✅ Arquivos sincronizados com sucesso"
+          echo "::endgroup::"
+
+      - name: Restart nginx container (if config changed)
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'tsi' }}
+          COMPOSE_PATH: ${{ secrets.DEPLOY_DOCKER_COMPOSE || '/home/tsi/docker/ma-wiki/docker-compose.yml' }}
+        run: |
+          echo "::group::Container restart"
+          echo "🐳 Verificando container ma-wiki..."
+
+          # Verifica se o container está rodando; se sim, faz reload graceful do nginx
+          # Se não estiver rodando, sobe via docker compose
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            "${DEPLOY_USER}@${DEPLOY_HOST}" \
+            "bash -c 'set -e; \
+              if docker ps --format \"{{.Names}}\" | grep -q \"^ma-wiki$\"; then \
+                echo \"Container ma-wiki encontrado — executando reload graceful...\"; \
+                docker exec ma-wiki nginx -s reload; \
+              else \
+                echo \"Container ma-wiki não encontrado — subindo via docker compose...\"; \
+                cd \"$(dirname ${COMPOSE_PATH})\" && docker compose up -d; \
+              fi; \
+              echo \"✅ Container pronto\"'
+          "
+
+          echo "::endgroup::"
+
+      - name: Health check pós-deploy
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
+        run: |
+          echo "::group::Health check"
+          echo "🔍 Validando deploy em https://${DEPLOY_HOST}:8443 ..."
+
+          HEALTH_URL="https://${DEPLOY_HOST}:8443/info"
+          TIMEOUT=${{ env.HEALTH_CHECK_TIMEOUT }}
+          INTERVAL=5
+          ELAPSED=0
+
+          while [ $ELAPSED -lt $TIMEOUT ]; do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+              --connect-timeout 5 --max-time 10 \
+              --insecure \
+              "$HEALTH_URL" 2>/dev/null || echo "000")
+
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "✅ Health check passou — HTTP 200 em /info"
+              echo "🌐 Deploy validado: https://${DEPLOY_HOST}:8443"
+              exit 0
+            fi
+
+            echo "⏳ Aguardando... ($ELAPSED/${TIMEOUT}s) — último código: $HTTP_CODE"
+            sleep $INTERVAL
+            ELAPSED=$((ELAPSED + INTERVAL))
+          done
+
+          echo "❌ Health check falhou — servidor não respondeu com HTTP 200 em ${TIMEOUT}s"
+          exit 1
+          echo "::endgroup::"
+
+      - name: Cleanup SSH agent
+        if: always()
+        run: rm -rf ~/.ssh
