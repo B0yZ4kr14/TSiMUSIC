@@ -57,8 +57,8 @@
 | MA WebSocket API | `172.18.0.1` | `8095` | WS/WSS | API principal (via proxy) |
 | MA Stream Server | `172.18.0.1` | `8097` | HTTP | Imagens e streams (via proxy) |
 | MA Sendspin | `172.18.0.1` | `8927` | WS | WebRTC gateway interno |
-| Snapserver TCP | `127.0.0.1` | `1705` | TCP | Controle Snapcast |
-| Snapserver HTTP | `127.0.0.1` | `1780` | HTTP | API JSON-RPC Snapcast |
+| Snapserver TCP | `172.18.0.1` | `1705` | TCP | Controle Snapcast |
+| Snapserver HTTP | `172.18.0.1` | `1780` | HTTP | API JSON-RPC Snapcast |
 
 ---
 
@@ -296,7 +296,7 @@ sudo nft list chain ip filter ufw-user-input | grep 172.18
 ### Snapclient
 
 ```bash
-/usr/bin/snapclient --host 127.0.0.1 --player pipewire
+/usr/bin/snapclient --host 172.18.0.1 --player pipewire
 ```
 
 ### PipeWire Status
@@ -386,7 +386,7 @@ docker ps --filter name=ma-wiki --filter name=music-assistant
 docker logs music-assistant-server --tail 50
 
 # Verificar status do snapserver
-curl -s http://127.0.0.1:1780/jsonrpc \
+curl -s http://172.18.0.1:1780/jsonrpc \
   -X POST -d '{"jsonrpc":"2.0","method":"Server.GetStatus","id":1}'
 
 # Verificar pipewire
