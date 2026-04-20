@@ -1,10 +1,9 @@
 # .github/workflows/wiki.yml
-# TSi MUSIC Wiki — Build e Deploy para GitHub Pages
-# Versão: v2.9.6
+# TSi MUSIC Wiki — Deploy Static to GitHub Pages
+# Versão: v2.9.7
 #
-# Trigger: push na main que modifica wiki/** ou .github/workflows/wiki.yml
-# Build: MkDocs with Material theme
-# Deploy: gh-pages branch via peaceiris/actions-gh-pages
+# Trigger: push na main que modifica public/** ou .github/workflows/wiki.yml
+# Deploy: Copia public/ diretamente para gh-pages branch
 
 name: Deploy Wiki to GitHub Pages
 
@@ -12,7 +11,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "wiki/**"
+      - "public/**"
       - ".github/workflows/wiki.yml"
   workflow_dispatch:
 
@@ -26,31 +25,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: "pip"
-
-      - name: Install dependencies
-        run: |
-          pip install -r wiki/requirements.txt
-
-      - name: Build MkDocs
-        run: |
-          cd wiki && mkdocs build --strict
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy public/ to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./wiki/site
+          publish_dir: ./public
           publish_branch: gh-pages
           cname: ""
