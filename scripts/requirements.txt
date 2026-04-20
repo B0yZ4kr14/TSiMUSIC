@@ -1,0 +1,16 @@
+# TSi-MUSIC Python Automation Scripts — Requirements
+# Python 3.10+ compatível
+# Instalar: pip install -r scripts/requirements.txt
+
+# CLI / utilidades
+colorama>=0.4.6
+requests>=2.31.0
+
+# Configuração
+tomli>=2.0.1; python_version < "3.11"
+
+# WebSocket testing (healthcheck)
+websocket-client>=1.6.0
+
+# Tipagem opcional em runtime
+typing-extensions>=4.8.0; python_version < "3.11"

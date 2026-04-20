@@ -1,9 +1,10 @@
 # .github/workflows/wiki.yml
-# TSi MUSIC — Wiki MkDocs deploy para GitHub Pages
-# Versão: v1.0.0
+# TSi MUSIC Wiki — Build e Deploy para GitHub Pages
+# Versão: v2.9.6
 #
-# Trigger: push na branch main que modifica wiki/**
-# Pipeline: checkout → setup Python → install deps → build mkdocs → deploy to gh-pages
+# Trigger: push na main que modifica wiki/** ou .github/workflows/wiki.yml
+# Build: MkDocs with Material theme
+# Deploy: gh-pages branch via peaceiris/actions-gh-pages
 
 name: Deploy Wiki to GitHub Pages
 
@@ -16,26 +17,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "wiki-pages"
   cancel-in-progress: false
 
 jobs:
-  # =============================================================================
-  # JOB: Build e Deploy do MkDocs
-  # =============================================================================
-  deploy:
-    name: Build & Deploy MkDocs
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -50,17 +44,20 @@ jobs:
 
       - name: Build MkDocs
         run: |
-          cd wiki
-          mkdocs build --strict
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+          cd wiki && mkdocs build --strict
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: wiki/site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informações de Certificado — TSi MUSIC</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --text: #e0e0e0;
+      --muted: #9e9e9e;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --warn: #f59e0b;
+      --success: #22c55e;
+      --border: #333;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .icon { font-size: 1.3rem; }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .cta:hover { background: var(--accent-light); }
+    .cta:active { transform: scale(0.98); }
+
+    code {
+      background: #2a2a2a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.9em;
+      word-break: break-word;
+    }
+    pre {
+      background: #2a2a2a;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+    }
+    pre code { background: none; padding: 0; }
+
+    .os-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .os-tab {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .os-tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .os-panel { display: none; }
+    .os-panel.active { display: block; }
+
+    .warn-box {
+      border-left: 4px solid var(--warn);
+      background: rgba(245, 158, 11, 0.08);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+    }
+    .success-box {
+      border-left: 4px solid var(--success);
+      background: rgba(34, 197, 94, 0.08);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="favicon.svg" alt="TSi MUSIC" class="logo" />
+      <h1>Informações de Certificado</h1>
+      <p class="subtitle">TSi MUSIC v2.9.5 · Browser Access Fix</p>
+    </header>
+
+    <div class="warn-box">
+      <strong>⚠️ Você está acessando via endereço IP.</strong><br />
+      Por isso o navegador exibe um aviso de segurança. Abaixo explicamos o motivo e como resolver.
+    </div>
+
+    <div class="card">
+      <h2><span class="icon">🔒</span> Por que aparece o aviso?</h2>
+      <p>
+        O acesso pelo endereço IP (<code>100.86.64.1:8443</code>) utiliza um certificado <strong>autoassinado</strong>.
+        O navegador não reconhece a autoridade que emitiu esse certificado, então mostra um aviso de segurança.
+      </p>
+      <p>
+        Isso é <strong>normal e esperado</strong> para acesso interno via IP. Os dados continuam criptografados (HTTPS).
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><span class="icon">🚀</span> Acesso recomendado (sem avisos)</h2>
+      <p>
+        Use o hostname oficial do servidor Tailscale. Ele possui um certificado <strong>Let's Encrypt válido</strong>, reconhecido por todos os navegadores.
+      </p>
+      <p style="margin-top: 16px;">
+        <a class="cta" href="https://midiaserver-saudeclinica.tailbda57.ts.net/">
+          🌐 Acessar TSi MUSIC via hostname
+        </a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><span class="icon">🛠️</span> Como instalar o certificado no sistema</h2>
+      <p>
+        Se precisar acessar regularmente pelo IP, você pode instalar o certificado autoassinado no <em>trust store</em> do seu sistema operacional.
+      </p>
+
+      <div class="os-tabs">
+        <button class="os-tab active" data-os="linux">Linux</button>
+        <button class="os-tab" data-os="mac">macOS</button>
+        <button class="os-tab" data-os="windows">Windows</button>
+      </div>
+
+      <div class="os-panel active" id="panel-linux">
+        <p><strong>Opção A — Script automático:</strong></p>
+        <pre><code>curl -fsSL https://midiaserver-saudeclinica.tailbda57.ts.net/install-cert.sh | bash</code></pre>
+        <p><strong>Opção B — Manual:</strong></p>
+        <pre><code># 1. Baixe o certificado
+openssl s_client -connect 100.86.64.1:8443 -showcerts &lt;/dev/null 2&gt;/dev/null | \
+  awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/{print}' &gt; ip-tailscale.crt
+
+# 2. Copie para o diretório de CAs
+sudo cp ip-tailscale.crt /usr/local/share/ca-certificates/
+
+# 3. Atualize o trust store
+sudo update-ca-certificates</code></pre>
+      </div>
+
+      <div class="os-panel" id="panel-mac">
+        <p><strong>Opção A — Script automático:</strong></p>
+        <pre><code>curl -fsSL https://midiaserver-saudeclinica.tailbda57.ts.net/install-cert.sh | bash</code></pre>
+        <p><strong>Opção B — Manual:</strong></p>
+        <pre><code># 1. Baixe o certificado
+openssl s_client -connect 100.86.64.1:8443 -showcerts &lt;/dev/null 2&gt;/dev/null | \
+  awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/{print}' &gt; ip-tailscale.crt
+
+# 2. Adicione ao Keychain como confiável
+sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ip-tailscale.crt</code></pre>
+      </div>
+
+      <div class="os-panel" id="panel-windows">
+        <p><strong>Passo a passo manual:</strong></p>
+        <ol>
+          <li>Baixe o certificado: <a href="/certs/ip-tailscale.crt" download style="color:var(--accent-light)">ip-tailscale.crt</a></li>
+          <li>Clique duplo no arquivo <code>ip-tailscale.crt</code></li>
+          <li>Clique em <strong>Instalar certificado…</strong></li>
+          <li>Selecione <strong>Máquina local</strong> → Avançar</li>
+          <li>Escolha <strong>Colocar todos os certificados no repositório a seguir</strong></li>
+          <li>Selecione <strong>Autoridades de certificação raiz confiáveis</strong></li>
+          <li>Conclua o assistente e reinicie o navegador</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>✅ Após a instalação:</strong> Feche e reabra o navegador. O aviso deverá desaparecer ao acessar <code>https://100.86.64.1:8443/</code>.
+    </div>
+
+    <footer>
+      TSi MUSIC v2.9.5 · Squad Zeta · Browser Access Fix
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.os-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.os-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.os-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.os).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

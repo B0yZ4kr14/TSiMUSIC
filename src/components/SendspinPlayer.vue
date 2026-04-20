@@ -229,7 +229,7 @@ onMounted(() => {
         // The URL just needs to be valid and contain "/sendspin" for the interceptor
         player = new SendspinPlayer({
           playerId: props.playerId,
-          baseUrl: "http://sendspin.local",
+          baseUrl: "https://sendspin.local",
           audioElement,
           clientName: getDeviceName(),
           codecs,
