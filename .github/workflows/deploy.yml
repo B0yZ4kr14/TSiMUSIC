@@ -1,6 +1,6 @@
 # .github/workflows/deploy.yml
 # TSi MUSIC — CI/CD Pipeline de Deploy para MidiaServer-SaudeClinica
-# Versão: v2.9.5
+# Versão: v2.9.6
 #
 # Trigger: push na branch main
 # Pipeline: checkout → validação → build → deploy rsync → health check
@@ -8,7 +8,7 @@
 # Secrets necessários (configure em Settings > Secrets and variables > Actions):
 #   DEPLOY_HOST       — IP ou hostname do servidor (ex: 100.86.64.1)
 #   DEPLOY_USER       — Usuário SSH no servidor (ex: tsi)
-#   DEPLOY_SSH_KEY    — Chave privada SSH para acesso ao servidor (conteúdo de id_ed25519_midiaserver)
+#   DEPLOY_SSH_KEY    — Chave privada SSH para acesso ao servidor
 #   DEPLOY_PATH       — (opcional) Path remoto de deploy. Padrão: /home/tsi/docker/ma-wiki
 #   DEPLOY_DOCKER_COMPOSE — (opcional) Path do docker-compose.yml remoto. Padrão: /home/tsi/docker/ma-wiki/docker-compose.yml
 
@@ -33,9 +33,9 @@ env:
   HEALTH_CHECK_TIMEOUT: 60
 
 jobs:
-  # =============================================================================
+  # ==========================================================================
   # JOB 1: Validação — testes, lint e build
-  # =============================================================================
+  # ==========================================================================
   validate:
     name: Validate Build
     runs-on: ubuntu-latest
@@ -88,17 +88,24 @@ jobs:
           path: ${{ env.BUILD_DIR }}
           retention-days: 1
 
-  # =============================================================================
+  # ==========================================================================
   # JOB 2: Deploy — sincronização rsync + reinicialização do container
-  # =============================================================================
+  # ==========================================================================
   deploy:
     name: Deploy to Server
     runs-on: ubuntu-latest
     needs: validate
     environment:
       name: production
-      url: https://${{ secrets.DEPLOY_HOST || '100.86.64.1' }}:8443
+      url: https://100.86.64.1:8443
     steps:
+      - name: Set deploy environment variables
+        run: |
+          echo "DEPLOY_HOST=${{ secrets.DEPLOY_HOST }}" >> $GITHUB_ENV
+          echo "DEPLOY_USER=${{ secrets.DEPLOY_USER }}" >> $GITHUB_ENV
+          echo "REMOTE_PATH=${{ secrets.DEPLOY_PATH }}" >> $GITHUB_ENV
+          echo "COMPOSE_PATH=${{ secrets.DEPLOY_DOCKER_COMPOSE }}" >> $GITHUB_ENV
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -114,23 +121,17 @@ jobs:
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H -p 22 ${{ secrets.DEPLOY_HOST || '100.86.64.1' }} >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh-keyscan -H -p 22 ${{ env.DEPLOY_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Deploy via rsync
         env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'tsi' }}
-          REMOTE_PATH: ${{ secrets.DEPLOY_PATH || env.DEPLOY_PATH_DEFAULT }}
+          DEPLOY_HOST: ${{ env.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ env.DEPLOY_USER }}
+          REMOTE_PATH: ${{ env.REMOTE_PATH || env.DEPLOY_PATH_DEFAULT }}
         run: |
           echo "::group::Rsync deploy"
           echo "🚀 Iniciando deploy para ${DEPLOY_USER}@${DEPLOY_HOST}:${REMOTE_PATH}"
 
-          # Rsync com flags idempotentes:
-          #   -a  = archive (preserva permissões, timestamps, recursivo)
-          #   -v  = verbose
-          #   -z  = compressão durante transferência
-          #   --delete = remove arquivos no destino que não existem na origem
-          #   --exclude = preserva arquivos de configuração e certificados no servidor
           rsync -avz --delete \
             --exclude="nginx.conf" \
             --exclude="certs/" \
@@ -146,24 +147,22 @@ jobs:
 
       - name: Restart nginx container (if config changed)
         env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'tsi' }}
-          COMPOSE_PATH: ${{ secrets.DEPLOY_DOCKER_COMPOSE || '/home/tsi/docker/ma-wiki/docker-compose.yml' }}
+          DEPLOY_HOST: ${{ env.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ env.DEPLOY_USER }}
+          COMPOSE_PATH: ${{ env.COMPOSE_PATH || '/home/tsi/docker/ma-wiki/docker-compose.yml' }}
         run: |
           echo "::group::Container restart"
           echo "🐳 Verificando container ma-wiki..."
 
-          # Verifica se o container está rodando; se sim, faz reload graceful do nginx
-          # Se não estiver rodando, sobe via docker compose
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
             "${DEPLOY_USER}@${DEPLOY_HOST}" \
             "bash -c 'set -e; \
-              if docker ps --format \"{{.Names}}\" | grep -q \"^ma-wiki$\"; then \
+              if docker ps --format \"{{.Names}}\" | grep -q \"^ma-wiki\$\"; then \
                 echo \"Container ma-wiki encontrado — executando reload graceful...\"; \
                 docker exec ma-wiki nginx -s reload; \
               else \
                 echo \"Container ma-wiki não encontrado — subindo via docker compose...\"; \
-                cd \"$(dirname ${COMPOSE_PATH})\" && docker compose up -d; \
+                cd \"\$(dirname ${COMPOSE_PATH})\" && docker compose up -d; \
               fi; \
               echo \"✅ Container pronto\"'
           "
@@ -172,7 +171,7 @@ jobs:
 
       - name: Health check pós-deploy
         env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '100.86.64.1' }}
+          DEPLOY_HOST: ${{ env.DEPLOY_HOST }}
         run: |
           echo "::group::Health check"
           echo "🔍 Validando deploy em https://${DEPLOY_HOST}:8443 ..."
