@@ -1042,7 +1042,7 @@
     "local_server": "Τοπικός server",
     "remote_server": "Απομακρυσμένος",
     "server_address": "Διεύθυνση server",
-    "server_address_placeholder": "http://192.168.1.100:8095",
+    "server_address_placeholder": "https://192.168.1.100:8095",
     "remote_id": "Απομακρυσμένο ID",
     "remote_id_placeholder": "π.χ., MA-X7K9-P2M4",
     "remote_id_hint": "Βρείτε το στις ρυθμίσεις του server σας στην ενότητα \"Απομακρυσμένη πρόσβαση\".",

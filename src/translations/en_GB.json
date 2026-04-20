@@ -1001,7 +1001,7 @@
     "local_server": "Local Server",
     "remote_server": "Remote",
     "server_address": "Server Address",
-    "server_address_placeholder": "http://192.168.1.100:8095",
+    "server_address_placeholder": "https://192.168.1.100:8095",
     "remote_id": "Remote ID",
     "remote_id_placeholder": "e.g., MA-X7K9-P2M4",
     "remote_id_hint": "Find this in your server settings under \"Remote Access\"",

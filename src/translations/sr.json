@@ -1078,7 +1078,7 @@
     "local_server": "Локални сервер",
     "remote_server": "Удаљени",
     "server_address": "Адреса сервера",
-    "server_address_placeholder": "http://192.168.1.100:8095",
+    "server_address_placeholder": "https://192.168.1.100:8095",
     "remote_id": "Удаљени \"ID\"",
     "remote_id_placeholder": "нпр. MA-X7K9-P2M4",
     "remote_id_hint": "Прођите ово у подешавањима сервера, под \"Удаљени приступ\".",

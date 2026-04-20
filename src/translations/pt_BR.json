@@ -1088,7 +1088,7 @@
     "guest_role": "Convidado"
   },
   "login": {
-    "server_address_placeholder": "http://192.168.1.100:8095",
+    "server_address_placeholder": "https://192.168.1.100:8095",
     "connect": "Conectar",
     "sign_in": "Entrar",
     "username": "Nome de usuário",

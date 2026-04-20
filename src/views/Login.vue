@@ -60,7 +60,7 @@
                     :placeholder="
                       $t(
                         'login.server_address_placeholder',
-                        'http://192.168.1.100:8095',
+                        'https://192.168.1.100:8095',
                       )
                     "
                     variant="outlined"

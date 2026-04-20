@@ -1077,7 +1077,7 @@
     "local_server": "Místní server",
     "remote_server": "Vzdálený",
     "server_address": "Adresa serveru",
-    "server_address_placeholder": "http://192.168.1.100:8095",
+    "server_address_placeholder": "https://192.168.1.100:8095",
     "remote_id": "Vzdálené ID",
     "remote_id_placeholder": "např. MA-X7K9-P2M4",
     "remote_id_hint": "Najdete to v nastavení serveru v sekci „Vzdálený přístup“.",
