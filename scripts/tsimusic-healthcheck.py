@@ -2,7 +2,7 @@
 # cspell:disable
 # =============================================================================
 # TSi-MUSIC — Health Check Avançado
-# Versão: v2.9.5
+# Versão: v2.9.6
 #
 # Verifica integridade completa do TSi-MUSIC no MidiaServer-SaudeClinica.
 #
@@ -117,10 +117,11 @@ def log_info(msg: str) -> None:
 # Checks
 # ---------------------------------------------------------------------------
 class HealthChecker:
-    def __init__(self, host: str, ssh_user: str, ssh_key: str) -> None:
+    def __init__(self, host: str, ssh_user: str, ssh_key: str, local: bool = False) -> None:
         self.host = host
         self.ssh_user = ssh_user
         self.ssh_key = Path(ssh_key).expanduser()
+        self.local = local
         self.results: list[CheckResult] = []
         self._ssh_prefix = [
             "ssh",
@@ -131,8 +132,17 @@ class HealthChecker:
             f"{self.ssh_user}@{self.host}",
         ]
 
-    def _ssh(self, cmd: str) -> tuple[int, str, str]:
-        """Executa comando via SSH. Retorna (returncode, stdout, stderr)."""
+    def _exec(self, cmd: str) -> tuple[int, str, str]:
+        """Executa comando via SSH (remoto) ou subprocess (local). Retorna (returncode, stdout, stderr)."""
+        if self.local:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=15,
+                shell=True,
+            )
+            return result.returncode, result.stdout, result.stderr
         result = subprocess.run(
             [*self._ssh_prefix, cmd],
             capture_output=True,
@@ -143,7 +153,7 @@ class HealthChecker:
 
     def _check_container(self) -> CheckResult:
         name = "Container ma-wiki"
-        code, out, err = self._ssh("docker ps --format '{{.Names}}' --filter 'name=ma-wiki'")
+        code, out, err = self._exec("docker ps --format '{{.Names}}' --filter 'name=ma-wiki'")
         if code != 0:
             return CheckResult(name, "fail", f"SSH/erro: {err.strip()}")
         if "ma-wiki" in out:
@@ -158,7 +168,7 @@ class HealthChecker:
 
         for port in ports:
             # Verifica se a porta está aberta no host remoto via ss ou netstat
-            code, out, _ = self._ssh(f"ss -tlnp '( sport = :{port} )' 2>/dev/null || netstat -tlnp 2>/dev/null | grep ':{port} '")
+            code, out, _ = self._exec(f"ss -tlnp '( sport = :{port} )' 2>/dev/null || netstat -tlnp 2>/dev/null | grep ':{port} '")
             listening = code == 0 and str(port) in out
             details["ports"][port] = "listening" if listening else "closed"
             if not listening:
@@ -235,7 +245,7 @@ class HealthChecker:
     def _check_tailscale(self) -> CheckResult:
         name = "Tailscale Serve ativo"
         # Verifica se tailscale está ativo no host remoto
-        code, out, err = self._ssh("tailscale status --json 2>/dev/null | head -c 2000")
+        code, out, err = self._exec("tailscale status --json 2>/dev/null | head -c 2000")
         if code != 0:
             return CheckResult(name, "warn", f"Tailscale não disponível ou erro: {err.strip()}")
         try:
@@ -276,7 +286,7 @@ class HealthChecker:
 
     def _check_disk_space(self) -> CheckResult:
         name = "Espaço em disco"
-        code, out, _ = self._ssh("df -h / | tail -1")
+        code, out, _ = self._exec("df -h / | tail -1")
         if code != 0:
             return CheckResult(name, "warn", "Não foi possível obter uso de disco")
         parts = out.strip().split()
@@ -292,10 +302,10 @@ class HealthChecker:
 
     def _check_memory(self) -> CheckResult:
         name = "Memória"
-        code, out, _ = self._ssh("free -m | grep '^Mem:'")
+        code, out, _ = self._exec("free -m | grep '^Mem:'")
         if code != 0:
             # Tenta /proc/meminfo
-            code2, out2, _ = self._ssh("cat /proc/meminfo | grep -E 'MemTotal|MemAvailable'")
+            code2, out2, _ = self._exec("cat /proc/meminfo | grep -E 'MemTotal|MemAvailable'")
             if code2 == 0:
                 lines = out2.strip().splitlines()
                 vals = {}
@@ -399,6 +409,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--host", default=DEFAULT_HOST, help="Host alvo (default: 100.86.64.1)")
     parser.add_argument("--user", default=DEFAULT_SSH_USER, help="Usuário SSH (default: tsi)")
     parser.add_argument("--ssh-key", default=DEFAULT_SSH_KEY, help="Path da chave SSH")
+    parser.add_argument("--local", action="store_true", help="Executa checks localmente (sem SSH)")
     parser.add_argument("--json", action="store_true", help="Saída em JSON")
     return parser
 
@@ -407,7 +418,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    checker = HealthChecker(args.host, args.user, args.ssh_key)
+    checker = HealthChecker(args.host, args.user, args.ssh_key, local=args.local)
     report = checker.run_all()
 
     if args.json:
