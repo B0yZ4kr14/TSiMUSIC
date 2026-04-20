@@ -51,7 +51,7 @@ DEFAULT_SSH_KEY = os.getenv("SSH_KEY", str(Path.home() / ".ssh" / "id_ed25519_mi
 DEFAULT_REMOTE_PATH = "/home/tsi/docker/ma-wiki"
 DEFAULT_MA_DATA_PATH = "/home/tsi/.musicassistant"
 
-VERSION = "2.9.5"
+VERSION = "2.9.6"
 SCRIPT_NAME = "tsimusic-backup"
 
 # ---------------------------------------------------------------------------
@@ -98,7 +98,27 @@ class BackupEngine:
         self.remote_path = remote_path
         self.ma_data_path = ma_data_path
 
-    def _ssh(self, cmd: str, timeout: int = 60) -> tuple[int, str, str]:
+    def _is_local(self) -> bool:
+        """Detecta se o script está rodando no próprio servidor."""
+        import socket
+        if self.host in {"127.0.0.1", "localhost", "::1"}:
+            return True
+        hostname = socket.gethostname()
+        if self.host == hostname:
+            return True
+        # Verifica se o IP corresponde a alguma interface local
+        try:
+            result = subprocess.run(["ip", "addr"], capture_output=True, text=True)
+            if self.host in result.stdout:
+                return True
+        except Exception:
+            pass
+        return False
+
+    def _exec(self, cmd: str, timeout: int = 60) -> tuple[int, str, str]:
+        if self._is_local():
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, shell=True)
+            return result.returncode, result.stdout, result.stderr
         ssh_cmd = [
             "ssh",
             "-i", str(self.ssh_key),
@@ -112,8 +132,8 @@ class BackupEngine:
         result = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=timeout)
         return result.returncode, result.stdout, result.stderr
 
-    def _verify_ssh(self) -> bool:
-        code, _, _ = self._ssh("echo OK", timeout=10)
+    def _verify_connection(self) -> bool:
+        code, _, _ = self._exec("echo OK", timeout=10)
         return code == 0
 
     def _generate_timestamp(self) -> str:
@@ -125,7 +145,7 @@ class BackupEngine:
 
         if mode == "full":
             # Verifica se o diretório MA existe remotamente
-            code, _, _ = self._ssh(f"test -d {self.ma_data_path}")
+            code, _, _ = self._exec(f"test -d {self.ma_data_path}")
             ma_exists = code == 0
 
             includes: list[str] = []
@@ -140,7 +160,7 @@ class BackupEngine:
             return f"tar -czf {remote_backup} {sources} 2>&1"
 
         if mode == "ma-only":
-            code, _, _ = self._ssh(f"test -d {self.ma_data_path}")
+            code, _, _ = self._exec(f"test -d {self.ma_data_path}")
             if code != 0:
                 log_error(f"Diretório MA não encontrado: {self.ma_data_path}")
                 return None
@@ -157,7 +177,7 @@ class BackupEngine:
     def create(self, mode: str) -> Path | None:
         log_step(f"Criando backup ({mode})")
 
-        if not self._verify_ssh():
+        if not self._verify_connection():
             log_error(f"Falha na conexão SSH para {self.user}@{self.host}")
             return None
 
@@ -169,7 +189,7 @@ class BackupEngine:
             return None
 
         # Executa tar no host remoto
-        code, out, err = self._ssh(tar_cmd, timeout=120)
+        code, out, err = self._exec(tar_cmd, timeout=120)
         if code != 0:
             log_error(f"Falha ao criar tarball remoto: {err.strip() or out.strip()}")
             return None
@@ -189,7 +209,7 @@ class BackupEngine:
         result = subprocess.run(scp_cmd, capture_output=True, text=True)
         if result.returncode != 0:
             log_error(f"Falha ao baixar backup: {result.stderr.strip()}")
-            self._ssh(f"rm -f {remote_backup}")
+            self._exec(f"rm -f {remote_backup}")
             return None
 
         # Limpa tmp remoto
