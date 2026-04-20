@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página não encontrada — TSi MUSIC</title>
   <meta name="theme-color" content="#121212">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: #121212;
       color: #ffffff;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -20,27 +20,74 @@
       min-height: 100vh;
       text-align: center;
       padding: 24px;
+      overflow: hidden;
     }
-    .icon {
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: linear-gradient(135deg, #6366f1, #8b5cf6); top: -150px; right: -150px; }
+    .orb-2 { width: 400px; height: 400px; background: linear-gradient(135deg, #22d3ee, #3b82f6); bottom: -100px; left: -100px; animation-delay: -7s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px,-30px) scale(1.05); }
+      66% { transform: translate(-20px,20px) scale(0.95); }
+    }
+    .logo-wrap {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease both, logoPulse 3s ease-in-out infinite;
+    }
+    .logo-wrap img {
       width: 96px;
       height: 96px;
-      margin-bottom: 24px;
-      opacity: 0.9;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 40px rgba(99,102,241,0.4);
+    }
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(99,102,241,0.4); transform: scale(1); }
+      50% { box-shadow: 0 0 60px rgba(99,102,241,0.7); transform: scale(1.05); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     h1 {
+      position: relative;
+      z-index: 1;
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 8px;
       color: #ffffff;
+      animation: fadeInUp 0.8s ease 0.2s both;
     }
     p {
+      position: relative;
+      z-index: 1;
       font-size: 1rem;
       color: #b3b3b3;
       margin-bottom: 32px;
       line-height: 1.5;
       max-width: 480px;
+      animation: fadeInUp 0.8s ease 0.3s both;
     }
-    a {
+    .actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+    a.btn {
       display: inline-block;
       background: #7c3aed;
       color: #ffffff;
@@ -49,36 +96,47 @@
       border-radius: 8px;
       font-weight: 500;
       font-size: 0.95rem;
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    }
+    a.btn:hover { background: #6d28d9; box-shadow: 0 0 20px rgba(124,58,237,0.4); }
+    a.btn:active { transform: scale(0.98); }
+    a.btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #a78bfa;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 1px solid #7c3aed;
       transition: background 0.2s ease, transform 0.1s ease;
     }
-    a:hover { background: #6d28d9; }
-    a:active { transform: scale(0.98); }
+    a.btn-outline:hover { background: rgba(124,58,237,0.1); }
+    a.btn-outline:active { transform: scale(0.98); }
     .code {
+      position: relative;
+      z-index: 1;
       font-size: 0.875rem;
       color: #666;
       margin-top: 32px;
-      font-family: monospace;
+      font-family: 'JetBrains Mono', monospace;
+      animation: fadeInUp 0.8s ease 0.5s both;
     }
   </style>
 </head>
 <body>
-  <svg class="icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#7c3aed"/>
-        <stop offset="100%" style="stop-color:#4c1d95"/>
-      </linearGradient>
-    </defs>
-    <circle cx="128" cy="128" r="110" fill="url(#g)"/>
-    <rect x="70" y="100" width="14" rx="7" height="56" fill="white" opacity="0.9"/>
-    <rect x="96" y="78" width="14" rx="7" height="100" fill="white" opacity="0.9"/>
-    <rect x="122" y="60" width="14" rx="7" height="136" fill="white" opacity="1"/>
-    <rect x="148" y="78" width="14" rx="7" height="100" fill="white" opacity="0.9"/>
-    <rect x="174" y="100" width="14" rx="7" height="56" fill="white" opacity="0.9"/>
-  </svg>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="logo-wrap">
+    <img src="/branding/tsimusic_logo_128.png" alt="TSi MUSIC" width="96" height="96">
+  </div>
   <h1>Página não encontrada</h1>
-  <p>A página que você tentou acessar não existe ou foi movida. Volte para a tela inicial do TSi MUSIC.</p>
-  <a href="/">Voltar para o início</a>
+  <p>A página que você tentou acessar não existe ou foi movida. Volte para a tela inicial do TSi MUSIC ou acesse a Wiki.</p>
+  <div class="actions">
+    <a href="/" class="btn">Voltar para o início</a>
+    <a href="/wiki/" class="btn-outline">Ir para a Wiki</a>
+  </div>
   <div class="code">HTTP 404</div>
 </body>
 </html>

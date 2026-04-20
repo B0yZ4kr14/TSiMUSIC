@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Informações de Certificado — TSi MUSIC</title>
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>
     :root {
       --bg: #121212;
@@ -41,6 +41,9 @@
       width: 64px;
       height: 64px;
       margin-bottom: 12px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(124,58,237,0.3);
     }
     h1 {
       margin: 0 0 8px;
@@ -151,9 +154,9 @@
 <body>
   <div class="container">
     <header>
-      <img src="favicon.svg" alt="TSi MUSIC" class="logo" />
+      <img src="/branding/tsimusic_logo_128.png" alt="TSi MUSIC" class="logo" />
       <h1>Informações de Certificado</h1>
-      <p class="subtitle">TSi MUSIC v2.9.5 · Browser Access Fix</p>
+      <p class="subtitle">TSi MUSIC v2.9.7 · Browser Access Fix</p>
     </header>
 
     <div class="warn-box">
@@ -242,7 +245,7 @@ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keyc
     </div>
 
     <footer>
-      TSi MUSIC v2.9.5 · Squad Zeta · Browser Access Fix
+      TSi MUSIC v2.9.7 · Squad Zeta · Browser Access Fix
     </footer>
   </div>
 
