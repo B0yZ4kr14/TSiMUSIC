@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+
+<!-- TSi MUSIC Wiki v2.9.1
+  - Design System: TSi MUSIC Dark Premium
+  - Last Audit: 2026-04-18
+  - Score: 97/100 Grade A+
+  - Features: Container Queries, WebP, Color Scheme, PWA, SRI
+  - Stitch Project: projects/14640716944837531570
+  - Design System: assets/4830193401983548319
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#0B0B0E" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Guia completo do TSi MUSIC no MidiaServer-SaudeClinica. Aprenda a instalar, configurar Spotify, Snapcast multiroom, resolver problemas e aproveitar sua música em todos os cômodos." name="description"/>
+<meta content="TSi MUSIC Wiki | MidiaServer-SaudeClinica" property="og:title"/>
+<meta content="Guia completo do TSi MUSIC - Spotify, Snapcast multiroom, configurações Docker e troubleshooting." property="og:description"/>
+<meta content="http://100.86.64.1:8080/og-image.png" property="og:image"/>
+<meta content="http://100.86.64.1:8080" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="http://100.86.64.1:8080" rel="canonical"/>
+<title>TSi MUSIC Wiki | MidiaServer-SaudeClinica</title>
+<meta content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self';" http-equiv="Content-Security-Policy"/>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TSi MUSIC Wiki",
+      "url": "http://100.86.64.1:8080",
+      "description": "TSi MUSIC — Seu assistente musical pessoal"
+    }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" referrerpolicy="no-referrer" rel="stylesheet"/>
+<style>:root{--color-primary:#6366f1;--color-primary-light:#818cf8;--color-accent-cyan:#22d3ee;--color-accent-purple:#a855f7;--color-success:#22c55e;--color-warning:#f59e0b;--color-error:#ef4444;--bg-primary:#0a0a0f;--bg-secondary:#13131a;--bg-tertiary:#1a1a24;--bg-card:#1e1e28;--bg-elevated:#252530;--text-primary:#f8fafc;--text-secondary:#94a3b8;--text-muted:#64748b;--border-default:rgba(148,163,184,0.08);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.4),0 2px 4px -2px rgba(0,0,0,0.3);--shadow-glow-md:0 0 30px -2px rgba(99,102,241,0.4);--radius-md:12px;--radius-xl:20px;--ease-default:cubic-bezier(0.4,0,0.2,1);--ease-bounce:cubic-bezier(0.34,1.56,0.64,1);--transition-fast:150ms var(--ease-default);--transition-slow:350ms var(--ease-default)}[data-theme="light"]{--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-tertiary:#f1f5f9;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--border:rgba(148,163,184,0.25);--shadow:rgba(0,0,0,0.08)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.7;overflow-x:hidden;transition:background 0.3s,color 0.3s}.orb{position:fixed;border-radius:50%;filter:blur(120px);opacity:0.12;pointer-events:none;z-index:0;animation:float 20s ease-in-out infinite}.orb-1{width:600px;height:600px;background:var(--gradient-1);top:-200px;right:-200px;animation-delay:0s}.orb-2{width:500px;height:500px;background:var(--gradient-2);bottom:-150px;left:-150px;animation-delay:-7s}.orb-3{width:400px;height:400px;background:var(--gradient-3);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-14s}@keyframes float{0%,100%{transform:translate(0,0)scale(1)}33%{transform:translate(30px,-30px)scale(1.05)}66%{transform:translate(-20px,20px)scale(0.95)}}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.animate-in{opacity:0;animation:fadeInUp 0.8s ease forwards}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}.reading-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gradient-1),var(--gradient-2));z-index:1001;width:0%;transition:width 0.1s}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background 0.3s}[data-theme="light"]nav{background:rgba(248,250,252,0.9)}.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:0.75rem;font-weight:700;font-size:1.25rem;color:var(--text-primary);text-decoration:none}.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:white}.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.3s;position:relative}.nav-links a:hover{color:var(--text-primary)}.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}.nav-links a:hover::after{width:100%}.search-box{position:relative}.search-box input{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.75rem 0.5rem 2rem;color:var(--text-primary);font-size:0.85rem;width:160px;outline:none;transition:all 0.3s}.search-box input:focus{border-color:var(--accent);width:200px}.search-box i{position:absolute;left:0.65rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.8rem}.search-hint{position:absolute;right:0.5rem;top:50%;transform:translateY(-50%);font-size:0.65rem;color:var(--text-muted);background:var(--bg-secondary);padding:0.1rem 0.3rem;border-radius:4px;border:1px solid var(--border)}.theme-toggle{background:var(--bg-tertiary);border:1px solid var(--border);color:var(--text-secondary);width:40px;height:40px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}.theme-toggle:hover{color:var(--accent-light);border-color:var(--accent)}.nav-cta{background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));color:white;padding:0.6rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:transform 0.3s,box-shadow 0.3s;border:none;cursor:pointer}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,0.35)}.hero{contain:layout style paint;position:relative;z-index:1;padding:8rem 2rem 5rem;text-align:center;max-width:1000px;margin:0 auto}.hero-illustration{width:280px;height:200px;margin:0 auto 2rem}.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--bg-tertiary);border:1px solid var(--border);padding:0.5rem 1rem;border-radius:50px;font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;animation-delay:0.1s}.hero-badge i{color:var(--accent-light)}.hero h1{font-size:3.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--text-primary)0%,var(--accent-light)100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation-delay:0.2s}.hero p{font-size:1.25rem;color:var(--text-secondary);max-width:700px;margin:0 auto 2.5rem;animation-delay:0.3s}.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3rem;animation-delay:0.4s}.stat{text-align:center;padding:1rem 2rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;transition:transform 0.3s}.stat:hover{transform:translateY(-4px)}.stat-value{font-size:2rem;font-weight:700;color:var(--text-primary)}.stat-label{font-size:0.875rem;color:var(--text-muted)}.layout{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 2rem 6rem;display:grid;grid-template-columns:260px 1fr;gap:3rem}.sidebar{position:sticky;top:100px;height:fit-content}.toc{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:1.5rem}.toc h4{font-size:0.9rem;font-weight:600;margin-bottom:1rem;color:var(--text-primary);display:flex;align-items:center;gap:0.5rem}.toc ul{list-style:none}.toc li{margin-bottom:0.5rem}.toc a{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;border-radius:8px;transition:all 0.2s}.toc a:hover,.toc a.active{background:rgba(99,102,241,0.1);color:var(--accent-light)}.toc a.active{font-weight:500}main{min-width:0}.section{margin-bottom:5rem;scroll-margin-top:100px}.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}.section-icon{width:48px;height:48px;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:var(--accent-light)}.section h2{font-size:2rem;font-weight:700}.section h3{font-size:1.35rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--text-primary)}.section p{color:var(--text-secondary);margin-bottom:1rem;font-size:1.05rem}.step-cards{display:grid;gap:1.25rem;margin:2rem 0}.step-card{display:flex;gap:1.25rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.3s;align-items:center}.step-card:hover{border-color:rgba(99,102,241,0.3);transform:translateX(8px)}.step-icon-wrap{width:72px;height:72px;background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(139,92,246,0.15));border-radius:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.step-icon-wrap svg{width:44px;height:44px}.step-content h4{font-size:1.15rem;font-weight:600;margin-bottom:0.35rem}.step-content p{margin:0;font-size:0.98rem}.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:1.75rem;transition:all 0.3s}.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px var(--shadow);border-color:rgba(99,102,241,0.3)}.card-icon{width:56px;height:56px;background:rgba(99,102,241,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--accent-light);margin-bottom:1rem}.card h4{font-size:1.15rem;font-weight:600;margin-bottom:0.5rem}.card p{font-size:0.95rem;color:var(--text-secondary);margin:0}.character-grid{contain:layout style paint;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:2rem}.character-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:24px;padding:1.5rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit;display:block}.character-card:hover{transform:translateY(-8px)rotate(1deg);box-shadow:0 20px 40px var(--shadow)}.character-avatar{width:90px;height:90px;margin:0 auto 1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative}.character-avatar.tsimusic{background:linear-gradient(135deg,#6366f1,#8b5cf6)}.character-avatar.snapcast{background:linear-gradient(135deg,#22c55e,#3b82f6)}.character-avatar.spotify{background:linear-gradient(135deg,#1db954,#1ed760)}.character-avatar.docker{background:linear-gradient(135deg,#2496ed,#3b82f6)}.character-card h4{font-size:1.1rem;font-weight:700;margin-bottom:0.25rem}.character-role{font-size:0.8rem;color:var(--accent-light);font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.5px}.character-card p{font-size:0.9rem;margin:0}.timeline{position:relative;margin:2rem 0;padding-left:2rem}.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gradient-1),var(--gradient-2));border-radius:3px}.timeline-item{position:relative;padding-bottom:2rem}.timeline-dot{position:absolute;left:-26px;top:2px;width:18px;height:18px;background:var(--bg-secondary);border:3px solid var(--accent);border-radius:50%}.timeline-item.completed .timeline-dot{background:var(--accent);border-color:var(--accent)}.timeline-item.completed .timeline-dot::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:8px;color:white}.timeline-date{font-size:0.8rem;color:var(--accent-light);font-weight:600;margin-bottom:0.25rem}.timeline-title{font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem}.timeline-desc{font-size:0.95rem;color:var(--text-secondary);margin:0}.integration-grid{contain:layout style paint;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:1.5rem}.integration-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:1.25rem 1rem;text-align:center;transition:all 0.3s;cursor:pointer}.integration-item:hover{transform:translateY(-4px);border-color:var(--accent)}.integration-icon{width:48px;height:48px;margin:0 auto 0.75rem;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}.integration-item h5{font-size:0.95rem;font-weight:600;margin-bottom:0.25rem}.integration-item p{font-size:0.8rem;margin:0;color:var(--text-muted)}.checklist{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin:1.5rem 0}.checklist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}.checklist-header h4{font-size:1.1rem;font-weight:600}.checklist-progress{font-size:0.9rem;color:var(--accent-light);font-weight:600}.checklist-bar{height:6px;background:var(--bg-tertiary);border-radius:3px;overflow:hidden;margin-bottom:1.25rem}.checklist-bar-fill{height:100%;background:linear-gradient(90deg,var(--gradient-1),var(--gradient-2));border-radius:3px;transition:width 0.5s ease;width:0%}.checklist-item{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all 0.2s}.checklist-item:hover{opacity:0.8}.checklist-item:last-child{border-bottom:none}.checklist-item input[type="checkbox"]{width:20px;height:20px;accent-color:var(--accent);cursor:pointer}.checklist-item label{flex:1;cursor:pointer;font-size:0.95rem;color:var(--text-secondary);transition:color 0.2s}.checklist-item input:checked+label{color:var(--text-primary);text-decoration:line-through;opacity:0.7}.code-block{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0;position:relative}.code-header{background:rgba(0,0,0,0.15);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text-muted);border-bottom:1px solid var(--border);justify-content:space-between}.code-header i{color:var(--accent-light)}.copy-btn{background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.35rem 0.75rem;border-radius:6px;font-size:0.75rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem}.copy-btn:hover{border-color:var(--accent);color:var(--accent-light)}.copy-btn.copied{border-color:var(--success);color:var(--success)}pre{padding:1.25rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:1.7;color:var(--text-primary)}code{font-family:'JetBrains Mono',monospace;background:var(--bg-tertiary);padding:0.2rem 0.5rem;border-radius:5px;font-size:0.9em;color:var(--accent-light);border:1px solid var(--border)}.alert{border-radius:16px;padding:1.25rem;margin:1.5rem 0;display:flex;gap:1rem;align-items:flex-start}.alert i{margin-top:0.2rem;font-size:1.1rem;flex-shrink:0}.alert-success{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)}.alert-success i{color:var(--success)}.alert-warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2)}.alert-warning i{color:var(--warning)}.alert-error{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2)}.alert-error i{color:var(--error)}.alert-info{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2)}.alert-info i{color:var(--info)}.feature-list{list-style:none;margin:1rem 0}.feature-list li{padding:0.7rem 0;padding-left:2rem;position:relative;color:var(--text-secondary);font-size:1.02rem}.feature-list li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;color:var(--accent-light)}.table-container{overflow-x:auto;margin:1.5rem 0;border-radius:16px;border:1px solid var(--border)}table{width:100%;border-collapse:collapse;font-size:0.95rem}th{background:var(--bg-tertiary);color:var(--text-primary);font-weight:600;text-align:left;padding:1rem;border-bottom:1px solid var(--border)}td{padding:1rem;border-bottom:1px solid var(--border);color:var(--text-secondary)}tr:last-child td{border-bottom:none}tr:hover td{background:rgba(99,102,241,0.03)}.accordion{margin:1.5rem 0;display:flex;flex-direction:column;gap:0.75rem}.accordion-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.3s}.accordion-header{width:100%;padding:1.25rem;background:transparent;border:none;color:var(--text-primary);font-size:1rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}.accordion-header:hover{background:rgba(99,102,241,0.03)}.accordion-header i{color:var(--accent-light);transition:transform 0.3s}.accordion-item.open .accordion-header i{transform:rotate(180deg)}.accordion-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease}.accordion-item.open .accordion-body{max-height:500px}.accordion-content{padding:0 1.25rem 1.25rem;color:var(--text-secondary)}.tag{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.75rem;border-radius:6px;font-size:0.8rem;font-weight:500;margin-right:0.5rem;margin-bottom:0.5rem}.tag-blue{background:rgba(59,130,246,0.1);color:#60a5fa}.tag-purple{background:rgba(139,92,246,0.1);color:#a78bfa}.tag-green{background:rgba(34,197,94,0.1);color:#4ade80}.tag-orange{background:rgba(245,158,11,0.1);color:#fbbf24}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem}.glossary-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:1.25rem}.glossary-item h5{font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem;display:flex;align-items:center;gap:0.5rem}.glossary-item h5 i{color:var(--accent-light);font-size:0.85rem}.glossary-item p{font-size:0.9rem;margin:0;color:var(--text-secondary)}.port-visual{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}.port-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:1.25rem;text-align:center;transition:all 0.3s}.port-box:hover{transform:translateY(-4px);border-color:var(--accent)}.port-number{font-size:1.5rem;font-weight:700;color:var(--accent-light)}.port-label{font-size:0.85rem;color:var(--text-secondary);margin-top:0.25rem}.port-protocol{font-size:0.7rem;color:var(--text-muted);margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.5px}.diagram-container{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:1.5rem 0;text-align:center}.diagram-container svg{max-width:100%;height:auto}.footer-cta{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));border:1px solid var(--border);border-radius:20px;padding:3rem;text-align:center;margin-top:4rem}.footer-cta h3{font-size:1.75rem;margin-bottom:1rem}.footer-cta p{color:var(--text-secondary);margin-bottom:1.5rem}footer{position:relative;z-index:1;text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.9rem}.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap}.footer-links a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:color 0.3s}.footer-links a:hover{color:var(--accent-light)}.mobile-menu-btn{display:none;background:transparent;border:none;color:var(--text-primary);font-size:1.25rem;cursor:pointer}.highlight{background:rgba(99,102,241,0.2);border-radius:4px;padding:0.1rem 0.3rem}.kbd{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:6px;padding:0.15rem 0.5rem;font-size:0.8rem;font-family:'JetBrains Mono',monospace}body.presentation-mode{overflow:hidden}body.presentation-mode nav,body.presentation-mode .sidebar,body.presentation-mode footer,body.presentation-mode .reading-progress{display:none}body.presentation-mode .layout{grid-template-columns:1fr;max-width:100%;padding:0}body.presentation-mode
+body.presentation-mode
+body.presentation-mode .hero p{font-size:1.5rem}body.presentation-mode main{max-width:1400px;margin:0 auto;padding:2rem}body.presentation-mode
+.presentation-controls{position:fixed;bottom:2rem;right:2rem;display:flex;gap:0.75rem;z-index:2000;opacity:0;transition:opacity 0.3s;pointer-events:none}body.presentation-mode .presentation-controls{opacity:1;pointer-events:auto}.presentation-controls:hover{opacity:1;pointer-events:auto}.pres-btn{width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-primary);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;box-shadow:0 10px 30px var(--shadow)}.pres-btn:hover{background:var(--accent);color:white;transform:scale(1.1)}.pres-enter{position:fixed;bottom:2rem;right:2rem;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-primary);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:999;transition:all 0.2s;box-shadow:0 10px 30px var(--shadow)}body.presentation-mode .pres-enter{display:none}.pres-enter:hover{background:var(--accent);color:white;transform:scale(1.1)}.presentation-slide-indicator{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--bg-secondary);border:1px solid var(--border);padding:0.5rem 1.25rem;border-radius:50px;font-size:0.9rem;color:var(--text-secondary);z-index:2000;opacity:0;transition:opacity 0.3s;pointer-events:none}body.presentation-mode .presentation-slide-indicator{opacity:1}#confettiCanvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:3000}.cheatsheet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;margin-top:1.5rem}.cheatsheet-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;overflow:hidden}.cheatsheet-header{background:var(--bg-tertiary);padding:0.75rem 1.25rem;font-weight:600;font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border)}.cheatsheet-header i{color:var(--accent-light)}.cheatsheet-body{padding:0.75rem 0}.cheatsheet-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-bottom:1px solid var(--border);font-size:0.9rem}.cheatsheet-row:last-child{border-bottom:none}.cheatsheet-cmd{font-family:'JetBrains Mono',monospace;background:var(--bg-tertiary);padding:0.25rem 0.5rem;border-radius:5px;font-size:0.8rem;color:var(--accent-light);border:1px solid var(--border)}.cheatsheet-row:hover .cheatsheet-cmd{background:rgba(99,102,241,0.1)}.network-map-container{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:1.5rem 0;text-align:center;overflow-x:auto}.network-map-container svg{min-width:700px;max-width:100%;height:auto}.format-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:500;margin-right:0.5rem;margin-bottom:0.5rem}.format-badge.fresh{background:rgba(34,197,94,0.12);color:#4ade80;border:1px solid rgba(34,197,94,0.25)}.format-badge.pure{background:rgba(59,130,246,0.12);color:#60a5fa;border:1px solid rgba(59,130,246,0.25)}.format-badge.compact{background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.25)}.format-badge.speed{background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)}@media(max-width:1024px){.layout{grid-template-columns:1fr}}@media(max-width:768px){.nav-links{display:none}.timeline{padding-left:1.5rem}}.cards-grid .card{transition:transform 0.2s,box-shadow 0.2s}.cards-grid .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}.character-card{cursor:pointer;text-decoration:none;color:inherit;display:block;background:linear-gradient(145deg,#1e1e28,#1a1a22);border:1px solid rgba(148,163,184,0.06);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.3),0 2px 4px -2px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.05)}.character-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.3),transparent);opacity:0;transition:opacity 0.4s}.character-card:hover{transform:translateY(-8px)scale(1.02);box-shadow:0 20px 40px -10px rgba(99,102,241,0.25),0 8px 16px -8px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.1);border-color:rgba(99,102,241,0.2)}.character-card:hover::before{opacity:1}.character-card:active{transform:translateY(-2px)scale(0.98)}.character-avatar{width:72px;height:72px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;position:relative;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}.character-avatar::after{content:'';position:absolute;inset:-4px;border-radius:28px;background:inherit;filter:blur(16px);opacity:0.4;z-index:-1;transition:opacity 0.4s}.character-card:hover .character-avatar{transform:scale(1.15)rotate(-5deg)}.character-card:hover .character-avatar::after{opacity:0.7}.character-avatar.tsimusic{background:linear-gradient(135deg,#6366f1,#8b5cf6)}.character-avatar.spotify{background:linear-gradient(135deg,#1db954,#1ed760)}.integration-item{cursor:pointer;text-decoration:none;color:inherit;display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-radius:16px;background:linear-gradient(145deg,rgba(30,30,38,0.8),rgba(24,24,31,0.9));border:1px solid rgba(148,163,184,0.06);transition:all 0.35s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;backdrop-filter:blur(10px)}.integration-item::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transition:left 0.6s}.integration-item:hover::before{left:100%}.integration-item:hover{transform:translateX(6px);border-color:rgba(99,102,241,0.25);box-shadow:0 10px 30px -8px rgba(99,102,241,0.2)}.integration-item:active{transform:translateX(2px)scale(0.98)}.integration-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;transition:transform 0.35s}.integration-item:hover .integration-icon{transform:scale(1.15)rotate(5deg)}#status-sistema .card{background:linear-gradient(145deg,rgba(30,30,38,0.95),rgba(24,24,31,0.98));border:1px solid rgba(148,163,184,0.08);border-radius:20px;backdrop-filter:blur(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}#status-sistema .card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gradient-1),var(--gradient-2),var(--gradient-3));opacity:0.6}#status-sistema .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(99,102,241,0.2),0 0 0 1px rgba(99,102,241,0.1)}.step-card{background:linear-gradient(145deg,#1e1e28,#1a1a22);border:1px solid rgba(148,163,184,0.06);border-radius:20px;padding:2rem;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;box-shadow:0 4px 6px -1px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.04)}.step-card:hover{transform:translateY(-6px)rotateX(2deg);box-shadow:0 20px 40px -12px rgba(99,102,241,0.15),inset 0 1px 0 rgba(255,255,255,0.08);border-color:rgba(99,102,241,0.15)}.step-card .card-icon{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;margin-bottom:1.25rem;box-shadow:0 8px 20px -4px rgba(99,102,241,0.4);transition:all 0.4s}.step-card:hover .card-icon{transform:scale(1.1)rotate(-8deg);box-shadow:0 12px 30px -6px rgba(99,102,241,0.5)}.cheatsheet-card{background:linear-gradient(145deg,#1e1e28,#1a1a22);border:1px solid rgba(148,163,184,0.06);border-radius:16px;padding:1.25rem;transition:all 0.35s;position:relative;overflow:hidden}.cheatsheet-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,0.2);box-shadow:0 12px 24px -8px rgba(99,102,241,0.15)}.alert{border-radius:16px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;backdrop-filter:blur(10px);border:1px solid}.alert-success{background:linear-gradient(145deg,rgba(34,197,94,0.08),rgba(34,197,94,0.04));border-color:rgba(34,197,94,0.2);color:#4ade80}.alert-info{background:linear-gradient(145deg,rgba(59,130,246,0.08),rgba(59,130,246,0.04));border-color:rgba(59,130,246,0.2)}.alert-warning{background:linear-gradient(145deg,rgba(245,158,11,0.08),rgba(245,158,11,0.04));border-color:rgba(245,158,11,0.2)}.timeline-item:hover{padding-left:3.5rem}.timeline-marker{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;position:absolute;left:0;top:0;box-shadow:0 4px 12px -2px rgba(0,0,0,0.3);transition:all 0.35s}.timeline-item:hover .timeline-marker{transform:scale(1.15);box-shadow:0 8px 20px -4px rgba(99,102,241,0.4)}.checklist-item{display:flex;align-items:center;gap:1rem;padding:0.875rem 1.25rem;border-radius:14px;background:linear-gradient(145deg,rgba(30,30,38,0.6),rgba(24,24,31,0.4));border:1px solid rgba(148,163,184,0.06);margin-bottom:0.75rem;transition:all 0.3s;cursor:pointer}.checklist-item:hover{background:linear-gradient(145deg,rgba(30,30,38,0.8),rgba(24,24,31,0.6));transform:translateX(4px);border-color:rgba(99,102,241,0.15)}.check-box{width:24px;height:24px;border-radius:8px;border:2px solid rgba(148,163,184,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.35s;font-size:0.75rem;color:transparent}.check-box.checked{background:linear-gradient(135deg,#22c55e,#16a34a);border-color:transparent;color:white;box-shadow:0 4px 12px -2px rgba(34,197,94,0.4)}pre,code{font-family:'JetBrains Mono','Fira Code',monospace}pre{background:linear-gradient(145deg,#16161e,#13131a);border:1px solid rgba(148,163,184,0.08);border-radius:16px;padding:1.5rem;overflow-x:auto;position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,0.2)}pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gradient-1),var(--gradient-2));border-radius:16px 16px 0 0;opacity:0.5}table{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;border:1px solid rgba(148,163,184,0.08);box-shadow:0 4px 12px -4px rgba(0,0,0,0.2)}th{background:linear-gradient(145deg,rgba(99,102,241,0.15),rgba(139,92,246,0.1));padding:1rem 1.25rem;text-align:left;font-weight:600;color:var(--text-primary);border-bottom:1px solid rgba(148,163,184,0.1)}td{padding:1rem 1.25rem;border-bottom:1px solid rgba(148,163,184,0.05);transition:background 0.2s}tr:hover td{background:rgba(99,102,241,0.03)}tr:last-child td{border-bottom:none}.section-header:hover .section-icon{transform:scale(1.1)rotate(-5deg);box-shadow:0 12px 30px -6px rgba(99,102,241,0.5)}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--gradient-1),var(--gradient-2));border-radius:4px}::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--gradient-2),var(--gradient-3))}@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px -5px rgba(99,102,241,0.3)}50%{box-shadow:0 0 30px -2px rgba(99,102,241,0.5)}}.hero-badge{animation:fadeInUp 0.8s ease forwards,pulse-glow 3s ease-in-out infinite}.faq-item{background:linear-gradient(145deg,rgba(30,30,38,0.6),rgba(24,24,31,0.4));border:1px solid rgba(148,163,184,0.06);border-radius:16px;margin-bottom:0.75rem;overflow:hidden;transition:all 0.3s}.faq-item:hover{border-color:rgba(99,102,241,0.15)}.faq-question{padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;transition:all 0.3s}.faq-question:hover{background:rgba(99,102,241,0.03)}.faq-answer{padding:0 1.5rem;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;color:var(--text-secondary)}.faq-item.active .faq-answer{padding:0 1.5rem 1.25rem;max-height:500px}.faq-item.active .faq-question{color:var(--accent-light)}nav{background:rgba(15,15,20,0.7);backdrop-filter:blur(30px)saturate(1.2);border-bottom:1px solid rgba(148,163,184,0.08)}[data-theme="light"]nav{background:rgba(248,250,252,0.85)}.hero-stats .stat{background:linear-gradient(145deg,rgba(30,30,38,0.8),rgba(24,24,31,0.6));border:1px solid rgba(148,163,184,0.08);backdrop-filter:blur(10px);transition:all 0.4s}.hero-stats .stat:hover{transform:translateY(-4px);border-color:rgba(99,102,241,0.2);box-shadow:0 12px 30px -8px rgba(99,102,241,0.15)}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.orb{display:none}}@media(prefers-color-scheme:light){html:not([data-theme="dark"]):not([data-theme="light"]){--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-tertiary:#f1f5f9;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--border:rgba(148,163,184,0.25);--shadow:rgba(0,0,0,0.08)}}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px;border-radius:4px}.character-card:focus-visible{outline:2px solid var(--accent-light);outline-offset:4px;transform:translateY(-4px)}.integration-item:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}.skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:white;padding:8px 16px;z-index:10000;transition:top 0.3s}.skip-link:focus{top:0}.flex-center{display:flex;align-items:center;justify-content:center}.flex-between{display:flex;justify-content:space-between;align-items:center}.text-gradient{background:linear-gradient(135deg,var(--text-primary)0%,var(--accent-light)100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.glow-purple{box-shadow:0 0 20px -5px rgba(99,102,241,0.3)}.glow-green{box-shadow:0 0 20px -5px rgba(34,197,94,0.3)}.border-gradient{border:1px solid transparent;background:linear-gradient(var(--bg-card),var(--bg-card))padding-box,linear-gradient(90deg,var(--gradient-1),var(--gradient-2))border-box}@media(max-width:640px){.hero{contain:layout style paint;padding:6rem 1rem 3rem}.hero h1{font-size:2.2rem}.hero p{font-size:1rem}.hero-stats{flex-direction:column;gap:1rem}.hero-stats .stat{width:100%}.character-grid{contain:layout style paint;grid-template-columns:1fr}.integration-grid{contain:layout style paint;grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}.timeline-item{padding-left:2.5rem}.nav-links{display:none}.mobile-menu-btn{display:flex}.sidebar{display:none;position:fixed;top:80px;left:0;right:0;bottom:0;z-index:999;background:var(--bg-primary);padding:2rem;overflow-y:auto}.sidebar.active{display:block}.main-content{margin-left:0;padding:1rem;max-width:100%}.section{padding:2rem 1rem}.step-cards{grid-template-columns:1fr}.cheatsheet-grid{grid-template-columns:1fr}.nav-container{padding:1rem}.hero-illustration{width:200px;height:140px}.search-box{display:none}}@media(min-width:641px)and(max-width:1023px){.character-grid{contain:layout style paint;grid-template-columns:repeat(2,1fr)}.integration-grid{contain:layout style paint;grid-template-columns:repeat(3,1fr)}.sidebar{width:200px}.main-content{margin-left:200px;padding:1.5rem}.hero{contain:layout style paint;padding:7rem 1.5rem 4rem}.step-cards{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1400px){.nav-container,.main-content{max-width:1400px;margin:0 auto}.character-grid{contain:layout style paint;grid-template-columns:repeat(4,1fr)}.integration-grid{contain:layout style paint;grid-template-columns:repeat(6,1fr)}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.orb{display:none}}@media(prefers-color-scheme:light){html:not([data-theme="dark"]):not([data-theme="light"]){--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-tertiary:#f1f5f9;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--border:rgba(148,163,184,0.25);--shadow:rgba(0,0,0,0.08)}}@media print{html body nav,html body .theme-toggle,html body .skip-link{display:none}html body{background:white;color:black}html body a{text-decoration:underline;color:#000}html body .card,html body .character-card,html body .step-card{break-inside:avoid;box-shadow:none;border:1px solid #ccc}}.skeleton{background:linear-gradient(90deg,var(--bg-secondary)25%,var(--bg-tertiary)50%,var(--bg-secondary)75%);background-size:200% 100%;animation:skeleton-shimmer 1.5s ease-in-out infinite;border-radius:var(--radius-md)}@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-avatar{width:64px;height:64px;border-radius:50%}.skeleton-title{width:60%;height:20px;margin-top:12px}.skeleton-text{width:90%;height:14px;margin-top:8px}.skeleton-card{background:var(--bg-card);border-radius:var(--radius-xl);padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem}.skeleton-hidden{display:none}.content-loaded .skeleton{display:none}.content-loaded .real-content{display:block}.real-content{display:none}.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s var(--ease-out),transform 0.6s var(--ease-out)}.reveal.visible{opacity:1;transform:translateY(0)}.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}.reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}.card-container{container-type:inline-size;container-name:card}.integration-container{container-type:inline-size;container-name:integration}.no-webp .hero-bg{background-image:url('hero-fallback.jpg')}.webp .hero-bg{background-image:url('hero.webp')}.card-gradient{position:relative;background:var(--bg-card);border-radius:var(--radius-xl)}.card-gradient::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,var(--color-primary),var(--color-accent-cyan),var(--color-accent-purple));-webkit-mask:linear-gradient(#fff 0 0)content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity var(--transition-slow)}.card-gradient:hover::before{opacity:1}.card-gradient:hover{transform:translateY(-8px);box-shadow:var(--shadow-glow-md)}[data-tooltip]{position:relative}[data-tooltip]::after{content:attr(data-tooltip);position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%)translateY(4px);padding:0.5rem 0.75rem;background:var(--bg-elevated);color:var(--text-primary);font-size:0.75rem;border-radius:var(--radius-md);white-space:nowrap;opacity:0;visibility:hidden;transition:all var(--transition-fast);border:1px solid var(--border-default);box-shadow:var(--shadow-md);z-index:100;pointer-events:none}[data-tooltip]:hover::after{opacity:1;visibility:visible;transform:translateX(-50%)translateY(0)}.nav-link.active{color:var(--color-primary);position:relative}.nav-link.active::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent-cyan));border-radius:2px}html{scroll-padding-top:80px}.uflex-center-gap{display:flex;align-items:center;gap:0.75rem}.m-0{margin:0}.p-15{padding:1.5rem}.icon-40{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}.uflex-center-gap-mb{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem}.ulist-clean{list-style:none;padding:0;margin:0;color:var(--text-secondary);font-size:0.9rem}.mt-15{margin-top:1.5rem}.icon-40-spotify{width:40px;height:40px;border-radius:10px;background:rgba(29,185,84,0.15);color:#1db954;display:flex;align-items:center;justify-content:center}.icon-40-success{width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,0.15);color:var(--color-success);display:flex;align-items:center;justify-content:center}.icon-40-primary{width:40px;height:40px;border-radius:10px;background:rgba(99,102,241,0.15);color:var(--color-primary);display:flex;align-items:center;justify-content:center}.icon-40-warning{width:40px;height:40px;border-radius:10px;background:rgba(245,158,11,0.15);color:var(--color-warning);display:flex;align-items:center;justify-content:center}.icon-40-info{width:40px;height:40px;border-radius:10px;background:rgba(59,130,246,0.15);color:#3b82f6;display:flex;align-items:center;justify-content:center}.icon-40-error{width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.15);color:var(--color-error);display:flex;align-items:center;justify-content:center}.text-muted-small{font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem}.text-secondary-small{font-size:0.9rem;color:var(--text-secondary);margin-top:0.75rem}.my-125{margin:1.25rem 0}.cards-grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1.5rem}.bg-spotify-light{background:rgba(29,185,84,0.1);color:#1db954}.bg-spotify{background:rgba(29,185,84,0.15);color:#1db954}.bg-error-light{background:rgba(239,68,68,0.15);color:var(--color-error)}.bg-info-light{background:rgba(59,130,246,0.15);color:#3b82f6}.bg-purple-light{background:rgba(139,92,246,0.15);color:#8b5cf6}.bg-warning-light{background:rgba(245,158,11,0.15);color:var(--color-warning)}.bg-success-light{background:rgba(34,197,94,0.15);color:var(--color-success)}.p-15{padding:1.5rem}.p-1{padding:1rem}.d-none{display:none}.mt-2{margin-top:2rem}.inline-block-mt{display:inline-block;margin-top:0.5rem}.text-center-p{padding:3rem 1.5rem;text-align:center}.mx-auto{margin:0 auto}.my-1-auto{margin:1rem auto}.my-05-auto{margin:0.5rem auto}.text-small-mt{margin-top:0.5rem;font-size:0.8rem}:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:3px;border-radius:4px}.card:focus-visible,.character-card:focus-visible,.step-card:focus-visible{outline:2px solid var(--color-primary);outline-offset:4px;border-radius:20px}.accordion-header:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:-2px;border-radius:12px}.nav-cta:active,.pres-btn:active,.pres-enter:active,.theme-toggle:active{transform:scale(0.96)}.accordion-header:active{transform:scale(0.99)}.card,.character-card,.step-card,.integration-item{will-change:transform}</style>
+<link href="https://fonts.googleapis.com" rel="dns-prefetch"/>
+<link href="https://cdnjs.cloudflare.com" rel="dns-prefetch"/>
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta content="index, follow" name="robots"/>
+<meta content="TSi MUSIC Wiki | MidiaServer-SaudeClinica" name="twitter:title"/>
+<meta content="Guia completo do TSi MUSIC - Spotify, Snapcast multiroom, configurações Docker e troubleshooting." name="twitter:description"/>
+<meta content="http://100.86.64.1:8080/og-image.png" name="twitter:image"/>
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<nav>
+<div class="nav-container">
+<a class="logo" href="#">
+<div class="logo-icon"><i aria-hidden="true" class="fas fa-music"></i></div>
+<span>TSi MUSIC Wiki</span>
+</a>
+<ul class="nav-links">
+<li><a href="#status-sistema">Status</a></li>
+<li><a href="#primeiros-passos">Começar</a></li>
+<li><a href="#instalacao">Instalar</a></li>
+<li><a href="#snapcast">Snapcast</a></li>
+<li><a href="#spotify">Spotify</a></li>
+<li><a href="#cheatsheet">Terminal</a></li>
+<li><a href="#network-map">Rede</a></li>
+<li><a href="#troubleshooting">Problemas</a></li>
+<li>
+<div class="search-box">
+<i aria-hidden="true" class="fas fa-search"></i>
+<label class="visually-hidden" for="quickSearch">Buscar na wiki</label><input aria-label="Buscar na wiki" id="quickSearch" placeholder="Buscar na wiki..." type="text"/>
+<span class="search-hint">Ctrl K</span>
+</div>
+</li>
+<li>
+<button aria-label="Alternar entre tema claro e escuro" class="theme-toggle" id="themeToggle" title="Alternar tema">
+<i aria-hidden="true" class="fas fa-sun"></i>
+</button>
+</li>
+</ul>
+<div class="uflex-center-gap">
+<button aria-label="Alternar entre tema claro e escuro" class="theme-toggle" id="themeToggleMobile" title="Alternar tema">
+<i aria-hidden="true" class="fas fa-sun"></i>
+</button>
+<a aria-label="Acessar TSi MUSIC" class="nav-cta" href="http://100.86.64.1:8095" rel="noopener noreferrer" target="_blank">
+<i aria-hidden="true" class="fas fa-external-link-alt"></i> Abrir
+                </a>
+</div>
+</div>
+</nav>
+<header class="hero">
+<svg class="hero-illustration animate-in" viewbox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="gradHero1" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color: var(--color-primary);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1"></stop>
+</lineargradient>
+<lineargradient id="gradHero2" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color: var(--color-success);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#gradHero1)" height="80" opacity="0.9" rx="12" width="50" x="30" y="70"></rect>
+<circle cx="55" cy="95" fill="#ffffff" opacity="0.3" r="12"></circle>
+<circle cx="55" cy="125" fill="#ffffff" opacity="0.2" r="18"></circle>
+<rect fill="url(#gradHero1)" height="80" opacity="0.9" rx="12" width="50" x="200" y="70"></rect>
+<circle cx="225" cy="95" fill="#ffffff" opacity="0.3" r="12"></circle>
+<circle cx="225" cy="125" fill="#ffffff" opacity="0.2" r="18"></circle>
+<ellipse cx="140" cy="140" fill="url(#gradHero2)" opacity="0.15" rx="35" ry="22"></ellipse>
+<path d="M125 130 L125 90 L155 80 L155 120" fill="none" stroke="#f1f5f9" stroke-linecap="round" stroke-width="5"></path>
+<ellipse cx="125" cy="132" fill="#f1f5f9" rx="10" ry="8"></ellipse>
+<ellipse cx="155" cy="122" fill="#f1f5f9" rx="10" ry="8"></ellipse>
+<path d="M90 110 Q115 110 130 110" fill="none" opacity="0.8" stroke="#6366f1" stroke-linecap="round" stroke-width="3">
+<animate attributename="d" dur="2s" repeatcount="indefinite" values="M90 110 Q115 110 130 110;M85 110 Q115 90 130 110;M90 110 Q115 130 130 110;M90 110 Q115 110 130 110"></animate>
+</path>
+<path d="M150 110 Q165 110 190 110" fill="none" opacity="0.8" stroke="#6366f1" stroke-linecap="round" stroke-width="3">
+<animate attributename="d" dur="2s" repeatcount="indefinite" values="M150 110 Q165 110 190 110;M150 110 Q165 90 195 110;M150 110 Q165 130 190 110;M150 110 Q165 110 190 110"></animate>
+</path>
+<g opacity="0.7">
+<text fill="#ec4899" font-size="22" x="50" y="55">♪</text>
+<animatetransform attributename="transform" dur="2.5s" repeatcount="indefinite" type="translate" values="0,0; 0,-8; 0,0"></animatetransform>
+</g>
+<g opacity="0.7">
+<text fill="#f59e0b" font-size="18" x="220" y="50">♫</text>
+<animatetransform attributename="transform" dur="2s" repeatcount="indefinite" type="translate" values="0,0; 0,-6; 0,0"></animatetransform>
+</g>
+<g opacity="0.7">
+<text fill="#22c55e" font-size="16" x="170" y="45">♪</text>
+<animatetransform attributename="transform" dur="3s" repeatcount="indefinite" type="translate" values="0,0; 0,-10; 0,0"></animatetransform>
+</g>
+<circle cx="80" cy="45" fill="#ffffff" opacity="0.6" r="3">
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.6;1;0.6"></animate>
+</circle>
+<circle cx="200" cy="60" fill="#ffffff" opacity="0.5" r="2">
+<animate attributename="opacity" dur="1.8s" repeatcount="indefinite" values="0.5;1;0.5"></animate>
+</circle>
+</svg>
+<div class="hero-badge animate-in">
+<i aria-hidden="true" class="fas fa-server"></i>
+            MidiaServer-SaudeClinica • v2.8.5
+        </div>
+<h1 class="animate-in">TSi MUSIC Wiki</h1>
+<p class="animate-in">Seu guia simples e completo para aproveitar o TSi MUSIC. Aqui você encontra tudo explicado de forma fácil: como instalar, tocar música em vários cômodos ao mesmo tempo, conectar o Spotify e resolver probleminhas do dia a dia.</p>
+<div class="hero-stats animate-in">
+<div class="stat">
+<div class="stat-value">17h+</div>
+<div class="stat-label">Tempo Ligado</div>
+</div>
+<div class="stat">
+<div class="stat-value">&lt;1ms</div>
+<div class="stat-label">Sincronia Perfeita</div>
+</div>
+<div class="stat">
+<div class="stat-value">210MB</div>
+<div class="stat-label">Memória Usada</div>
+</div>
+</div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+<div class="toc">
+<h2><i aria-hidden="true" class="fas fa-list-ul"></i> Navegação</h2>
+<ul>
+<li><a href="#primeiros-passos"><i aria-hidden="true" class="fas fa-rocket"></i> Primeiros Passos</a></li>
+<li><a href="#personagens"><i aria-hidden="true" class="fas fa-users"></i> A Equipe</a></li>
+<li><a href="#instalacao"><i aria-hidden="true" class="fas fa-download"></i> Instalação</a></li>
+<li><a href="#portas"><i aria-hidden="true" class="fas fa-server"></i> Portas de Rede</a></li>
+<li><a href="#snapcast"><i aria-hidden="true" class="fas fa-broadcast-tower"></i> Snapcast</a></li>
+<li><a href="#integracoes"><i aria-hidden="true" class="fas fa-plug"></i> Integrações</a></li>
+<li><a href="#spotify"><i class="fab fa-spotify"></i> Spotify</a></li>
+<li><a href="#troubleshooting"><i aria-hidden="true" class="fas fa-wrench"></i> Problemas</a></li>
+<li><a href="#checklist"><i aria-hidden="true" class="fas fa-clipboard-check"></i> Checklist</a></li>
+<li><a href="#cheatsheet"><i aria-hidden="true" class="fas fa-terminal"></i> Comandos Rápidos</a></li>
+<li><a href="#network-map"><i aria-hidden="true" class="fas fa-network-wired"></i> Mapa da Rede</a></li>
+<li><a href="#glossario"><i aria-hidden="true" class="fas fa-book"></i> Glossário</a></li>
+<li><a href="#faq"><i aria-hidden="true" class="fas fa-comments"></i> FAQ</a></li>
+<li><a href="#timeline"><i aria-hidden="true" class="fas fa-history"></i> História</a></li>
+<li><a href="#best-practices"><i aria-hidden="true" class="fas fa-star"></i> Dicas de Ouro</a></li>
+</ul>
+</div>
+</aside>
+<main id="main-content">
+<article>
+<section aria-labelledby="primeiros-passos" class="section" id="primeiros-passos" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-rocket"></i></div>
+<h2>Primeiros Passos</h2>
+</div>
+<p>Nunca usou o TSi MUSIC? Sem problema! Siga esses passos simples para começar a ouvir música em minutos:</p>
+<div class="step-cards">
+<div class="step-card">
+<div class="step-icon-wrap">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#6366f1" height="28" opacity="0.2" rx="6" width="36" x="6" y="10"></rect>
+<rect height="28" rx="6" stroke="#818cf8" stroke-width="2.5" width="36" x="6" y="10"></rect>
+<circle cx="24" cy="24" fill="#818cf8" r="6"></circle>
+<path d="M36 16H34" stroke="#818cf8" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<div class="step-content">
+<h3>Abra o TSi MUSIC no navegador</h3>
+<p>Digite <code>http://100.86.64.1:8095</code> no navegador do seu computador ou celular conectado à rede de casa. A tela inicial vai aparecer com sua biblioteca de músicas.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-icon-wrap">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" fill="#22c55e" opacity="0.15" r="18"></circle>
+<circle cx="16" cy="20" fill="#4ade80" r="4"></circle>
+<circle cx="32" cy="20" fill="#3b82f6" r="4"></circle>
+<path d="M16 28C16 28 19 34 24 34C29 34 32 28 32 28" stroke="#f59e0b" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="24" cy="24" opacity="0.4" r="16" stroke="#22c55e" stroke-width="2.5"></circle>
+</svg>
+</div>
+<div class="step-content">
+<h4>Adicione suas fontes de música</h4>
+<p>Vá em <strong>Configurações → Provedores de Música</strong> e escolha o que você usa: Spotify, músicas salvas no computador, rádios online, etc.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-icon-wrap">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ec4899" height="20" opacity="0.2" rx="4" width="14" x="8" y="20"></rect>
+<rect height="20" rx="4" stroke="#f472b6" stroke-width="2.5" width="14" x="8" y="20"></rect>
+<circle cx="15" cy="30" fill="#f472b6" r="4"></circle>
+<rect fill="#6366f1" height="28" opacity="0.2" rx="4" width="14" x="26" y="12"></rect>
+<rect height="28" rx="4" stroke="#818cf8" stroke-width="2.5" width="14" x="26" y="12"></rect>
+<circle cx="33" cy="26" fill="#818cf8" r="5"></circle>
+<path d="M22 28L26 28" stroke="#94a3b8" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="step-content">
+<h4>Ative seus aparelhos de som</h4>
+<p>Em <strong>Configurações → Players</strong>, o TSi MUSIC já deve ter encontrado suas caixas de som inteligentes. Clique nelas para ativar.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-icon-wrap">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" fill="#f59e0b" opacity="0.15" r="20"></circle>
+<circle cx="24" cy="24" opacity="0.5" r="18" stroke="#fbbf24" stroke-width="2.5"></circle>
+<path d="M20 16L32 24L20 32V16Z" fill="#fbbf24"></path>
+<circle cx="36" cy="24" fill="#f59e0b" opacity="0.6" r="3">
+<animate attributename="opacity" dur="1.5s" repeatcount="indefinite" values="0.6;0.2;0.6"></animate>
+</circle>
+<circle cx="40" cy="24" fill="#f59e0b" opacity="0.4" r="2">
+<animate attributename="opacity" dur="1.5s" repeatcount="indefinite" values="0.4;0.1;0.4"></animate>
+</circle>
+</svg>
+</div>
+<div class="step-content">
+<h4>Toque sua primeira música</h4>
+<p>Volte para a tela inicial, escolha uma música e aperte o play! Se quiser ouvir em vários cômodos, segure o player e arraste para um grupo de Snapcast.</p>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="personagens" class="section" id="personagens" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-users"></i></div>
+<h2>Conheça a Equipe</h2>
+</div>
+<p>Cada tecnologia que faz o TSi MUSIC funcionar tem sua própria personalidade. Conheça os personagens que trabalham juntos para trazer música para sua casa:</p>
+<div class="character-grid">
+<a aria-label="Character: TSi MUSIC" class="character-card" href="#primeiros-passos" title="Ir para: TSi MUSIC">
+<div class="character-avatar tsimusic">🎵</div>
+<h3>TSi MUSIC</h3>
+<div class="character-role">O Maestro</div>
+<p>O cérebro da operação. Reúne todas as músicas em um só lugar e comanda a orquestra.</p>
+</a>
+<a aria-label="Character: Snapcast" class="character-card" href="#snapcast" title="Ir para: Snapcast">
+<div class="character-avatar snapcast">📡</div>
+<h3>Snapcast</h3>
+<div class="character-role">O Mensageiro</div>
+<p>Entrega a música sincronizada para os cômodos ao mesmo tempo.</p>
+</a>
+<a aria-label="Character: Spotify" class="character-card" href="#spotify" title="Ir para: Spotify">
+<div class="character-avatar spotify">🎧</div>
+<h3>Spotify</h3>
+<div class="character-role">O Estrela</div>
+<p>Traz milhões de músicas e playlists direto do streaming.</p>
+</a>
+<a aria-label="Character: Docker" class="character-card" href="#instalacao" title="Ir para: Docker">
+<a class="character-card" href="#instalacao" title="Ir para: Docker">
+<div class="character-avatar docker">🐳</div>
+<h3>Docker</h3>
+<div class="character-role">O Guardião</div>
+<p>Protege o servidor, mantendo o TSi MUSIC numa caixinha segura e organizada.</p>
+</a>
+</a></div>
+</section>
+<section aria-atomic="true" aria-live="polite" class="section" id="status-sistema">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-heartbeat"></i></div>
+<h2>Status Atual do Sistema</h2>
+</div>
+<p>Informações em tempo real coletadas da varredura do TSi MUSIC no MidiaServer-SaudeClinica:</p>
+<div class="cards-grid-auto">
+<div class="p-15">
+<div class="uflex-center-gap-mb">
+<div class="icon-40-success"><i aria-hidden="true" class="fas fa-server"></i></div>
+<h3 class="m-0">Servidor</h3>
+</div>
+<ul class="ulist-clean">
+<li>✅ Versão: <strong>2.8.5</strong></li>
+<li>✅ Status: <strong>Running</strong></li>
+<li>✅ Schema: v29</li>
+<li>✅ Onboard: Completo</li>
+</ul>
+</div>
+<div class="p-15">
+<div class="uflex-center-gap-mb">
+<div class="icon-40-primary"><i aria-hidden="true" class="fas fa-plug"></i></div>
+<h4 class="m-0">Providers Ativos (19)</h4>
+</div>
+<ul class="ulist-clean">
+<li>🎵 Spotify — <strong>Configurado</strong></li>
+<li>📻 Radio Browser — <strong>Online</strong></li>
+<li>📁 Arquivos Locais — <strong>Ativo</strong></li>
+<li>🎉 Party Mode — <strong>Ativo</strong></li>
+<li>🔗 Spotify Connect — <strong>Ativo</strong></li>
+</ul>
+</div>
+<div class="p-15">
+<div class="uflex-center-gap-mb">
+<div class="icon-40-warning"><i aria-hidden="true" class="fas fa-volume-up"></i></div>
+<h4 class="m-0">Players (5)</h4>
+</div>
+<ul class="ulist-clean">
+<li>🔊 MidiaServer-SaudeClinica — <strong>Ativo</strong></li>
+<li>🌐 Web (Chrome) — <strong>Registrado</strong></li>
+<li>🎧 Snapcast Group — <strong>Ativo</strong></li>
+</ul>
+</div>
+<div class="p-15">
+<div class="uflex-center-gap-mb">
+<div class="icon-40-info"><i aria-hidden="true" class="fas fa-network-wired"></i></div>
+<h4 class="m-0">Rede &amp; Audio</h4>
+</div>
+<ul class="ulist-clean">
+<li>🌐 DNS: 1.1.1.1, 8.8.8.8</li>
+<li>🔊 PipeWire — <strong>Ativo</strong></li>
+<li>🎛️ WirePlumber — <strong>Ativo</strong></li>
+<li>📡 Snapclient — <strong>Conectado</strong></li>
+</ul>
+</div>
+</div>
+<div class="mt-15">
+<i aria-hidden="true" class="fas fa-check-circle"></i>
+<div>
+<strong>Sistema saudável!</strong> Todas as correções de DNS foram aplicadas com sucesso. O TSi MUSIC está atualizado para v2.8.5 e os providers estão operacionais.
+                    </div>
+</div>
+</section>
+<section aria-labelledby="instalacao" class="section" id="instalacao" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-download"></i></div>
+<h2>Como Instalar no Docker</h2>
+</div>
+<p>A forma mais fácil de usar o TSi MUSIC é dentro do Home Assistant, como um add-on. Mas como aqui no MidiaServer estamos usando o Docker direto, precisamos de alguns cuidados especiais para tudo funcionar direitinho:</p>
+<div class="alert alert-error">
+<i aria-hidden="true" class="fas fa-exclamation-triangle"></i>
+<div>
+<strong>Importante:</strong> O TSi MUSIC precisa usar a <strong>rede direta do computador</strong> (<code>network_mode: host</code>). Isso significa que ele precisa "conversar" livremente com sua rede, sem barreiras. Além disso, os aparelhos de som e o servidor precisam estar na <strong>mesma rede de casa</strong>.
+                    </div>
+</div>
+<h3><i aria-hidden="true" class="fas fa-file-code"></i> Arquivo de Configuração Pronto</h3>
+<p>Copie o arquivo abaixo. Ele já vem com as melhores configurações testadas para o nosso servidor:</p>
+<div class="code-block">
+<div class="code-header">
+<span><i aria-hidden="true" class="fas fa-terminal"></i> docker-compose.yml</span>
+<button class="copy-btn" onclick="copyCode(this)"><i aria-hidden="true" class="fas fa-copy"></i> Copiar</button>
+</div>
+<pre>services:
+  music-assistant-server:
+    image: ghcr.io/music-assistant/server:2.8.5
+    container_name: music-assistant-server
+    user: "1000:1000"
+    restart: unless-stopped
+    network_mode: host
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    volumes:
+      - /home/tsi/docker/music-assistant/data:/data
+      - /home/tsi/Music/local:/music:ro
+      - /run/user/1000/pipewire-0:/run/user/1000/pipewire-0
+      - /run/user/1000/pulse:/run/user/1000/pulse
+      - /run/user/1000:/run/user/1000
+      - /dev/snd:/dev/snd
+    environment:
+      - LOG_LEVEL=info
+      - PUID=1000
+      - PGID=1000
+      - PIPEWIRE_RUNTIME_DIR=/run/user/1000
+      - PULSE_RUNTIME_PATH=/run/user/1000/pulse
+      - XDG_RUNTIME_DIR=/run/user/1000
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
+    devices:
+      - /dev/snd:/dev/snd
+    group_add:
+      - audio
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8095/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G</pre>
+</div>
+<div class="diagram-container">
+<svg viewbox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="boxGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color: var(--color-primary);stop-opacity:0.3"></stop>
+<stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.1"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#boxGrad)" height="140" rx="16" stroke="#6366f1" stroke-dasharray="6 4" stroke-width="2" width="140" x="20" y="40"></rect>
+<text fill="var(--text-secondary)" font-size="13" font-weight="600" text-anchor="middle" x="90" y="70">Computador</text>
+<text fill="var(--text-muted)" font-size="11" text-anchor="middle" x="90" y="90">MidiaServer</text>
+<rect fill="#18181f" height="60" rx="10" stroke="#22c55e" stroke-width="2" width="100" x="40" y="100"></rect>
+<text fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle" x="90" y="125">Docker</text>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="90" y="142">TSi MUSIC</text>
+<path d="M140 130 L200 130" marker-end="url(#arrow)" stroke="#6366f1" stroke-dasharray="4 2" stroke-width="2"></path>
+<path d="M140 145 L200 170" marker-end="url(#arrow)" stroke="#6366f1" stroke-dasharray="4 2" stroke-width="2"></path>
+<path d="M140 115 L200 90" marker-end="url(#arrow)" stroke="#6366f1" stroke-dasharray="4 2" stroke-width="2"></path>
+<defs>
+<marker id="arrow" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#6366f1"></path>
+</marker>
+</defs>
+<rect fill="var(--bg-tertiary)" height="50" rx="10" stroke="#ec4899" stroke-width="2" width="70" x="210" y="60"></rect>
+<circle cx="245" cy="85" fill="#f472b6" opacity="0.3" r="10"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="245" y="125">Sala</text>
+<rect fill="var(--bg-tertiary)" height="50" rx="10" stroke="#3b82f6" stroke-width="2" width="70" x="210" y="120"></rect>
+<circle cx="245" cy="145" fill="#60a5fa" opacity="0.3" r="10"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="245" y="185">Celular</text>
+<rect fill="var(--bg-tertiary)" height="30" rx="8" stroke="#f59e0b" stroke-width="2" width="70" x="210" y="180"></rect>
+<circle cx="245" cy="195" fill="#fbbf24" opacity="0.3" r="6"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="245" y="220">Cozinha</text>
+<text fill="var(--text-muted)" font-size="12" x="320" y="130">Mesma rede de casa</text>
+<path d="M310 120 Q330 110 350 120" fill="none" stroke="var(--text-muted)" stroke-width="1"></path>
+</svg>
+<p class="text-muted-small">O TSi MUSIC dentro do Docker conversa com os aparelhos pela mesma rede</p>
+</div>
+<div class="cards-grid">
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-network-wired"></i></div>
+<h4>Rede Direta do Computador</h4>
+<p>Assim o TSi MUSIC encontra automaticamente suas caixas de som e aparelhos de áudio pela casa, sem você precisar configurar um por um.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-volume-up"></i></div>
+<h4>Saída de Som Conectada</h4>
+<p>Conectamos o PipeWire, PulseAudio e a placa de som do computador para o som sair direto do servidor também.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-shield-alt"></i></div>
+<h4>Permissões Especiais</h4>
+<p>As permissões <code>SYS_ADMIN</code> e <code>DAC_READ_SEARCH</code> só são necessárias se você for montar pastas compartilhadas de outro computador dentro do TSi MUSIC.</p>
+
+</div>
+</div></section>
+<section aria-labelledby="portas" class="section" id="portas" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-server"></i></div>
+<h2>Portas de Rede Utilizadas</h2>
+</div>
+<p>Para que tudo funcione perfeitamente, o firewall e o roteador da sua casa precisam deixar essas portas abertas. Pense nas portas como "portinholas" virtuais por onde a música e os comandos trafegam:</p>
+<div class="port-visual">
+<div class="port-box"><div class="port-number">8095</div><div class="port-label">Tela do TSi MUSIC</div><div class="port-protocol">TCP</div></div>
+<div class="port-box"><div class="port-number">8097</div><div class="port-label">Stream de Áudio</div><div class="port-protocol">TCP</div></div>
+<div class="port-box"><div class="port-number">1704</div><div class="port-label">Snapcast Áudio</div><div class="port-protocol">TCP</div></div>
+<div class="port-box"><div class="port-number">1705</div><div class="port-label">Snapcast Controle</div><div class="port-protocol">TCP</div></div>
+<div class="port-box"><div class="port-number">1780</div><div class="port-label">Snapcast Web</div><div class="port-protocol">TCP</div></div>
+<div class="port-box"><div class="port-number">4953-5153</div><div class="port-label">Clientes Snapcast</div><div class="port-protocol">TCP/UDP</div></div>
+</div>
+<div class="alert alert-info">
+<i aria-hidden="true" class="fas fa-lightbulb"></i>
+<div>
+<strong>Dica prática:</strong> Se você usa o TSi MUSIC apenas dentro da sua rede de casa (LAN), normalmente não precisa fazer nada no roteador. Essas portas já conversam livremente entre aparelhos da mesma casa. Só precisa se preocupar se estiver configurando acesso remoto.
+                    </div>
+</div>
+</section>
+<section class="section" id="snapcast">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-broadcast-tower"></i></div>
+<h2>Música em Todos os Cômodos com Snapcast</h2>
+</div>
+<p>O <strong>Snapcast</strong> é a magia por trás de tocar a mesma música em vários aparelhos ao mesmo tempo, sem aquela sensação irritante de um cômodo desafinado do outro. Ele deixa tudo perfeitamente sincronizado. A galera que usa o TSi MUSIC recomenda o Snapcast de olhos fechados.</p>
+<div class="alert alert-success">
+<i aria-hidden="true" class="fas fa-check-circle"></i>
+<div>
+<strong>Boa notícia:</strong> O TSi MUSIC já vem com o <strong>servidor Snapcast embutido</strong>! Quando você ativa o Snapcast nas configurações, ele automaticamente liga nas portas <code>1704</code> (o áudio em si), <code>1705</code> (controle) e <code>1780</code> (painel de controle na web). Não precisa instalar nada extra.
+                    </div>
+</div>
+<div class="diagram-container">
+<svg viewbox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 200 L40 100 L120 40 L200 100 L200 200" fill="none" opacity="0.5" stroke="#6366f1" stroke-width="2"></path>
+<path d="M200 200 L200 120 L320 120 L320 200" fill="none" opacity="0.5" stroke="#6366f1" stroke-width="2"></path>
+<path d="M320 200 L320 100 L440 60 L480 85 L480 200" fill="none" opacity="0.5" stroke="#6366f1" stroke-width="2"></path>
+<rect fill="url(#gradHero1)" height="40" opacity="0.9" rx="8" width="60" x="90" y="140"></rect>
+<text fill="white" font-size="10" font-weight="600" text-anchor="middle" x="120" y="165">Servidor</text>
+<path d="M150 155 Q180 155 210 140" fill="none" stroke="#6366f1" stroke-dasharray="3 2" stroke-width="2">
+<animate attributename="stroke-dashoffset" dur="1s" repeatcount="indefinite" values="0;10"></animate>
+</path>
+<path d="M150 165 Q200 165 250 180" fill="none" stroke="#6366f1" stroke-dasharray="3 2" stroke-width="2">
+<animate attributename="stroke-dashoffset" dur="1.2s" repeatcount="indefinite" values="0;10"></animate>
+</path>
+<path d="M150 160 Q220 120 320 130" fill="none" stroke="#6366f1" stroke-dasharray="3 2" stroke-width="2">
+<animate attributename="stroke-dashoffset" dur="0.8s" repeatcount="indefinite" values="0;10"></animate>
+</path>
+<path d="M150 160 Q250 100 380 90" fill="none" stroke="#6366f1" stroke-dasharray="3 2" stroke-width="2">
+<animate attributename="stroke-dashoffset" dur="1s" repeatcount="indefinite" values="0;10"></animate>
+</path>
+<rect fill="#ec4899" height="40" opacity="0.2" rx="8" width="50" x="220" y="120"></rect>
+<rect height="40" rx="8" stroke="#f472b6" stroke-width="2" width="50" x="220" y="120"></rect>
+<circle cx="245" cy="140" fill="#f472b6" opacity="0.3" r="10"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="245" y="175">Sala</text>
+<rect fill="#f59e0b" height="40" opacity="0.2" rx="8" width="50" x="340" y="70"></rect>
+<rect height="40" rx="8" stroke="#fbbf24" stroke-width="2" width="50" x="340" y="70"></rect>
+<circle cx="365" cy="90" fill="#fbbf24" opacity="0.3" r="10"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="365" y="125">Cozinha</text>
+<rect fill="#22c55e" height="40" opacity="0.2" rx="8" width="50" x="400" y="140"></rect>
+<rect height="40" rx="8" stroke="#4ade80" stroke-width="2" width="50" x="400" y="140"></rect>
+<circle cx="425" cy="160" fill="#4ade80" opacity="0.3" r="10"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="425" y="195">Quarto</text>
+<rect fill="#3b82f6" height="45" opacity="0.2" rx="6" width="30" x="250" y="170"></rect>
+<rect height="45" rx="6" stroke="#60a5fa" stroke-width="2" width="30" x="250" y="170"></rect>
+<circle cx="265" cy="188" fill="#60a5fa" opacity="0.4" r="6"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="265" y="225">Celular</text>
+<text fill="#ec4899" font-size="16" opacity="0.7" x="290" y="100">♪
+                            <animatetransform attributename="transform" dur="2s" repeatcount="indefinite" type="translate" values="0,0; 0,-6; 0,0"></animatetransform>
+</text>
+<text fill="#f59e0b" font-size="14" opacity="0.7" x="380" y="50">♫
+                            <animatetransform attributename="transform" dur="2.3s" repeatcount="indefinite" type="translate" values="0,0; 0,-5; 0,0"></animatetransform>
+</text>
+</svg>
+<p class="text-secondary-small">O servidor manda a música sincronizada para os cômodos ao mesmo tempo</p>
+</div>
+<h3>Como Funciona Aqui em Casa</h3>
+<ul class="feature-list">
+<li><strong>O Cérebro:</strong> O TSi MUSIC (com Snapcast dentro) roda no servidor <code>100.86.64.1</code></li>
+<li><strong>Ouvido Local:</strong> O programa <code>snapclient</code> no próprio servidor, apontado para <code>127.0.0.1</code>, faz o som sair pelas caixas de som conectadas ao computador</li>
+<li><strong>Ouvidos Remotos:</strong> Outros computadores, Raspberry Pis ou celulares Android com o app Snapdroid</li>
+<li><strong>Painel Web:</strong> Você pode abrir <code>http://100.86.64.1:1780</code> no navegador para ver quem está ouvindo e ajustar o volume de cada cômodo</li>
+</ul>
+<h3>Configurando o Snapclient no Servidor</h3>
+<p>Para o próprio servidor fazer barulho também, instale o cliente do Snapcast:</p>
+<div class="code-block">
+<div class="code-header">
+<span><i aria-hidden="true" class="fas fa-terminal"></i> Comandos para instalar</span>
+<button class="copy-btn" onclick="copyCode(this)"><i aria-hidden="true" class="fas fa-copy"></i> Copiar</button>
+</div>
+<pre># Instala o programa
+sudo pacman -S snapclient
+
+# Desativa a versão do sistema e ativa a versão do seu usuário
+sudo systemctl disable --now snapclient
+systemctl --user enable --now snapclient
+
+# Diz para ele conectar no Snapcast do TSi MUSIC
+echo 'SNAPCLIENT_OPTS="--host 127.0.0.1 --player alsa"' | sudo tee /etc/default/snapclient</pre>
+</div>
+<h3>Qualidade do Som: Os Formatos Explicados</h3>
+<div class="my-125">
+<span class="format-badge fresh"><i aria-hidden="true" class="fas fa-gem"></i> FLAC — Máxima qualidade</span>
+<span class="format-badge pure"><i aria-hidden="true" class="fas fa-water"></i> PCM — Pura, sem compressão</span>
+<span class="format-badge compact"><i aria-hidden="true" class="fas fa-compress"></i> OGG — Compacto para Wi-Fi lento</span>
+<span class="format-badge speed"><i aria-hidden="true" class="fas fa-bolt"></i> Opus — Rápido e moderno</span>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr><th>Formato</th><th>Qualidade</th><th>Atraso</th><th>Quando Usar</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>FLAC</strong></td><td>Máxima (sem perdas)</td><td>~26ms</td><td>O padrão do TSi MUSIC. Ótimo equilíbrio entre qualidade e uso da internet.</td></tr>
+<tr><td>PCM</td><td>Máxima pura</td><td>Quase zero</td><td>Para quem quer o mínimo de atraso possível, mas gasta mais banda da rede.</td></tr>
+<tr><td>OGG</td><td>Boa (com perdas pequenas)</td><td>Varia</td><td>Quando a internet Wi-Fi da casa está muito lenta ou com muita gente usando.</td></tr>
+<tr><td>Opus</td><td>Boa e rápida</td><td>Baixo</td><td>Bom para quem quer pouco atraso, mas só funciona com músicas em 48kHz.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="alert alert-warning">
+<i aria-hidden="true" class="fas fa-info-circle"></i>
+<div>
+<strong>Música cortando no Wi-Fi?</strong> Se a música ficar travando em algum aparelho conectado pelo Wi-Fi, aumente a "memória temporária" (<code>buffer</code>) do snapclient para <code>1500ms</code> ou <code>2000ms</code>. O atraso entre os cômodos continua tão pequeno que seu ouvido não percebe.
+                    </div>
+</div>
+</section>
+<section class="section" id="integracoes">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-plug"></i></div>
+<h2>Integrações Disponíveis</h2>
+</div>
+<p>O TSi MUSIC não fica só no Spotify! Ele conversa com vários serviços e fontes de música diferentes. Veja o que você pode conectar:</p>
+<div class="integration-grid">
+<a aria-label="Configurar Spotify" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers?domain=spotify" title="Configurar Spotify">
+<div class="bg-spotify"><i class="fab fa-spotify"></i></div>
+<h3>Spotify</h3>
+<p>Streaming #1</p>
+</a>
+<a aria-label="Configurar YouTube Music" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers?domain=youtube_music" title="Configurar YouTube Music">
+<div class="bg-error-light"><i class="fab fa-youtube"></i></div>
+<h4>YouTube Music</h4>
+<p>Video e Música</p>
+</a>
+<a aria-label="Configurar Radio Browser" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers?domain=radiobrowser" title="Configurar Radio Browser">
+<div class="bg-info-light"><i aria-hidden="true" class="fas fa-broadcast-tower"></i></div>
+<h4>Radio Browser</h4>
+</a>
+<a aria-label="Configurar Tidal" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers?domain=tidal" title="Configurar Tidal">
+<div class="bg-purple-light"><i aria-hidden="true" class="fas fa-music"></i></div>
+<h4>Tidal</h4>
+<p>Alta fidelidade</p>
+</a>
+<a aria-label="Configurar Arquivos Locais" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers?domain=filesystem_local" title="Configurar Arquivos Locais">
+<div class="bg-warning-light"><i aria-hidden="true" class="fas fa-folder"></i></div>
+<h4>Arquivos Locais</h4>
+<p>Sua biblioteca</p>
+</a>
+<a aria-label="Configurar Podcasts" class="integration-item" href="http://100.86.64.1:8095/#/settings/providers" title="Configurar Podcasts">
+<div class="bg-success-light"><i aria-hidden="true" class="fas fa-podcast"></i></div>
+<h4>Podcasts</h4>
+<p>Via provedores</p>
+</a>
+</div>
+<div class="mt-15">
+<i aria-hidden="true" class="fas fa-lightbulb"></i>
+<div>
+<strong>Combine tudo!</strong> A mágica do TSi MUSIC é justamente unir músicas do Spotify, rádios online e arquivos salvos no computador em uma única biblioteca. Você pode criar playlists mistas com todas as fontes!
+                    </div>
+</div>
+</section>
+<section class="section" id="spotify">
+<div class="section-header">
+<div class="section-icon"><i class="fab fa-spotify"></i></div>
+<h2>Spotify no TSi MUSIC</h2>
+</div>
+<p>Você pode usar o Spotify de <strong>duas maneiras</strong> diferentes dentro do TSi MUSIC:</p>
+<div class="p-15">
+<svg viewbox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+<rect fill="rgba(34,197,94,0.08)" height="100" rx="14" stroke="rgba(34,197,94,0.3)" stroke-width="2" width="180" x="20" y="20"></rect>
+<circle cx="70" cy="55" fill="#1db954" opacity="0.2" r="18"></circle>
+<text fill="#1db954" font-size="18" text-anchor="middle" x="70" y="62">♪</text>
+<text fill="var(--text-primary)" font-size="12" font-weight="600" x="110" y="50">Conexão Spotify</text>
+<text fill="var(--text-secondary)" font-size="10" x="110" y="68">Oficial no TSi MUSIC</text>
+<text fill="var(--text-muted)" font-size="10" x="110" y="85">Navega playlists direto</text>
+<text fill="var(--text-muted)" font-size="10" x="110" y="100">na tela do servidor</text>
+<rect fill="rgba(59,130,246,0.08)" height="100" rx="14" stroke="rgba(59,130,246,0.3)" stroke-width="2" width="180" x="280" y="20"></rect>
+<rect fill="#3b82f6" height="34" opacity="0.2" rx="4" width="22" x="310" y="45"></rect>
+<rect height="34" rx="4" stroke="#60a5fa" stroke-width="2" width="22" x="310" y="45"></rect>
+<circle cx="321" cy="60" fill="#60a5fa" opacity="0.5" r="4"></circle>
+<text fill="var(--text-primary)" font-size="12" font-weight="600" x="350" y="50">Spotify Connect</text>
+<text fill="var(--text-secondary)" font-size="10" x="350" y="68">Via app do celular</text>
+<text fill="var(--text-muted)" font-size="10" x="350" y="85">Controla do Spotify</text>
+<text fill="var(--text-muted)" font-size="10" x="350" y="100">oficial no celular</text>
+</svg>
+</div>
+<div class="cards-grid">
+<div class="card">
+<div class="bg-spotify-light"><i aria-hidden="true" class="fas fa-music"></i></div>
+<h3>Conexão Spotify Oficial</h3>
+<p>É a forma normal de usar: você navega pelas suas playlists e músicas diretamente dentro da tela do TSi MUSIC. É o jeito mais tranquilo e recomendado.</p>
+</div>
+<div class="card">
+<div class="bg-spotify-light"><i aria-hidden="true" class="fas fa-cast"></i></div>
+<h4>Spotify Connect</h4>
+<p>Isso faz com que suas caixas de som do TSi MUSIC apareçam como aparelhos dentro do aplicativo oficial do Spotify no seu celular. Útil para controlar pelo celular.</p>
+</div>
+</div>
+<h3>Problemas Conhecidos e Como Resolver</h3>
+<div class="alert alert-error">
+<i aria-hidden="true" class="fas fa-bug"></i>
+<div>
+<strong>Spotify Connect fica "Carregando" eternamente:</strong> Algumas versões do TSi MUSIC (2.7.x a 2.8.x) podem fazer o programa do Spotify Connect ficar reiniciando sozinho, num loop chato. <strong>O que fazer:</strong> Vá em Configurações do TSi MUSIC, desative o Spotify Connect e ative de novo.
+                    </div>
+</div>
+<div class="alert alert-error">
+<i aria-hidden="true" class="fas fa-bug"></i>
+<div>
+<strong>Música para depois de 1 segundo:</strong> Às vezes aparece o erro <code>"Audio Sink Error On Write: Broken pipe"</code>. Isso acontece quando o Spotify Connect tenta mandar música para uma caixa de som que ainda não "acordou" completamente. <strong>Solução:</strong> No app do Spotify, pare a música e escolha o aparelho de novo.
+                    </div>
+</div>
+<div class="alert alert-warning">
+<i aria-hidden="true" class="fas fa-exclamation-circle"></i>
+<div>
+<strong>Cuidado com o spotifyd:</strong> Se você tinha outro programa chamado <code>spotifyd</code> rodando no mesmo computador, os dois vão brigando para aparecer com nomes parecidos no Spotify. <strong>Dica:</strong> Desligue o <code>spotifyd</code> e deixe só o Spotify Connect do TSi MUSIC ligado.
+                    </div>
+</div>
+</section>
+<section class="section" id="troubleshooting">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-wrench"></i></div>
+<h2>Resolvendo Problemas do Dia a Dia</h2>
+</div>
+<div class="p-1">
+<svg viewbox="0 0 420 140" xmlns="http://www.w3.org/2000/svg">
+<circle cx="80" cy="55" fill="#f59e0b" opacity="0.2" r="22"></circle>
+<circle cx="80" cy="50" fill="#fbbf24" r="14"></circle>
+<rect fill="#fbbf24" height="25" rx="6" width="16" x="72" y="65"></rect>
+<path d="M65 75 L60 95" stroke="#fbbf24" stroke-linecap="round" stroke-width="5"></path>
+<path d="M95 75 L100 85" stroke="#fbbf24" stroke-linecap="round" stroke-width="5"></path>
+<path d="M95 85 L115 105" stroke="#94a3b8" stroke-linecap="round" stroke-width="5"></path>
+<circle cx="118" cy="108" fill="none" r="6" stroke="#94a3b8" stroke-width="3"></circle>
+<rect fill="var(--bg-tertiary)" height="90" rx="14" stroke="var(--border)" stroke-width="1" width="250" x="140" y="25"></rect>
+<path d="M140 95 L125 110 L140 100" fill="var(--bg-tertiary)" stroke="var(--border)" stroke-width="1"></path>
+<text fill="var(--text-primary)" font-size="12" font-weight="600" x="160" y="55">Vamos resolver juntos!</text>
+<text fill="var(--text-secondary)" font-size="11" x="160" y="75">Confira as dicas abaixo para os</text>
+<text fill="var(--text-secondary)" font-size="11" x="160" y="92">problemas mais comuns do dia a dia.</text>
+<circle cx="360" cy="55" fill="#ef4444" opacity="0.15" r="12"></circle>
+<path d="M354 55 L360 61 L368 49" fill="none" stroke="#ef4444" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="360" cy="85" fill="#22c55e" opacity="0.15" r="12"></circle>
+<path d="M354 85 L360 91 L368 79" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3><i aria-hidden="true" class="fas fa-volume-mute"></i> Não está saindo som no servidor</h3>
+<ul class="feature-list">
+<li>Veja se o <code>snapclient</code> está ligado e conectado. Digite no terminal: <code>systemctl --user status snapclient</code></li>
+<li>Confirme que o sistema de som do computador (PipeWire/WirePlumber) está funcionando. Teste com: <code>pactl info</code></li>
+<li>Abra o TSi MUSIC e vá em <code>Configurações → Players</code> para ver se a caixa de som aparece lá</li>
+<li>Acesse <code>http://100.86.64.1:1780</code> no navegador (é o painel do Snapcast) e confira se o servidor aparece na lista</li>
+</ul>
+<h3><i aria-hidden="true" class="fas fa-wifi"></i> Erros de "zeroconf" ou mDNS nos logs</h3>
+<p>Se você vir mensagens como <code>Network is unreachable</code> falando sobre a interface <code>tailscale0</code>, não se assuste. O Tailscale (rede VPN) não suporta um tipo de comunicação chamada multicast. Isso <strong>não quebra nada</strong>, mas deixa os logs mais poluídos. Para deixar tudo mais limpo:</p>
+<div class="code-block">
+<div class="code-header">
+<span><i aria-hidden="true" class="fas fa-terminal"></i> Como limpar os avisos</span>
+<button class="copy-btn" onclick="copyCode(this)"><i aria-hidden="true" class="fas fa-copy"></i> Copiar</button>
+</div>
+<pre>sudo iptables -A INPUT -i tailscale0 -p udp --dport 5353 -j DROP
+sudo ip6tables -A INPUT -i tailscale0 -p udp --dport 5353 -j DROP
+sudo iptables-save &gt; /etc/iptables/iptables.rules</pre>
+</div>
+<h3><i aria-hidden="true" class="fas fa-sync-alt"></i> Música des-sincronizada ou ficando travando</h3>
+<ul class="feature-list">
+<li>Aumente a memória temporária do snapclient para <code>1500ms</code> ou mais</li>
+<li>Deixe o servidor do TSi MUSIC conectado pelo cabo de rede (Ethernet), não só pelo Wi-Fi</li>
+<li>Verifique se o relógio de os aparelhos está certinho. Digite <code>timedatectl status</code> no servidor</li>
+<li>Deixe o formato <strong>FLAC</strong> como padrão. Mude para OGG somente se a internet estiver muito lenta</li>
+</ul>
+<h3><i aria-hidden="true" class="fas fa-database"></i> Banco de dados com problema</h3>
+<p>O TSi MUSIC guarda suas configurações em arquivos <code>.db</code> (tipo uma planilha interna). Para não estragar esses arquivos:</p>
+<ul class="feature-list">
+<li>Sempre desligue o TSi MUSIC antes de fazer cópias de segurança dos arquivos de dados</li>
+<li>Mantenha os backups automáticos ligados (no MidiaServer já configuramos um backup  dia)</li>
+<li>Nunca abra ou edite os arquivos <code>.db</code> na mão enquanto o programa estiver rodando</li>
+</ul>
+</section>
+<section class="section" id="checklist">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-clipboard-check"></i></div>
+<h2>Checklist: Sua Configuração Está Completa?</h2>
+</div>
+<p>Marque cada item conforme você for configurando. Assim você não esquece nada importante:</p>
+<div class="checklist">
+<div class="checklist-header">
+<h3>Itens de configuração</h3>
+<span class="checklist-progress" id="checklistProgress">0 de 8 completos</span>
+</div>
+<div class="checklist-bar">
+<div class="checklist-bar-fill" id="checklistBar"></div>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c1" type="checkbox"/>
+<label for="c1">TSi MUSIC está acessível em <code>100.86.64.1:8095</code></label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c2" type="checkbox"/>
+<label for="c2">Adicionei pelo menos um provedor de música (Spotify, arquivos locais, etc.)</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c3" type="checkbox"/>
+<label for="c3">Snapcast está ativado nas configurações do TSi MUSIC</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c4" type="checkbox"/>
+<label for="c4">Snapclient está instalado e rodando no servidor</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c5" type="checkbox"/>
+<label for="c5">Pelo menos um player/aparelho de som aparece ativo</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c6" type="checkbox"/>
+<label for="c6">Consegui tocar uma música do início ao fim</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c7" type="checkbox"/>
+<label for="c7">Backup automático está configurado</label>
+</div>
+<div class="checklist-item" onclick="toggleCheck(this)">
+<input id="c8" type="checkbox"/>
+<label for="c8">Testei ouvir em mais de um cômodo ao mesmo tempo</label>
+</div>
+</div>
+<div class="d-none" id="checklistDone">
+<i aria-hidden="true" class="fas fa-trophy"></i>
+<div>
+<strong>Parabéns!</strong> Você completou  o checklist. Seu TSi MUSIC está configurado como um profissional! 🎉
+                    </div>
+</div>
+</section>
+<section aria-labelledby="cheatsheet" class="section" id="cheatsheet" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-terminal"></i></div>
+<h2>Comandos Rápidos no Terminal</h2>
+</div>
+<p>Uma lista rápida dos comandos mais usados para cuidar do TSi MUSIC no servidor. Marque com <span class="kbd">Ctrl+C</span> para copiar direto do terminal:</p>
+<div class="cheatsheet-grid">
+<div class="cheatsheet-card">
+<div class="cheatsheet-header"><i aria-hidden="true" class="fas fa-server"></i> Docker &amp; TSi MUSIC</div>
+<div class="cheatsheet-body">
+<div class="cheatsheet-row"><span>Subir TSi MUSIC</span><span class="cheatsheet-cmd">cd ~/docker/music-assistant &amp;&amp; docker compose up -d</span></div>
+<div class="cheatsheet-row"><span>Ver logs</span><span class="cheatsheet-cmd">docker logs -f music-assistant-server</span></div>
+<div class="cheatsheet-row"><span>Reiniciar</span><span class="cheatsheet-cmd">docker restart music-assistant-server</span></div>
+<div class="cheatsheet-row"><span>Status health</span><span class="cheatsheet-cmd">docker inspect --format='{{.State.Health.Status}}' music-assistant-server</span></div>
+</div>
+</div>
+<div class="cheatsheet-card">
+<div class="cheatsheet-header"><i aria-hidden="true" class="fas fa-broadcast-tower"></i> Snapcast</div>
+<div class="cheatsheet-body">
+<div class="cheatsheet-row"><span>Iniciar snapclient</span><span class="cheatsheet-cmd">systemctl --user start snapclient</span></div>
+<div class="cheatsheet-row"><span>Parar snapclient</span><span class="cheatsheet-cmd">systemctl --user stop snapclient</span></div>
+<div class="cheatsheet-row"><span>Ver logs</span><span class="cheatsheet-cmd">journalctl --user -u snapclient -f</span></div>
+<div class="cheatsheet-row"><span>Status snapweb</span><span class="cheatsheet-cmd">curl -s http://localhost:1780</span></div>
+</div>
+</div>
+<div class="cheatsheet-card">
+<div class="cheatsheet-header"><i aria-hidden="true" class="fas fa-volume-up"></i> Áudio &amp; ALSA</div>
+<div class="cheatsheet-body">
+<div class="cheatsheet-row"><span>Testar som P2</span><span class="cheatsheet-cmd">speaker-test -D front:CARD=Intel,DEV=0 -c 2 -t wav</span></div>
+<div class="cheatsheet-row"><span>Ligar Front</span><span class="cheatsheet-cmd">amixer -c 0 set Front on</span></div>
+<div class="cheatsheet-row"><span>Volume Master</span><span class="cheatsheet-cmd">amixer -c 0 set Master 80%</span></div>
+<div class="cheatsheet-row"><span>Listar sinks</span><span class="cheatsheet-cmd">pactl list sinks short</span></div>
+</div>
+</div>
+<div class="cheatsheet-card">
+<div class="cheatsheet-header"><i aria-hidden="true" class="fas fa-tools"></i> Diagnóstico</div>
+<div class="cheatsheet-body">
+<div class="cheatsheet-row"><span>Corrigir áudio P2</span><span class="cheatsheet-cmd">~/scripts/fix-audio-output-p2.sh</span></div>
+<div class="cheatsheet-row"><span>Validar config</span><span class="cheatsheet-cmd">~/scripts/validate-audio-p2.sh</span></div>
+<div class="cheatsheet-row"><span>Ver dispositivos</span><span class="cheatsheet-cmd">aplay -l</span></div>
+<div class="cheatsheet-row"><span>Mixer completo</span><span class="cheatsheet-cmd">alsamixer -c 0</span></div>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="network-map" class="section" id="network-map" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-network-wired"></i></div>
+<h2>Mapa da Rede de Áudio</h2>
+</div>
+<p>Veja como os dispositivos se conectam para formar o sistema de som da casa:</p>
+<div class="network-map-container">
+<svg viewbox="0 0 840 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="serverGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color: var(--color-primary);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1"></stop>
+</lineargradient>
+<lineargradient id="routerGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1"></stop>
+</lineargradient>
+<marker id="connArrow" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#6366f1"></path>
+</marker>
+</defs>
+<!-- Router central -->
+<rect fill="url(#routerGrad)" height="70" opacity="0.9" rx="14" width="120" x="360" y="180"></rect>
+<circle cx="390" cy="215" fill="white" opacity="0.3" r="10"></circle>
+<path d="M385 215 L395 215 M390 210 L390 220" stroke="white" stroke-linecap="round" stroke-width="2"></path>
+<text fill="white" font-size="12" font-weight="600" text-anchor="middle" x="420" y="210">Roteador</text>
+<text fill="white" font-size="10" opacity="0.9" text-anchor="middle" x="420" y="228">Wi-Fi / Ethernet</text>
+<!-- MidiaServer (top) -->
+<rect fill="url(#serverGrad)" height="80" opacity="0.9" rx="14" width="160" x="340" y="40"></rect>
+<text fill="white" font-size="13" font-weight="600" text-anchor="middle" x="420" y="70">MidiaServer-SaudeClinica</text>
+<text fill="white" font-size="10" opacity="0.9" text-anchor="middle" x="420" y="88">100.86.64.1</text>
+<text fill="white" font-size="9" opacity="0.8" text-anchor="middle" x="420" y="104">CachyOS Linux</text>
+<!-- Docker box inside server -->
+<rect fill="#18181f" height="28" rx="6" stroke="#22c55e" stroke-width="1.5" width="50" x="360" y="55"></rect>
+<text fill="#4ade80" font-size="7" font-weight="600" text-anchor="middle" x="385" y="68">Docker</text>
+<text fill="white" font-size="6" text-anchor="middle" x="385" y="78">TSi MUSIC</text>
+<!-- TSi MUSIC label -->
+<rect fill="#18181f" height="28" rx="6" stroke="#f59e0b" stroke-width="1.5" width="55" x="430" y="55"></rect>
+<text fill="#fbbf24" font-size="7" font-weight="600" text-anchor="middle" x="457" y="68">Snapcast</text>
+<text fill="white" font-size="6" text-anchor="middle" x="457" y="78">Server</text>
+<!-- Connection server-router -->
+<path d="M420 120 L420 180" marker-end="url(#connArrow)" stroke="#6366f1" stroke-width="3"></path>
+<!-- Snapclient local (inside server) -->
+<rect fill="var(--bg-tertiary)" height="55" rx="10" stroke="#ec4899" stroke-width="2" width="110" x="40" y="60"></rect>
+<text fill="var(--text-primary)" font-size="10" font-weight="600" text-anchor="middle" x="95" y="85">Snapclient Local</text>
+<text fill="var(--text-secondary)" font-size="9" text-anchor="middle" x="95" y="100">PipeWire → P2</text>
+<path d="M150 87 L340 87" marker-end="url(#connArrow)" stroke="#ec4899" stroke-dasharray="4 2" stroke-width="2"></path>
+<!-- Devices connected to router -->
+<!-- Living Room -->
+<rect fill="var(--bg-tertiary)" height="70" rx="10" stroke="#f59e0b" stroke-width="2" width="110" x="40" y="280"></rect>
+<circle cx="95" cy="310" fill="#fbbf24" opacity="0.2" r="14"></circle>
+<text fill="#fbbf24" font-size="12" text-anchor="middle" x="95" y="315">♪</text>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="95" y="340">Sala</text>
+<path d="M150 315 L360 215" marker-end="url(#connArrow)" stroke="#f59e0b" stroke-width="2"></path>
+<!-- Kitchen -->
+<rect fill="var(--bg-tertiary)" height="70" rx="10" stroke="#22c55e" stroke-width="2" width="110" x="220" y="330"></rect>
+<circle cx="275" cy="360" fill="#4ade80" opacity="0.2" r="14"></circle>
+<text fill="#4ade80" font-size="12" text-anchor="middle" x="275" y="365">♫</text>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="275" y="390">Cozinha</text>
+<path d="M330 365 L360 250" marker-end="url(#connArrow)" stroke="#22c55e" stroke-width="2"></path>
+<!-- Bedroom -->
+<rect fill="var(--bg-tertiary)" height="70" rx="10" stroke="#3b82f6" stroke-width="2" width="110" x="510" y="330"></rect>
+<circle cx="565" cy="360" fill="#60a5fa" opacity="0.2" r="14"></circle>
+<text fill="#60a5fa" font-size="12" text-anchor="middle" x="565" y="365">♪</text>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="565" y="390">Quarto</text>
+<path d="M510 365 L480 250" marker-end="url(#connArrow)" stroke="#3b82f6" stroke-width="2"></path>
+<!-- Phone -->
+<rect fill="var(--bg-tertiary)" height="70" rx="10" stroke="#ec4899" stroke-width="2" width="110" x="690" y="280"></rect>
+<rect fill="#ec4899" height="34" opacity="0.2" rx="4" width="22" x="725" y="300"></rect>
+<rect height="34" rx="4" stroke="#f472b6" stroke-width="1.5" width="22" x="725" y="300"></rect>
+<circle cx="736" cy="315" fill="#f472b6" opacity="0.5" r="4"></circle>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="745" y="350">Celular</text>
+<path d="M690 315 L480 215" marker-end="url(#connArrow)" stroke="#ec4899" stroke-width="2"></path>
+<!-- TV -->
+<rect fill="var(--bg-tertiary)" height="70" rx="10" stroke="#8b5cf6" stroke-width="2" width="110" x="690" y="60"></rect>
+<rect fill="#8b5cf6" height="35" opacity="0.2" rx="4" width="60" x="715" y="80"></rect>
+<rect height="35" rx="4" stroke="#a78bfa" stroke-width="1.5" width="60" x="715" y="80"></rect>
+<text fill="var(--text-secondary)" font-size="10" text-anchor="middle" x="745" y="130">TV da Sala</text>
+<path d="M690 95 L500 95" marker-end="url(#connArrow)" stroke="#8b5cf6" stroke-width="2"></path>
+<!-- Legend -->
+<text fill="var(--text-muted)" font-size="11" text-anchor="middle" x="420" y="405">Todas as setas representam conexões na mesma rede local (LAN)</text>
+</svg>
+</div>
+</section>
+<section class="section" id="glossario">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-book"></i></div>
+<h2>Glossário Rápido</h2>
+</div>
+<p>Algumas palavrinhas técnicas que aparecem por aqui, explicadas de forma bem simples:</p>
+<div class="glossary-grid">
+<div class="glossary-item">
+<h3><i aria-hidden="true" class="fas fa-network-wired"></i> Docker</h3>
+<p>Uma "caixinha virtual" que roda programas de forma isolada, sem bagunçar o computador principal.</p>
+</div>
+<div class="glossary-item">
+<h4><i aria-hidden="true" class="fas fa-broadcast-tower"></i> Snapcast</h4>
+<p>Tecnologia que envia música pela rede para vários aparelhos ao mesmo tempo, tudo sincronizado.</p>
+</div>
+<div class="glossary-item">
+<h5><i aria-hidden="true" class="fas fa-volume-up"></i> PipeWire</h5>
+<p>O "motor de som" moderno do Linux. Ele gerencia de onde o som sai e para onde vai.</p>
+</div>
+<div class="glossary-item">
+<h5><i aria-hidden="true" class="fas fa-wifi"></i> mDNS / Zeroconf</h5>
+<p>Forma como aparelhos se "acham" automaticamente na mesma rede de casa, sem você precisar digitar endereços.</p>
+</div>
+<div class="glossary-item">
+<h5><i aria-hidden="true" class="fas fa-file-audio"></i> FLAC</h5>
+<p>Formato de música de alta qualidade que não perde detalhes do som original.</p>
+</div>
+<div class="glossary-item">
+<h5><i aria-hidden="true" class="fas fa-shield-alt"></i> VLAN</h5>
+<p>Uma divisão dentro da rede. O TSi MUSIC não gosta de divisões — ele quer estar na mesma rede que seus aparelhos de som.</p>
+
+</div>
+</div></section>
+<section aria-labelledby="faq" class="section" id="faq" role="region">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-comments"></i></div>
+<h2>Perguntas Frequentes (FAQ)</h2>
+</div>
+<div class="accordion">
+<div class="accordion-item">
+<button aria-controls="faq-body-1" aria-expanded="false" class="accordion-header">
+<span>Preciso pagar para usar o TSi MUSIC?</span>
+<i aria-hidden="true" class="fas fa-chevron-down"></i>
+</button>
+<div class="accordion-body" id="faq-body-1">
+<div class="accordion-content">Não! O TSi MUSIC é totalmente gratuito e de código aberto. Você só paga pelos serviços de streaming que quiser conectar, como Spotify Premium ou Tidal.</div>
+</div>
+</div>
+<div class="accordion-item">
+<button aria-controls="faq-body-2" aria-expanded="false" class="accordion-header">
+<span>Posso ouvir música no celular fora de casa?</span>
+<i aria-hidden="true" class="fas fa-chevron-down"></i>
+</button>
+<div class="accordion-body" id="faq-body-2">
+<div class="accordion-content">O TSi MUSIC funciona dentro da sua rede de casa. Para acessar de fora, você precisaria de uma VPN (como o Tailscale que já usamos no MidiaServer) para conectar-se seguramente à rede da casa.</div>
+</div>
+</div>
+<div class="accordion-item">
+<button aria-controls="faq-body-3" aria-expanded="false" class="accordion-header">
+<span>Por que minha caixa de som não aparece?</span>
+<i aria-hidden="true" class="fas fa-chevron-down"></i>
+</button>
+<div class="accordion-body" id="faq-body-3">
+<div class="accordion-content">Certifique-se de que a caixa de som está ligada, conectada na mesma rede Wi-Fi/cabo do servidor, e compatível com protocolos como AirPlay, Chromecast, DLNA ou Snapcast.</div>
+</div>
+</div>
+<div class="accordion-item">
+<button aria-controls="faq-body-4" aria-expanded="false" class="accordion-header">
+<span>O TSi MUSIC funciona sem internet?</span>
+<i aria-hidden="true" class="fas fa-chevron-down"></i>
+</button>
+<div class="accordion-body" id="faq-body-4">
+<div class="accordion-content">Sim, para as músicas que estão salvas no computador (arquivos locais). Mas para Spotify, YouTube Music e rádios online, você precisa de internet.</div>
+</div>
+</div>
+<div class="accordion-item">
+<button aria-controls="faq-body-5" aria-expanded="false" class="accordion-header">
+<span>Quantos aparelhos posso sincronizar ao mesmo tempo?</span>
+<i aria-hidden="true" class="fas fa-chevron-down"></i>
+</button>
+<div class="accordion-body" id="faq-body-5">
+<div class="accordion-content">Com o Snapcast, você pode sincronizar dezenas de aparelhos ao mesmo tempo! O limite prático depende mais da velocidade da sua rede interna do que do TSi MUSIC em si.</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="timeline">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-history"></i></div>
+<h2>História do Setup</h2>
+</div>
+<p>Acompanhe a evolução do TSi MUSIC aqui no MidiaServer-SaudeClinica. Cada marco representa um passo para deixar a experiência musical cada vez melhor:</p>
+<div class="timeline">
+<div class="timeline-item completed">
+<div class="timeline-dot"></div>
+<div class="timeline-date">Início do projeto</div>
+<div class="timeline-title">Instalação inicial do TSi MUSIC</div>
+<div class="timeline-desc">Primeira versão do TSi MUSIC instalada no Docker do MidiaServer com configurações básicas.</div>
+</div>
+<div class="timeline-item completed">
+<div class="timeline-dot"></div>
+<div class="timeline-date">Manutenção contínua</div>
+<div class="timeline-title">Fixação da versão 2.8.5</div>
+<div class="timeline-desc">Imagem Docker travada na versão 2.8.5 para maior estabilidade. Adicionados healthchecks e limites de recursos.</div>
+</div>
+<div class="timeline-item completed">
+<div class="timeline-dot"></div>
+<div class="timeline-date">Otimização</div>
+<div class="timeline-title">Snapcast configurado</div>
+<div class="timeline-desc">Cliente Snapcast instalado no servidor, permitindo reprodução local e multiroom sincronizado.</div>
+</div>
+<div class="timeline-item completed">
+<div class="timeline-dot"></div>
+<div class="timeline-date">Segurança &amp; automação</div>
+<div class="timeline-title">Backups e monitoramento</div>
+<div class="timeline-desc">Criados timers systemd para backup diário e health-check por hora. Logs com rotação automática.</div>
+</div>
+<div class="timeline-item completed">
+<div class="timeline-dot"></div>
+<div class="timeline-date">Hoje</div>
+<div class="timeline-title">Wiki TSi MUSIC no ar</div>
+<div class="timeline-desc">Este guia completo foi criado para documentar e compartilhar o conhecimento de forma amigável e acessível.</div>
+</div>
+</div>
+</section>
+<section class="section" id="best-practices">
+<div class="section-header">
+<div class="section-icon"><i aria-hidden="true" class="fas fa-star"></i></div>
+<h2>Dicas de Ouro da Comunidade</h2>
+</div>
+<div class="cards-grid">
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-tag"></i></div>
+<h3>Trave a Versão</h3>
+<p>Nunca use a etiqueta <code>:latest</code> no Docker. Sempre use uma versão específica (como <code>2.8.5</code>) e só atualize depois de ler o que mudou.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-hdd"></i></div>
+<h4>Backup Todo Dia</h4>
+<p>As configurações e a biblioteca do TSi MUSIC são valiosas. Faça backup automático e guarde os últimos 7 dias.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-file-alt"></i></div>
+<h4>Controle o Tamanho dos Logs</h4>
+<p>Sem limite, os registros do Docker crescem para sempre. Limite a 10 megabytes e no máximo 3 arquivos antigos.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-heartbeat"></i></div>
+<h4>Verificação de Saúde</h4>
+<p>O <code>healthcheck</code> testa se a porta 8095 está respondendo. Assim, se o TSi MUSIC "apagar", o Docker reinicia ele sozinho.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-microchip"></i></div>
+<h4>Limite de Recursos</h4>
+<p>O TSi MUSIC é leve (usa uns 200MB normalmente), mas quando escaneia bibliotecas enormes pode comer mais memória. Limite para não prejudicar o resto do servidor.</p>
+</div>
+<div class="card">
+<div class="card-icon"><i aria-hidden="true" class="fas fa-network-wired"></i></div>
+<h4>Todos na Mesma Rede</h4>
+<p>Caixas de som e o servidor precisam estar na mesma rede da casa, sem divisões (VLANs), para que se encontrem automaticamente.</p>
+</div>
+</div>
+<div class="mt-2">
+<i aria-hidden="true" class="fas fa-book"></i>
+<div>
+<strong>De onde veio essa informação:</strong>
+<span class="tag tag-blue">music-assistant.io</span>
+<span class="tag tag-purple">GitHub Issues</span>
+<span class="tag tag-green">Home Assistant Community</span>
+<span class="tag tag-orange">Snapcast Docs</span>
+<span class="tag tag-blue">Botmonster Tech</span>
+<span class="tag tag-purple">Medium</span>
+</div>
+</div>
+</section>
+<div class="footer-cta">
+<h3>Pronto para ouvir música?</h3>
+<p>O TSi MUSIC está ligado e esperando você no MidiaServer-SaudeClinica. Clique no botão abaixo para abrir a tela de controle.</p>
+<a aria-label="Acessar TSi MUSIC" class="nav-cta inline-block-mt" href="http://100.86.64.1:8095" rel="noopener noreferrer" target="_blank">
+<i aria-hidden="true" class="fas fa-play"></i> Abrir TSi MUSIC
+                </a>
+</div>
+<!-- Empty State Template (hidden by default) -->
+<template id="empty-state-template">
+<div class="text-center-p">
+<div class="mx-auto"></div>
+<div class="my-1-auto"></div>
+<div class="my-05-auto"></div>
+</div>
+</template>
+</article>
+</main>
+</div>
+<footer>
+<div class="footer-links">
+<a aria-label="TSi MUSIC" href="http://100.86.64.1:8095" rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fas fa-music"></i> TSi MUSIC</a>
+<a aria-label="Snapcast" href="http://100.86.64.1:1780" rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fas fa-broadcast-tower"></i> Snapcast</a>
+<a href="#primeiros-passos"><i aria-hidden="true" class="fas fa-rocket"></i> Primeiros Passos</a>
+<a href="#troubleshooting"><i aria-hidden="true" class="fas fa-wrench"></i> Problemas</a>
+<a href="#faq"><i aria-hidden="true" class="fas fa-comments"></i> FAQ</a>
+</div>
+<p><i aria-hidden="true" class="fas fa-code"></i> Wiki TSi MUSIC • MidiaServer-SaudeClinica • Atualizado em 2026-04-16</p>
+<p class="text-small-mt">Baseado nas melhores práticas compartilhadas por usuários de  o mundo.</p>
+</footer>
+<script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+        const iconMobile = themeToggleMobile.querySelector('i');
+
+        function setTheme(theme) {
+            if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-moon';
+                iconMobile.className = 'fas fa-moon';
+            } else {
+                html.removeAttribute('data-theme');
+                icon.className = 'fas fa-sun';
+                iconMobile.className = 'fas fa-sun';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        function toggleTheme() {
+            const current = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            setTheme(current === 'light' ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        function copyCode(btn) {
+            const block = btn.closest('.code-block');
+            const code = block.querySelector('pre').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const original = btn.innerHTML;
+                btn.textContent = '<i class="fas fa-check" aria-hidden="true"></i> Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .step-card, .card, .glossary-item, .accordion-item, .port-box, .diagram-container, .character-card, .timeline-item, .integration-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        const sections = document.querySelectorAll('.section[id]');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / docHeight) * 100;
+            document.getElementById('readingProgress').style.width = progress + '%';
+        });
+
+        const searchInput = document.getElementById('quickSearch');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.section').forEach(section => {
+                const text = section.innerText.toLowerCase();
+                if (term.length < 2) {
+                    section.style.display = '';
+                    section.classList.remove('highlight');
+                    return;
+                }
+                if (text.includes(term)) {
+                    section.style.display = '';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                document.querySelectorAll('.section').forEach(s => s.style.display = '');
+                searchInput.blur();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+
+        
+        // Confetti effect
+        function fireConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#22c55e', '#f59e0b', '#3b82f6'];
+            
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 20,
+                    vy: (Math.random() - 0.5) * 20 - 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * 8 + 4,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 10,
+                    gravity: 0.3,
+                    drag: 0.96
+                });
+            }
+            
+            let frame = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let active = false;
+                
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += p.gravity;
+                    p.vx *= p.drag;
+                    p.vy *= p.drag;
+                    p.rotation += p.rotationSpeed;
+                    
+                    if (p.y < canvas.height + 50) active = true;
+                    
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                });
+                
+                if (active && frame < 300) {
+                    frame++;
+                    requestAnimationFrame(animate);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            animate();
+        }
+        
+        // Override checklist done to trigger confetti
+        const originalUpdateChecklist = updateChecklist;
+        updateChecklist = function() {
+            const items = document.querySelectorAll('.checklist-item input');
+            const checkedBefore = document.querySelectorAll('.checklist-item input:checked').length;
+            originalUpdateChecklist();
+            const checkedAfter = document.querySelectorAll('.checklist-item input:checked').length;
+            if (checkedAfter === items.length && checkedBefore < checkedAfter) {
+                fireConfetti();
+            }
+        };
+
+        // Presentation mode
+        const presEnter = document.getElementById('presEnter');
+        const presExit = document.getElementById('presExit');
+        const presPrev = document.getElementById('presPrev');
+        const presNext = document.getElementById('presNext');
+        const presIndicator = document.getElementById('presIndicator');
+        const sectionIds = Array.from(document.querySelectorAll('.section[id]')).map(s => s.id);
+        let currentSlide = 0;
+
+        function updatePresIndicator() {
+            presIndicator.textContent = `${currentSlide + 1} / ${sectionIds.length}`;
+        }
+
+        function enterPresentation() {
+            document.body.classList.add('presentation-mode');
+            currentSlide = 0;
+            scrollToSection(currentSlide);
+            updatePresIndicator();
+        }
+
+        function exitPresentation() {
+            document.body.classList.remove('presentation-mode');
+        }
+
+        function scrollToSection(idx) {
+            if (idx < 0) idx = 0;
+            if (idx >= sectionIds.length) idx = sectionIds.length - 1;
+            currentSlide = idx;
+            const el = document.getElementById(sectionIds[idx]);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            updatePresIndicator();
+        }
+
+        presEnter.addEventListener('click', enterPresentation);
+        presExit.addEventListener('click', exitPresentation);
+        presPrev.addEventListener('click', () => scrollToSection(currentSlide - 1));
+        presNext.addEventListener('click', () => scrollToSection(currentSlide + 1));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (document.body.classList.contains('presentation-mode')) {
+                    exitPresentation();
+                } else {
+                    enterPresentation();
+                }
+            }
+            if (!document.body.classList.contains('presentation-mode')) return;
+            if (e.key === 'Escape') exitPresentation();
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                scrollToSection(currentSlide + 1);
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                scrollToSection(currentSlide - 1);
+            }
+        });
+
+        // Update slide indicator on scroll in presentation mode
+        window.addEventListener('scroll', () => {
+            if (!document.body.classList.contains('presentation-mode')) return;
+            const scrollY = window.scrollY + 200;
+            for (let i = 0; i < sectionIds.length; i++) {
+                const el = document.getElementById(sectionIds[i]);
+                if (el && el.offsetTop <= scrollY) {
+                    currentSlide = i;
+                }
+            }
+            updatePresIndicator();
+        });
+
+        // Checklist logic
+        function updateChecklist() {
+            const items = document.querySelectorAll('.checklist-item input');
+            const checked = document.querySelectorAll('.checklist-item input:checked');
+            const progress = document.getElementById('checklistProgress');
+            const bar = document.getElementById('checklistBar');
+            const doneMsg = document.getElementById('checklistDone');
+            
+            progress.textContent = `${checked.length} de ${items.length} completos`;
+            bar.style.width = `${(checked.length / items.length) * 100}%`;
+            
+            if (checked.length === items.length) {
+                doneMsg.style.display = 'flex';
+                doneMsg.classList.add('animate-in');
+            } else {
+                doneMsg.style.display = 'none';
+            }
+        }
+
+        function toggleCheck(el) {
+            const cb = el.querySelector('input');
+            cb.checked = !cb.checked;
+            updateChecklist();
+        }
+
+        document.querySelectorAll('.checklist-item input').forEach(cb => {
+            cb.addEventListener('change', updateChecklist);
+        });
+    
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isActive = item.classList.contains('active');
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                // Toggle current
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Character cards click tracking
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const href = card.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Integration items click tracking
+        document.querySelectorAll('.integration-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const href = item.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    window.open(href, '_blank');
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Smooth scroll for all nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+// Scroll reveal observer
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => revealObserver.observe(el));
+} else {
+    revealElements.forEach(el => el.classList.add('visible'));
+}
+
+
+// PWA Service Worker registration
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('data:text/javascript;base64,' + 
+        btoa(`self.addEventListener('install', e => self.skipWaiting());` +
+             `self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));`))
+    .catch(() => {});
+}
+
+// Reading Progress Bar
+const progressBar = document.querySelector('.reading-progress-bar');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = progress + '%';
+        progressBar.parentElement.setAttribute('aria-valuenow', Math.round(progress));
+    });
+}
+
+// Back to Top Button
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Active Section in Nav
+const navSections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+if (navSections.length && navLinks.length) {
+    window.addEventListener('scroll', () => {
+        let current = '';
+        navSections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+</script>
+<!-- Presentation controls -->
+<button class="pres-enter" id="presEnter" title="Modo Apresentação (F11)">
+<i aria-hidden="true" class="fas fa-expand"></i>
+</button>
+<div class="presentation-controls" id="presControls">
+<button class="pres-btn" id="presPrev" title="Anterior (←)"><i aria-hidden="true" class="fas fa-chevron-left"></i></button>
+<button class="pres-btn" id="presExit" title="Sair (Esc)"><i aria-hidden="true" class="fas fa-compress"></i></button>
+<button class="pres-btn" id="presNext" title="Próximo (→)"><i aria-hidden="true" class="fas fa-chevron-right"></i></button>
+</div>
+<div class="presentation-slide-indicator" id="presIndicator">1 / 10</div>
+<!-- Confetti canvas -->
+<canvas aria-hidden="true" id="confettiCanvas"></canvas>
+<!-- Back to Top Button -->
+<button aria-label="Voltar ao topo" class="back-to-top" id="backToTop" title="Voltar ao topo">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="20">
+<polyline points="18 15 12 9 6 15"></polyline>
+</svg>
+</button>
+<script>
+if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').then(()=>void 0).catch(e=>void 0);}
+</script>
+</body>
+</html>
