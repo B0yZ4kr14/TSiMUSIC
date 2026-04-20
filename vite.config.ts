@@ -43,6 +43,7 @@ export default defineConfig({
         name: "TSi MUSIC",
         short_name: "TSi MUSIC",
         description: "TSi MUSIC — Seu assistente musical pessoal",
+        lang: "pt-BR",
         theme_color: "#121212",
         scope: "/",
         start_url: "/",
