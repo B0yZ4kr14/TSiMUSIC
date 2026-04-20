@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://midiaserver-saudeclinica.tailbda57.ts.net/sitemap.xml

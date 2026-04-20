@@ -1,0 +1,14 @@
+/* TEAM */
+    TSi Team
+    Site: https://midiaserver-saudeclinica.tailbda57.ts.net/
+    Location: Brazil
+
+/* THANKS */
+    Music Assistant Community — https://music-assistant.io/
+
+/* SITE */
+    Last update: 2026-04-18
+    Language: Portuguese (Brazil)
+    Standards: HTML5, CSS3, ES2022
+    Components: Vue 3, Vite, Vuetify, Tailwind CSS
+    Software: TypeScript, Node.js, Python

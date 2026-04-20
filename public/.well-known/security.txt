@@ -1,0 +1,4 @@
+Contact: mailto:security@tsimusic.local
+Acknowledgments: https://midiaserver-saudeclinica.tailbda57.ts.net/humans.txt
+Preferred-Languages: pt-BR, en
+Canonical: https://midiaserver-saudeclinica.tailbda57.ts.net/.well-known/security.txt

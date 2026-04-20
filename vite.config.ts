@@ -40,8 +40,9 @@ export default defineConfig({
         "apple-touch-icon.png",
       ],
       manifest: {
+        id: "/",
         name: "TSi MUSIC",
-        short_name: "TSi MUSIC",
+        short_name: "TSiM",
         description: "TSi MUSIC — Seu assistente musical pessoal",
         lang: "pt-BR",
         theme_color: "#121212",
@@ -49,6 +50,8 @@ export default defineConfig({
         start_url: "/",
         display: "standalone",
         background_color: "#121212",
+        orientation: "portrait-primary",
+        categories: ["music", "entertainment"],
         icons: [
           {
             src: "pwa-192x192.png",
@@ -65,6 +68,22 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
+          },
+        ],
+        screenshots: [
+          {
+            src: "pwa-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            form_factor: "wide",
+            label: "Tela principal do TSi MUSIC",
+          },
+          {
+            src: "pwa-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            form_factor: "narrow",
+            label: "Ícone do TSi MUSIC",
           },
         ],
       },

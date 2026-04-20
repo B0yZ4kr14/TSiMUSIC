@@ -4,30 +4,79 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <!-- Preconnect / DNS Prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="favicon.ico" type="image/png" sizes="16x16">
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
-    <link rel="mask-icon" href="favicon.svg" color="#FFFFFF">
+    <link rel="mask-icon" href="favicon.svg" color="#7c3aed">
+
+    <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.webmanifest">
+
+    <!-- Theme Color -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
     <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#121212">
-    <link rel="icon" href="favicon.ico" />
+
+    <!-- Apple PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TSi MUSIC">
+
+    <!-- SEO & Meta -->
     <title>TSi MUSIC</title>
+    <meta name="description" content="TSi MUSIC — Seu assistente musical pessoal">
+    <meta name="author" content="TSi Team">
+    <meta name="keywords" content="TSi MUSIC, assistente musical, streaming, música, player, áudio">
+    <link rel="canonical" href="https://midiaserver-saudeclinica.tailbda57.ts.net/" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content="TSi MUSIC">
-    <meta property="og:image" content="https://100.86.64.1:8443/og-image.png" />
+    <meta property="og:description" content="TSi MUSIC — Seu assistente musical pessoal">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://midiaserver-saudeclinica.tailbda57.ts.net/">
+    <meta property="og:image" content="https://midiaserver-saudeclinica.tailbda57.ts.net/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta name="twitter:image" content="https://100.86.64.1:8443/og-image.png" />
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="description" content="TSi MUSIC — Seu assistente musical pessoal">
+    <meta name="twitter:title" content="TSi MUSIC" />
+    <meta name="twitter:description" content="TSi MUSIC — Seu assistente musical pessoal" />
+    <meta name="twitter:image" content="https://midiaserver-saudeclinica.tailbda57.ts.net/og-image.png" />
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #121212;
+        color: #fff;
+        padding: 8px 16px;
+        z-index: 10000;
+        text-decoration: none;
+        font-family: Roboto, sans-serif;
+        font-size: 14px;
+        border-radius: 0 0 4px 0;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
   </head>
   <body>
+    <a href="#app" class="skip-link">Pular para o conteúdo principal</a>
     <noscript>
-      <strong
-        >We're sorry but musicassistant-frontend doesn't work properly without
-        JavaScript enabled. Please enable it to continue.</strong
-      >
+      <strong>Desculpe, o TSi MUSIC não funciona corretamente sem JavaScript habilitado. Por favor, ative-o para continuar.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app" role="main"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
