@@ -1,0 +1,82 @@
+site_name: TSi MUSIC Wiki
+site_description: Documentação oficial do TSi MUSIC — Fork premium do Music Assistant para o ecossistema SaúdeClínica
+site_author: TSi MUSIC Team
+site_url: https://b0yz4kr14.github.io/TSiMUSIC/
+repo_name: B0yZ4kr14/TSiMUSIC
+repo_url: https://github.com/B0yZ4kr14/TSiMUSIC
+copyright: "&copy; 2026 TSi MUSIC — Ecossistema SaúdeClínica"
+
+# Tema Material
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: violet
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: violet
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  icon:
+    logo: material/music-circle
+  favicon: assets/logo.png
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/B0yZ4kr14/TSiMUSIC
+  version:
+    provider: mike
+
+plugins:
+  - search:
+      lang: pt
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: "!!python/name:pymdownx.superfences.fence_code_format"
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Início: index.md
+  - Arquitetura: architecture.md
+  - Deploy: deploy.md
+  - API: api.md
+  - Certificados: cert.md
+  - Troubleshooting: troubleshooting.md
+  - Changelog: changelog.md
