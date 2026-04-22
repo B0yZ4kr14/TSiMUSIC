@@ -118,3 +118,48 @@ export function useUserPreferences() {
     setItemsListingPreference,
   };
 }
+
+/**
+ * Remove provider instance ids from every itemsListing.*.providerFilter
+ * entry that are not in validProviderIds. Writes once if anything changed.
+ */
+export async function pruneStaleProviderFilters(
+  validProviderIds: Set<string>,
+): Promise<void> {
+  if (!store.currentUser?.preferences) return;
+  // Empty set means providers haven't loaded yet; do not wipe every filter.
+  if (validProviderIds.size === 0) return;
+
+  const prefs = store.currentUser.preferences;
+  const updatedPrefs: Record<string, unknown> = { ...prefs };
+  let changed = false;
+
+  for (const key of Object.keys(prefs)) {
+    if (!key.startsWith("itemsListing.")) continue;
+    const value = prefs[key] as ItemsListingPreferences | undefined;
+    if (!value || !Array.isArray(value.providerFilter)) continue;
+    const pruned = value.providerFilter.filter((id) =>
+      validProviderIds.has(id),
+    );
+    if (pruned.length === value.providerFilter.length) continue;
+    changed = true;
+    const next: ItemsListingPreferences = { ...value };
+    if (pruned.length === 0) {
+      delete next.providerFilter;
+    } else {
+      next.providerFilter = pruned;
+    }
+    updatedPrefs[key] = next;
+  }
+
+  if (!changed) return;
+
+  store.currentUser.preferences = updatedPrefs;
+  try {
+    await api.updateUser(store.currentUser.user_id, {
+      preferences: updatedPrefs,
+    });
+  } catch (error) {
+    console.error("Failed to prune stale provider filters:", error);
+  }
+}
