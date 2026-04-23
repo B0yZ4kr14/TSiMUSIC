@@ -367,6 +367,7 @@
                 :text-color="sliderColor"
                 :lyrics="currentLyrics.plain"
                 :lrc-lyrics="currentLyrics.synced"
+                :show-offset="showLyricsOffset"
               />
             </div>
           </div>
@@ -647,6 +648,27 @@ const hasLyrics = computed(() => {
     (!!plain && plain.trim().length > 0) ||
     (!!synced && synced.trim().length > 0)
   );
+});
+
+// Protocols with accurate playback time reporting don't need a latency offset.
+const ACCURATE_TIME_PROTOCOLS = ["airplay", "sendspin"];
+
+const showLyricsOffset = computed(() => {
+  const player = store.activePlayer;
+  if (!player) return false;
+  let domain: string | undefined;
+  if (
+    player.active_output_protocol &&
+    player.active_output_protocol !== "native"
+  ) {
+    domain = player.output_protocols?.find(
+      (p) => p.output_protocol_id === player.active_output_protocol,
+    )?.protocol_domain ?? undefined;
+  }
+  if (!domain) {
+    domain = player.provider.split("--")[0];
+  }
+  return !ACCURATE_TIME_PROTOCOLS.includes(domain);
 });
 
 // Fetch lyrics for the current track (only when fullscreen player is open)

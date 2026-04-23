@@ -97,11 +97,40 @@
         </div>
       </div>
     </ScrollArea>
+
+    <!-- Synced lyrics offset slider (proof of concept) -->
+    <div
+      v-if="
+        showOffset &&
+        hasTimestamps &&
+        !loading &&
+        !externalLoading &&
+        displayLines.length
+      "
+      class="lyrics-offset-control"
+      @touchstart.stop
+      @touchend.stop
+      @mousedown.stop
+    >
+      <div class="offset-label">
+        <span>{{ $t("lyrics_offset") }}</span>
+        <span class="offset-value">{{ offsetDisplay }}</span>
+      </div>
+      <Slider
+        :model-value="[lyricsOffset]"
+        :min="-3"
+        :max="3"
+        :step="0.1"
+        class="offset-slider"
+        @update:model-value="onOffsetChange"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Slider } from "@/components/ui/slider";
 import { Spinner } from "@/components/ui/spinner";
 import { parseLrcLine } from "@/helpers/lrcParser";
 import { MediaItemType, StreamDetails, Track } from "@/plugins/api/interfaces";
@@ -125,6 +154,7 @@ interface Props {
   anticipation?: number;
   externalLoading?: boolean;
   highlightAhead?: boolean;
+  showOffset?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -137,6 +167,7 @@ const props = withDefaults(defineProps<Props>(), {
   anticipation: 0,
   externalLoading: false,
   highlightAhead: true,
+  showOffset: false,
 });
 
 // Core state
@@ -149,6 +180,24 @@ const lineRefs = new Map<number, HTMLElement>();
 // Transform-based positioning
 const contentTranslateY = ref(0);
 const contentTransitionEnabled = ref(false);
+
+// User-adjustable timing offset (seconds) for synced lyrics latency.
+const lyricsOffset = ref(0);
+
+const effectivePosition = computed(() =>
+  props.position === undefined ? undefined : props.position + lyricsOffset.value,
+);
+
+const offsetDisplay = computed(() => {
+  const val = lyricsOffset.value;
+  const sign = val > 0 ? "+" : "";
+  return `${sign}${val.toFixed(1)}s`;
+});
+
+const onOffsetChange = (value: number[] | undefined) => {
+  if (!value || value.length === 0) return;
+  lyricsOffset.value = value[0];
+};
 
 const setLineRef = (el: HTMLElement | null, index: number) => {
   if (el) {
@@ -164,7 +213,7 @@ const beforeFirstLyric = computed(() => {
   }
   const firstTime = displayLines.value[0].time;
   if (firstTime < 2) return false;
-  const currentPosition = props.position || 0;
+  const currentPosition = effectivePosition.value || 0;
   return currentPosition < firstTime - props.anticipation;
 });
 
@@ -341,7 +390,7 @@ const noteProgressState = computed(() => {
   if (!line?.isBreak || !line.breakEnd) {
     return { filled: NOTE_COUNT, percent: 100 };
   }
-  const pos = props.position || 0;
+  const pos = effectivePosition.value || 0;
   const duration = line.breakEnd - highlightLeadTime.value - line.time;
   if (duration <= 0) return { filled: NOTE_COUNT, percent: 100 };
   const elapsed = Math.max(0, pos - line.time);
@@ -412,7 +461,7 @@ watch(
 
 // Main sync: just find the active index and reposition.
 watch(
-  () => props.position,
+  effectivePosition,
   (newPosition: number | undefined) => {
     if (
       newPosition === undefined ||
@@ -512,10 +561,36 @@ onBeforeUnmount(() => {
 
 /* Synced lyrics: fixed anchor with transform-based positioning */
 .synced-container {
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   width: 100%;
   overflow: hidden;
   position: relative;
+}
+
+.lyrics-offset-control {
+  flex-shrink: 0;
+  padding: 8px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.offset-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.offset-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hide the left-fill range so the handle slides over a plain track. */
+.offset-slider :deep([data-slot="slider-range"]) {
+  display: none;
 }
 
 .synced-content {
