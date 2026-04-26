@@ -120,7 +120,7 @@ jobs:
           path: ${{ env.BUILD_DIR }}
 
       - name: Setup SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
           log-public-key: false
