@@ -97,40 +97,11 @@
         </div>
       </div>
     </ScrollArea>
-
-    <!-- Synced lyrics offset slider (proof of concept) -->
-    <div
-      v-if="
-        showOffset &&
-        hasTimestamps &&
-        !loading &&
-        !externalLoading &&
-        displayLines.length
-      "
-      class="lyrics-offset-control"
-      @touchstart.stop
-      @touchend.stop
-      @mousedown.stop
-    >
-      <div class="offset-label">
-        <span>{{ $t("lyrics_offset") }}</span>
-        <span class="offset-value">{{ offsetDisplay }}</span>
-      </div>
-      <Slider
-        :model-value="[lyricsOffset]"
-        :min="-3"
-        :max="3"
-        :step="0.1"
-        class="offset-slider"
-        @update:model-value="onOffsetChange"
-      />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Slider } from "@/components/ui/slider";
 import { Spinner } from "@/components/ui/spinner";
 import { parseLrcLine } from "@/helpers/lrcParser";
 import { MediaItemType, StreamDetails, Track } from "@/plugins/api/interfaces";
@@ -154,7 +125,7 @@ interface Props {
   anticipation?: number;
   externalLoading?: boolean;
   highlightAhead?: boolean;
-  showOffset?: boolean;
+  offset?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -167,7 +138,7 @@ const props = withDefaults(defineProps<Props>(), {
   anticipation: 0,
   externalLoading: false,
   highlightAhead: true,
-  showOffset: false,
+  offset: 0,
 });
 
 // Core state
@@ -181,23 +152,9 @@ const lineRefs = new Map<number, HTMLElement>();
 const contentTranslateY = ref(0);
 const contentTransitionEnabled = ref(false);
 
-// User-adjustable timing offset (seconds) for synced lyrics latency.
-const lyricsOffset = ref(0);
-
 const effectivePosition = computed(() =>
-  props.position === undefined ? undefined : props.position + lyricsOffset.value,
+  props.position === undefined ? undefined : props.position + props.offset,
 );
-
-const offsetDisplay = computed(() => {
-  const val = lyricsOffset.value;
-  const sign = val > 0 ? "+" : "";
-  return `${sign}${val.toFixed(1)}s`;
-});
-
-const onOffsetChange = (value: number[] | undefined) => {
-  if (!value || value.length === 0) return;
-  lyricsOffset.value = value[0];
-};
 
 const setLineRef = (el: HTMLElement | null, index: number) => {
   if (el) {
@@ -460,43 +417,40 @@ watch(
 );
 
 // Main sync: just find the active index and reposition.
-watch(
-  effectivePosition,
-  (newPosition: number | undefined) => {
-    if (
-      newPosition === undefined ||
-      !displayLines.value.length ||
-      !hasTimestamps.value
-    ) {
-      return;
-    }
+watch(effectivePosition, (newPosition: number | undefined) => {
+  if (
+    newPosition === undefined ||
+    !displayLines.value.length ||
+    !hasTimestamps.value
+  ) {
+    return;
+  }
 
-    // Shift position forward by the lead time so the CSS transition
-    // is fully complete exactly when the line's timestamp arrives.
-    const highlightPositionMs = Math.round(
-      (newPosition + highlightLeadTime.value) * 1000,
-    );
-    const newActiveIndex = findActiveLineIndex(highlightPositionMs);
+  // Shift position forward by the lead time so the CSS transition
+  // is fully complete exactly when the line's timestamp arrives.
+  const highlightPositionMs = Math.round(
+    (newPosition + highlightLeadTime.value) * 1000,
+  );
+  const newActiveIndex = findActiveLineIndex(highlightPositionMs);
 
-    if (newActiveIndex !== activeLyricIndex.value) {
-      if (newActiveIndex >= 0) {
-        contentTransitionEnabled.value = true;
-        activeLyricIndex.value = newActiveIndex;
-        nextTick(() => computeTranslateY(newActiveIndex));
-      } else {
-        // Rewound before the first lyric — scroll content back out of view
-        activeLyricIndex.value = -1;
-        contentTransitionEnabled.value = true;
-        const firstEl = lineRefs.get(0);
-        const container = syncedContainerRef.value;
-        if (firstEl && container) {
-          contentTranslateY.value =
-            container.clientHeight - firstEl.offsetTop + 40;
-        }
+  if (newActiveIndex !== activeLyricIndex.value) {
+    if (newActiveIndex >= 0) {
+      contentTransitionEnabled.value = true;
+      activeLyricIndex.value = newActiveIndex;
+      nextTick(() => computeTranslateY(newActiveIndex));
+    } else {
+      // Rewound before the first lyric — scroll content back out of view
+      activeLyricIndex.value = -1;
+      contentTransitionEnabled.value = true;
+      const firstEl = lineRefs.get(0);
+      const container = syncedContainerRef.value;
+      if (firstEl && container) {
+        contentTranslateY.value =
+          container.clientHeight - firstEl.offsetTop + 40;
       }
     }
-  },
-);
+  }
+});
 
 // When the intro screen dismisses, slide content to the first line.
 watch(beforeFirstLyric, (isBefore) => {
@@ -561,36 +515,10 @@ onBeforeUnmount(() => {
 
 /* Synced lyrics: fixed anchor with transform-based positioning */
 .synced-container {
-  flex: 1;
-  min-height: 0;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: relative;
-}
-
-.lyrics-offset-control {
-  flex-shrink: 0;
-  padding: 8px 16px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.offset-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-.offset-value {
-  font-variant-numeric: tabular-nums;
-}
-
-/* Hide the left-fill range so the handle slides over a plain track. */
-.offset-slider :deep([data-slot="slider-range"]) {
-  display: none;
 }
 
 .synced-content {

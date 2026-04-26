@@ -219,8 +219,57 @@
                 inline
               />
             </v-tab>
-            <v-tab v-if="hasLyrics" :value="2">
-              {{ $t("lyrics") }}
+            <v-tab v-if="hasLyrics" :value="2" class="lyrics-tab">
+              <div class="lyrics-tab-content">
+                <div class="lyrics-tab-row">
+                  <span>{{ $t("lyrics") }}</span>
+                  <template v-if="showLyricsOffset && activeQueuePanel === 2">
+                    <v-btn
+                      class="lyrics-offset-btn"
+                      icon
+                      size="x-small"
+                      variant="tonal"
+                      rounded="md"
+                      :title="$t('lyrics_offset')"
+                      @click.stop="
+                        showLyricsOffsetControls = !showLyricsOffsetControls
+                      "
+                    >
+                      <v-icon icon="mdi-arrow-left-right" size="small" />
+                    </v-btn>
+                    <template v-if="showLyricsOffsetControls">
+                      <v-btn
+                        class="lyrics-offset-btn"
+                        icon
+                        size="x-small"
+                        variant="tonal"
+                        rounded="md"
+                        @click.stop
+                        @mousedown.stop="startRepeatingOffset(-0.1)"
+                        @touchstart.stop.prevent="startRepeatingOffset(-0.1)"
+                      >
+                        <v-icon icon="mdi-minus" size="small" />
+                      </v-btn>
+                      <v-btn
+                        class="lyrics-offset-btn"
+                        icon
+                        size="x-small"
+                        variant="tonal"
+                        rounded="md"
+                        @click.stop
+                        @mousedown.stop="startRepeatingOffset(0.1)"
+                        @touchstart.stop.prevent="startRepeatingOffset(0.1)"
+                      >
+                        <v-icon icon="mdi-plus" size="small" />
+                      </v-btn>
+                      <span class="lyrics-offset-value">
+                        {{ lyricsOffsetDisplay
+                        }}<span class="lyrics-offset-unit">s</span>
+                      </span>
+                    </template>
+                  </template>
+                </div>
+              </div>
             </v-tab>
           </v-tabs>
           <div
@@ -367,7 +416,7 @@
                 :text-color="sliderColor"
                 :lyrics="currentLyrics.plain"
                 :lrc-lyrics="currentLyrics.synced"
-                :show-offset="showLyricsOffset"
+                :offset="lyricsOffset"
               />
             </div>
           </div>
@@ -661,15 +710,64 @@ const showLyricsOffset = computed(() => {
     player.active_output_protocol &&
     player.active_output_protocol !== "native"
   ) {
-    domain = player.output_protocols?.find(
-      (p) => p.output_protocol_id === player.active_output_protocol,
-    )?.protocol_domain ?? undefined;
+    domain =
+      player.output_protocols?.find(
+        (p) => p.output_protocol_id === player.active_output_protocol,
+      )?.protocol_domain ?? undefined;
   }
   if (!domain) {
     domain = player.provider.split("--")[0];
   }
   return !ACCURATE_TIME_PROTOCOLS.includes(domain);
 });
+
+// Lyrics latency offset, in seconds. Adjustable via the controls in the
+// Lyrics tab; persists across tracks within the session.
+const lyricsOffset = ref(0);
+const showLyricsOffsetControls = ref(false);
+
+const lyricsOffsetDisplay = computed(() => {
+  const val = lyricsOffset.value;
+  const sign = val > 0 ? "+" : "";
+  return `${sign}${val.toFixed(1)}`;
+});
+
+const adjustLyricsOffset = (delta: number) => {
+  const next = Math.round((lyricsOffset.value + delta) * 10) / 10;
+  lyricsOffset.value = Math.max(-9.9, Math.min(9.9, next));
+};
+
+// Press-and-hold: first step on press, then accelerate after a short delay.
+let offsetHoldDelay: number | null = null;
+let offsetHoldInterval: number | null = null;
+
+const stopRepeatingOffset = () => {
+  if (offsetHoldDelay !== null) {
+    clearTimeout(offsetHoldDelay);
+    offsetHoldDelay = null;
+  }
+  if (offsetHoldInterval !== null) {
+    clearInterval(offsetHoldInterval);
+    offsetHoldInterval = null;
+  }
+  window.removeEventListener("mouseup", stopRepeatingOffset);
+  window.removeEventListener("touchend", stopRepeatingOffset);
+  window.removeEventListener("touchcancel", stopRepeatingOffset);
+};
+
+const startRepeatingOffset = (delta: number) => {
+  stopRepeatingOffset();
+  adjustLyricsOffset(delta);
+  offsetHoldDelay = window.setTimeout(() => {
+    offsetHoldInterval = window.setInterval(
+      () => adjustLyricsOffset(delta),
+      80,
+    );
+  }, 400);
+  window.addEventListener("mouseup", stopRepeatingOffset);
+  window.addEventListener("touchend", stopRepeatingOffset);
+  window.addEventListener("touchcancel", stopRepeatingOffset);
+};
 
 // Fetch lyrics for the current track (only when fullscreen player is open)
 const fetchLyrics = async () => {
@@ -1351,6 +1449,7 @@ onMounted(() => {
   window.addEventListener("keydown", onKeydown);
   onBeforeUnmount(() => {
     window.removeEventListener("keydown", onKeydown);
+    stopRepeatingOffset();
   });
 });
 
@@ -1656,6 +1755,35 @@ watchEffect(() => {
 }
 .v-tab-item--selected {
   opacity: 1;
+}
+
+.lyrics-tab-content {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.lyrics-tab-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lyrics-offset-btn {
+  opacity: 1;
+}
+
+.lyrics-offset-value {
+  font-size: 1.04rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.lyrics-offset-unit {
+  font-size: 0.7em;
+  margin-left: 1px;
+  opacity: 0.8;
 }
 
 .media-controls {
