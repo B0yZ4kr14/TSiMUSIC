@@ -700,7 +700,7 @@ const hasLyrics = computed(() => {
 });
 
 // Protocols with accurate playback time reporting don't need a latency offset.
-const ACCURATE_TIME_PROTOCOLS = ["airplay", "sendspin"];
+const ACCURATE_TIME_PROTOCOLS = ["airplay"];
 
 const showLyricsOffset = computed(() => {
   const player = store.activePlayer;
