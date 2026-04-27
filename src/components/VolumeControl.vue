@@ -201,9 +201,6 @@ const getChildPlayers = function (player: Player) {
       // skip unavailable players
       if (!syncPlayer.available) continue;
 
-      // skip hidden players
-      if (syncPlayer.hide_in_ui) continue;
-
       // skip for group players
       if (syncPlayer.type == PlayerType.GROUP) continue;
 
