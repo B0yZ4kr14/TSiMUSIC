@@ -166,7 +166,8 @@ const playbackSpeedSupported = computed(
 watch(
   () => store.curQueueItem,
   (queueItem) => {
-    currentPlaybackSpeed.value = queueItem?.extra_attributes?.playback_speed ?? 1;
+    currentPlaybackSpeed.value =
+      queueItem?.extra_attributes?.playback_speed ?? 1;
   },
   { immediate: true },
 );
