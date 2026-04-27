@@ -1471,6 +1471,17 @@ export class MusicAssistantApi {
       !this.queues[queueId].dont_stop_the_music_enabled,
     );
   }
+  public queueCommandSetPlaybackSpeed(
+    queue_id: string,
+    speed: number,
+    queue_item_id: string,
+  ) {
+    // Set playback speed for the given queue item (audiobook/podcast).
+    this.playerQueueCommand(queue_id, "set_playback_speed", {
+      speed,
+      queue_item_id,
+    });
+  }
   public playerQueueCommand(
     queue_id: string,
     command: string,
